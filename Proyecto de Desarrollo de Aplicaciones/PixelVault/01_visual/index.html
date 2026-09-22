@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelVault</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+  <!--================================================== BARRA LATERAL IZQ ==================================================-->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="crystal">◆</div>
+      <div>
+        <h1>PixelVault</h1>
+        <p>tus recuerdos, tu historia</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="active" href="#">
+        <i class="bi bi-house-fill"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-tv"></i>
+        <span>Series</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-camera-reels-fill"></i>
+        <span>Películas</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-controller"></i>
+        <span>Juegos</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-book"></i>
+        <span>Libros</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-music-note-beamed"></i>
+        <span>Música</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-heart-fill"></i>
+        <span>Favoritos</span>
+      </a>
+      <a href="#">
+        <i class="bi bi-gear"></i>
+        <span>Ajustes</span>
+      </a>
+    </nav>
+
+    <div class="dark-mode">
+      <i class="bi bi-moon-fill"></i>
+      <span>Modo oscuro</span>
+    </div>
+  </aside>
+
+  <!--================================================== CONTENIDO PRINCIPAL ==================================================-->
+
+  <main class="app">
+
+    <header class="topbar">
+      <input type="text" placeholder="Buscar series, películas, juegos, libros, música..." />
+      <div class="profile">
+        <i class="bi bi-bell"></i><i class="bi bi-person-circle"></i></i> Cristina ▾</div>
+    </header>
+
+    <section class="hero">
+      <h2>Buenas tardes, Cristina ✨</h2>
+      <p>“(Frase aleatoria)”</p>
+    </section>
+
+    <section class="continue-section">
+      <div class="section-title">
+        <h3>▶ Continuar viendo</h3>
+        <span>Ver todo ›</span>
+      </div>
+      
+    <!-- CONTINUAR VIENDO -->
+
+      <div class="cards">
+        <article class="card">
+          <div class="cover"></div>
+          <span class="tag pink">EPISODIO</span>
+          <h4>One Tree Hill</h4>
+          <p>S 6 · E 16</p>
+          <div class="progress"><div style="width:75%"></div></div>
+        </article>
+
+        <article class="card">
+          <div class="cover game"></div>
+          <span class="tag green">JUGANDO</span>
+          <h4>The Last of Us Part II</h4>
+          <p>Seattle, día 2</p>
+          <div class="progress"><div style="width:60%"></div></div>
+        </article>
+
+        <article class="card">
+          <div class="cover book"></div>
+          <span class="tag yellow">LEYENDO</span>
+          <h4>El Nombre del Viento</h4>
+          <p>Patrick Rothfuss</p>
+          <div class="progress"><div style="width:40%"></div></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!--================================================== BARRA LATERAL DER ==================================================-->
+
+  <aside class="right-panel">
+    <section class="assistant">
+      <h3>✨ Asistente Pixel</h3>
+      <p>¿En qué puedo ayudarte hoy?</p>
+
+      <button>Quiero algo parecido a The Last of Us</button>
+      <button>Recomiéndame una película para esta noche</button>
+      <button>No sé qué jugar</button>
+    </section>
+
+    <section class="quote">
+      “Lo que hoy disfrutas, mañana será un recuerdo que te hará sonreír.” (ultima reseña escrita)
+    </section>
+  </aside>
+
+  
+  <script src="js/script.js"></script>
+</body>
+</html>

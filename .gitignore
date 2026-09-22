@@ -1,0 +1,65 @@
+# =========================
+# SISTEMA OPERATIVO
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# =========================
+# VISUAL STUDIO CODE
+# =========================
+.vscode/
+
+
+# =========================
+# NODE / JAVASCRIPT
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# =========================
+# VARIABLES Y SECRETOS
+# =========================
+.env
+.env.local
+.env.*.local
+
+
+# =========================
+# NEXT.JS
+# =========================
+.next/
+out/
+
+
+# =========================
+# PHP / COMPOSER
+# =========================
+vendor/
+
+
+# =========================
+# JAVA
+# =========================
+target/
+*.class
+
+
+# =========================
+# INTELLIJ IDEA
+# =========================
+.idea/
+*.iml
+
+
+# =========================
+# ARCHIVOS TEMPORALES
+# =========================
+*.tmp
+*.temp
+*.log
