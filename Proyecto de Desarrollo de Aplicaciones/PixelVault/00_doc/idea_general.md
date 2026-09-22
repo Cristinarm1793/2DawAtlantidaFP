@@ -1,3 +1,0 @@
--el asistente debería ser opcional asi que lo haría tipo burbuja para que la gente lo abra cusando quiere.
--un botón con la ultima reseña que has escrito que si lo clite lleve a todas las reseñas escritas.
--banner modifcable por el usuario, que se pueda mostrar los perfiles de los demas usuarios y si no quieren que nadie vea lo que hacer tener la opcion de tenerlo en privado y que sea por seciones si quiere solo poner pivado las peliculas pero el resto no que eso se pueda hacer.
