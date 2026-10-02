@@ -135,10 +135,10 @@ angular.module("angular", [])
                 
                 /*** PASO #6: CONCLUSION ***/ 
                 
-                goal6: "Consiguie reservar para vacaciones pero no era lo que tenía en mente",
-                touch6: "Ordenador (reserva OK)",
+                goal6: "Decide utilizar nuestra web para guardar las nuevas recomendaciones que vaya recibiendo",
+                touch6: "móvil",
                 feel6: "5",
-                con6: "Tendrá que buscar más información del lugar para ver que actividades ofrece y donde aparacar!",
+                con6: "Necesita una forma sencilla de mantener organizados sus libros, películas y series pendientes",
                 ima6: "cartoon-PChard.png",
                 
 			}
