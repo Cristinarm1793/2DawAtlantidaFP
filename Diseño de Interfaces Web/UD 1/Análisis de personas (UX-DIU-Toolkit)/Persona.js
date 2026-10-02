@@ -74,7 +74,7 @@ angular.module("angular", [])
                 
                 
 				Id: 1,
-				Name: "Carmen Fernandez",
+				Name: "Carmen Fernández",
 				Photo: "CarmenF (1).png",
 				Quote: "Medio pan y un libro",
 				Age: 67,

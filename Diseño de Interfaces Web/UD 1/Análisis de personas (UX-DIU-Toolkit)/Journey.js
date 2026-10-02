@@ -38,52 +38,51 @@ angular.module("angular", [])
                 Photo: "AlexDuran (1).png",
     
                 /*** PASO #1: INSPIRACION ***/ 
-                goal1: "quiere preparar un viaje con sus amigos en Semana Santa",
-                touch1: "agenda",
-                feel1: "4",
-                con1: "ver cuantos días puede tener libres para organizar lugar de viaje ",
+                goal1: "Quiere organizar todos sus hobbies multimedia en una sola página",
+                touch1: "ordenador",
+                feel1: "3",
+                con1: "Tiene sus videojuegos, películas, series y otros contenidos repartidos entre diferentes aplicaciones",
                 ima1: "cartoon-planning.png",
 				
                 /*** PASO #2: DECICION ***/ 
-                goal2: "Busca en internet ofertas para esas fechas",
-                touch2: "Movil",
+                goal2: "Busca una plataforma donde pueda registrar distintos tipos de contenido",
+                touch2: "ordenador",
                 feel2: "2",
-                con2: "hay demasiada información y pierde mucho tiempo, no hay precios 'baratos'",
+                con2: "Encuentra aplicaciones especializadas en un solo tipo de contenido y tendría que utilizar varias para organizarlo todo",
                 ima2: "cartoon-PCangry.png",
                 
                 /*** PASO #3: ACTUA ***/ 
                 
-                goal3: "Decide buscar un alojamiento rural  en plasencia, donde hay procesiones y parece que hará buen tiempo",
+                goal3: "Encuentra nuestra web y entra para comprobar si puede organizar todos sus hobbies",
                 touch3: "móvil (el tiempo)",
-                feel3: "3",
-                con3: "Está preocupado por el tiempo y el desplazamiento (coche y aparcamiento)",
+                feel3: "4",
+                con3: "Quiere comprobar que puede registrar diferentes tipos de contenido desde un mismo sitio",
                 ima3: "cartoon-phone.png",
                 
                 /*** PASO #4: OBSERVA ***/ 
                 
-                goal4: "Los amigos le recomiendan una página para escoger alojamientos",
+                goal4: "Explora las categorías y empieza a añadir contenido a su biblioteca",
                 touch4: "ordenador",
                 feel4: "4",
-                con4: "Buscar opciones en el lugar que había seleccionado, viendo precios y distancias, tiene que ver si hay aparcamiento fácil",
+                con4: "Tiene bastante contenido acumulado, necesita encontrarlo y clasificarlo fácilmente",
                 ima4: "cartoon-PCtyping.png",
                 
                  /*** PASO #5: ANALIZA ***/ 
                 
-                goal5: "Se encuentra 3 opciones que encajan en sus preferencias",
-                touch5: "móvil (whatsapp)",
-                feel5: "2",
-                con5: "Llama a sus amigos (whatsapp no responen) para ver cual es su preferencia, tienen que reservar rápido por los precios",
+                goal5: "En otro momento accede desde el móvil para consultar sus listas y añadir un contenido que acaba de descubrir",
+                touch5: "móvil",
+                feel5: "5",
+                con5: "Quiere poder consultar y actualizar su biblioteca sin depender del ordenador",
                 ima5: "cartoon-phoning.png",
                 
                 
                 /*** PASO #6: CONCLUSION ***/ 
                 
-                goal6: "Consigue reservar, otro año se encarga otro!",
-                touch6: "ordenador",
-                feel6: "3",
-                con6: "algunos amigos no confirmaron por lo que tuvo que seleccionar reserva con posibilidad de cancelación",
+                goal6: "Decide utilizar nuestra web habitualmente para registrar y organizar sus hobbies",
+                touch6: "navegador web (móvil y ordenador)",
+                feel6: "5",
+                con6: "Necesita mantener su biblioteca actualizada a medida que descubre y consume nuevo contenido",
                 ima6: "cartoon-resting.png",
-                
 			},
 			{	
                 /*************************************/
@@ -92,45 +91,45 @@ angular.module("angular", [])
                 /*************************************/
                 
 				Id: 1,
-				Name: "Carmen Fernandez",
+				Name: "Carmen Fernández",
                 Photo: "CarmenF (1).png",
                 
 				 /*** PASO #1: INSPIRACION ***/ 
-                goal1: "Quiere preparar un viaje con su familia para Verano, tiene sólo 15 dias libres",
-                touch1: "agenda",
-                feel1: "5",
-                con1: "Quiere ir a un pais exotico pero que tenga atracciones para niños pequeños",
+                goal1: "Ahora que tiene más tiempo libre recibe recomendaciones de libros, películas y series que quiere recordar",
+                touch1: "móvil y conversaciones",
+                feel1: "4",
+                con1: "Recibe recomendaciones de familiares y amigos pero termina olvidando algunos títulos",
                 ima1: "cartoon-going.png",
                 
                 /*** PASO #2: DECICION ***/ 
-                goal2: "Ir a una agencia de viajes, y decirle sus preferencias y planes",
-                touch2: "Servicio (agencia)",
-                feel2: "4",
-                con2: "Tiene que desplazarse a agencia, explica su intenciones, le llamaran porque no hay nada interesante",
+                goal2: "Busca una forma sencilla de guardar y organizar todas las recomendaciones que recibe",
+                touch2: "navegador web (móvil)",
+                feel2: "3",
+                con2: "No quiere utilizar varias aplicaciones ni encontrarse con una plataforma difícil de entender",
                 ima2: "cartoon-teamthinking.png",
                 
                 /*** PASO #3: ACTUA ***/ 
                 
-                goal3: "Le llaman a los pocos días con un viaje que no le convence",
-                touch3: "Móvil (llamada)",
-                feel3: "2",
-                con3: "Piensa que ha perdido el tiempo",
+                goal3: "Encuentra nuestra web y accede desde el navegador de su móvil",
+                touch3: "móvil ",
+                feel3: "3",
+                con3: "Es la primera vez que utiliza la plataforma y necesita entender fácilmente cómo funciona",
                 ima3: "cartoon-phoningangry.png",
                 
                 /*** PASO #4: OBSERVA ***/ 
                 
-                goal4: "Busca una oferta en hoteles cerca de playa y con parque atracciones",
+                goal4: "Busca un libro que le han recomendado y consulta su ficha",
                 touch4: "Móvil (webapp)",
-                feel4: "2",
-                con4: "No hay mucha información del alojamiento ni de lo que hay alrededor, aunque el precio está bien, va por la calle por lo que está incómoda",
+                feel4: "4",
+                con4: "Necesita identificar rápidamente qué opción debe utilizar para guardarlo como pendiente",
                 ima4: "cartoon-phone-street.png",
                 
                  /*** PASO #5: ANALIZA ***/ 
                 
-                goal5: "Reserva a traves de la aplicación ",
-                touch5: "Móvil (webapp)",
-                feel5: "3",
-                con5: "Le pide muchos datos y le resulta incómodo completar formulario",
+                goal5: "Añade el libro a pendientes y consulta su biblioteca para comprobar que se ha guardado",
+                touch5: "móvil",
+                feel5: "5",
+                con5: "Quiere poder encontrar fácilmente los contenidos que ha guardado cuando vuelva a entrar",
                 ima5: "cartoon-phone-sitting.png",
 
                 
@@ -138,11 +137,9 @@ angular.module("angular", [])
                 
                 goal6: "Consiguie reservar para vacaciones pero no era lo que tenía en mente",
                 touch6: "Ordenador (reserva OK)",
-                feel6: "2",
+                feel6: "5",
                 con6: "Tendrá que buscar más información del lugar para ver que actividades ofrece y donde aparacar!",
                 ima6: "cartoon-PChard.png",
-                
-                
                 
 			}
 		];
