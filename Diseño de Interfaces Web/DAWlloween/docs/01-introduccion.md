@@ -31,7 +31,7 @@ DAWlloween contará con las siguientes secciones y funcionalidades:
 | Sección                       | Funcionalidades previstas                                                                                                   |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Inicio — Museo del horror** | Exposición de objetos malditos con comportamientos interactivos, anomalías visuales y un botón para restablecerlas.         |
-| **Postres**                   | Libro de recetas de Halloween con navegación entre recetas, ingredientes e instrucciones.                                   |
+| **Recetario**                 | Libro de recetas de Halloween con navegación entre recetas, ingredientes e instrucciones.                                   |
 | **No entres — Juego**         | Aventura de texto inspirada en los videojuegos clásicos, en la que el usuario podrá introducir comandos y tomar decisiones. |
 | **Sobre nosotros**            | Presentación del proyecto, información sobre su creación, referencias utilizadas y elementos interactivos.                  |
 | **Contacto**                  | Formulario para enviar un mensaje dirigido a Jack Skellington.                                                              |

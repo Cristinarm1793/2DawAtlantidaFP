@@ -39,7 +39,7 @@ de JavaScript en la página principal.
 - una funcion con flecha donde te permita cambiar la identidad del cursos del raton en una cruz, unas manos rezando, o algunos de tematica halloween?
 - fondo de pantalla que encuadre con un museo.
 
-## Pagina postres
+## Pagina recetario
 
 - visualmente formato de libro.
 

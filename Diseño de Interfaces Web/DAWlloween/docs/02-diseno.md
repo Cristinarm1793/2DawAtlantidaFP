@@ -15,7 +15,7 @@ Se ha optado por utilizar nombres breves, comprensibles y relacionados con su co
 | Etiqueta          | Ubicación                   | Descripción                                                     |
 | ----------------- | --------------------------- | --------------------------------------------------------------- |
 | Inicio            | Menú principal              | Acceso al museo del horror, que constituye la página principal. |
-| Postres           | Menú principal              | Catálogo de recetas temáticas de Halloween.                     |
+| Recetario         | Menú principal              | Catálogo de recetas temáticas de Halloween.                     |
 | No entres · Juego | Menú principal              | Acceso al minijuego de terror.                                  |
 | Sobre nosotros    | Menú principal              | Presentación de la desarrolladora y la entidad ficticia.        |
 | Contacto          | Menú principal              | Formulario para enviar mensajes a Jack Skellington.             |
@@ -28,7 +28,7 @@ Se ha optado por utilizar nombres breves, comprensibles y relacionados con su co
 | Iniciar sesión     | Perfil    | Acceso a una cuenta existente.                                    |
 | Registrarse        | Perfil    | Creación de una cuenta de usuario.                                |
 | Cambiar contraseña | Perfil    | Modificación de la contraseña mediante una pregunta de seguridad. |
-| Detalle de receta  | Postres   | Consulta de ingredientes y preparación de una receta.             |
+| Detalle de receta  | Recetario | Consulta de ingredientes y preparación de una receta.             |
 | Instrucciones      | Juego     | Explicación de las reglas y controles del minijuego.              |
 
 ### 2.2.3. Criterios de etiquetado
@@ -47,9 +47,9 @@ En el caso de «No entres · Juego», se combina una expresión relacionada con 
 
 <img src="img/wireframe-inicio.png" alt="Wireframe de la página principal" width="300">
 
-### 2.3.2. Postres de Halloween — Libro de recetas
+### 2.3.2. Recetas de Halloween — Libro de recetas
 
-La sección de postres se presenta como un libro de recetas interactivo.
+La sección de recetario se presenta como un libro de recetas interactivo.
 
 Al seleccionar la portada, el usuario accede al índice, donde puede elegir directamente una receta o avanzar manualmente utilizando las flechas de navegación.
 
@@ -162,7 +162,7 @@ utilizará diferentes combinaciones de colores según su temática.
 | Sección                     | Colores predominantes            | Estética                                                    |
 | --------------------------- | -------------------------------- | ----------------------------------------------------------- |
 | Inicio — Museo del horror   | Negro, blanco hueso y rojo       | Museo abandonado con una ambientación oscura y deteriorada. |
-| Postres                     | Morado, negro y blanco hueso     | Libro de recetas de brujas.                                 |
+| Recetario                   | Morado, negro y blanco hueso     | Libro de recetas de brujas.                                 |
 | No entres — Juego           | Negro, rojo, morado, rosa y azul | Terror retro y pixel art inspirado en FAITH.                |
 | Sobre nosotros              | Negro, morado y rosa             | Estética paranormal inspirada en FAITH.                     |
 | Contacto                    | Por determinar                   | Ambientación de Halloween con libertad estética.            |
@@ -192,7 +192,7 @@ la página web.
 | Sección                         | Tipografías principales                         |
 | ------------------------------- | ----------------------------------------------- |
 | **Inicio — Museo del horror**   | Creepster, Special Elite, Cinzel y EB Garamond. |
-| **Postres**                     | Cinzel y Merriweather.                          |
+| **Recetario**                   | Cinzel y Merriweather.                          |
 | **No entres — Juego**           | Press Start 2P y VT323.                         |
 | **Sobre nosotros**              | Creepster y Merriweather.                       |
 | **Contacto**                    | Special Elite y Merriweather.                   |
@@ -247,7 +247,7 @@ elementos visuales comunes para dar coherencia al sitio web.
 | Sección                       | Ambientación                                                                                                                 |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | **Inicio — Museo del horror** | Museo de objetos malditos situado en un edificio abandonado. Fondos deteriorados, iluminación tenue y detalles inquietantes. |
-| **Postres**                   | Libro de recetas de brujas, con apariencia de grimorio antiguo y elementos relacionados con la magia.                        |
+| **Recetario**                 | Libro de recetas de brujas, con apariencia de grimorio antiguo y elementos relacionados con la magia.                        |
 | **No entres — Juego**         | Aventura de texto con estética pixel art, inspirada en FAITH: The Unholy Trinity y los videojuegos clásicos como Zork.       |
 | **Sobre nosotros**            | Ambientación paranormal con elementos visuales inspirados en FAITH y una entidad misteriosa.                                 |
 | **Contacto**                  | Estética de Halloween adaptada al formulario de contacto con Jack Skellington.                                               |

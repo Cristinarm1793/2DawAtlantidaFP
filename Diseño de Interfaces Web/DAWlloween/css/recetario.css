@@ -1,0 +1,648 @@
+/* ==========================================================
+   MUSEUM 404: NOT FOUND
+   RECETARIO DE BRUJA
+
+   ESTÉTICA:
+   - Fondo rojo oscuro del museo
+   - Morados y verdes de bruja
+   - Páginas de pergamino
+   - Libro ajustado a la pantalla
+========================================================== */
+
+
+/* ==========================================================
+   1. COLORES DEL RECETARIO
+========================================================== */
+
+:root {
+    --morado-bruja: #351842;
+    --morado-claro: #684078;
+    --morado-profundo: #210f2b;
+
+    --verde-bruja: #86b93b;
+    --verde-oscuro: #344c24;
+
+    --pergamino: #e3d3ad;
+    --pergamino-oscuro: #c7b389;
+
+    --tinta: #281c25;
+
+    --rojo-fondo: #480b12;
+}
+
+
+/* ==========================================================
+   2. PÁGINA COMPLETA
+========================================================== */
+
+html {
+    height: 100%;
+}
+
+body.pagina-recetario {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(103, 19, 42, 0.45),
+            transparent 65%
+        ),
+        linear-gradient(
+            135deg,
+            #17070c,
+            var(--rojo-fondo) 50%,
+            #1b0810
+        );
+
+    color: var(--blanco-hueso);
+}
+
+
+/* ==========================================================
+   3. CABECERA
+========================================================== */
+
+.cabecera-recetario {
+    position: relative;
+
+    width: min(1100px, 96%);
+    height: 80px;
+
+    flex: 0 0 80px;
+
+    margin: 0 auto;
+    padding: 5px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Botón para volver al museo */
+
+.volver-museo {
+    position: absolute;
+
+    left: 0;
+    top: 18px;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #150a14;
+
+    border: 3px solid var(--verde-bruja);
+    border-radius: 50%;
+
+    color: var(--pergamino);
+
+    font-size: 2rem;
+
+    transition:
+        background-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.volver-museo:hover {
+    background-color: var(--morado-bruja);
+
+    box-shadow:
+        0 0 15px rgba(134, 185, 59, 0.6);
+}
+
+
+/* Cartel del título */
+
+.titulo-recetario {
+    width: min(600px, 75%);
+
+    padding: 12px 20px;
+
+    background-color: rgba(19, 8, 20, 0.95);
+
+    border: 3px solid var(--morado-claro);
+
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(134, 185, 59, 0.15);
+
+    text-align: center;
+}
+
+.titulo-recetario h1 {
+    font-family:
+        "Special Elite",
+        "Courier New",
+        monospace;
+
+    color: var(--verde-bruja);
+
+    font-size: clamp(1.3rem, 2vw, 2rem);
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.titulo-recetario p {
+    margin-top: 5px;
+
+    color: var(--pergamino);
+
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================
+   4. ESCENARIO DEL LIBRO
+========================================================== */
+
+.escenario-recetario {
+    width: 100%;
+
+    flex: 1;
+    min-height: 0;
+
+    margin: 0;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ==========================================================
+   5. CONTENEDOR DEL LIBRO
+========================================================== */
+
+.libro {
+    position: relative;
+
+    width: min(650px, 95%);
+    height: 100%;
+    min-height: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   6. PÁGINAS DEL LIBRO
+========================================================== */
+
+.pagina-libro {
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+}
+
+.pagina-libro[hidden] {
+    display: none;
+}
+
+
+/* ==========================================================
+   7. PORTADA DEL LIBRO
+========================================================== */
+
+/* Eliminar el marco exterior solo en la portada */
+.libro:has(#portada:not([hidden])) {
+    width: min(650px, 95%);
+    height: 100%;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    overflow: hidden;
+}
+
+/* Centrar la portada */
+.portada-libro:not([hidden]) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+/* Botón invisible */
+.abrir-libro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    cursor: pointer;
+
+    transition: transform 0.3s;
+}
+
+/* Imagen del libro */
+.imagen-libro {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+}
+
+/* Efecto al pasar el ratón */
+.abrir-libro:hover {
+    transform: scale(1.02);
+}
+
+/* Accesibilidad */
+.abrir-libro:focus-visible {
+    outline: 3px solid var(--verde-bruja);
+    outline-offset: 5px;
+}
+
+
+/* ==========================================================
+   8. PÁGINAS INTERIORES
+========================================================== */
+
+.pagina-interior {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    padding: 30px 65px;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    color: var(--tinta);
+
+    overflow: hidden;
+}
+
+/* Pergamino del índice */
+#indice {
+    background-image: url("../assets/img/recetario/recetario-indice.png");
+}
+
+/* Pergamino de las recetas */
+#pagina-receta {
+    background-image: url("../assets/img/recetario/recetario-hoja.png");
+}
+
+
+/* Títulos interiores */
+
+.pagina-interior h2 {
+    margin-bottom: 20px;
+
+    font-family:
+        "Special Elite",
+        "Courier New",
+        monospace;
+
+    color: var(--morado-bruja);
+
+    font-size: clamp(1.2rem, 2.5vh, 1.8rem);
+
+    line-height: 1.3;
+    text-align: center;
+
+    text-decoration: underline;
+    text-decoration-color: var(--verde-oscuro);
+    text-underline-offset: 8px;
+}
+
+
+/* ==========================================================
+   9. ÍNDICE DE RECETAS
+========================================================== */
+
+#indice {
+    text-align: center;
+}
+
+.introduccion-indice {
+    max-width: 500px;
+
+    margin: 15px auto 25px;
+
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.lista-recetas {
+    max-width: 520px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* Tarjetas del catálogo */
+
+.tarjeta-receta {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background-color: #f2e5c9;
+
+    border: 3px solid var(--morado-bruja);
+    border-radius: 5px;
+
+    color: var(--tinta);
+
+    font-family:
+        "Special Elite",
+        "Courier New",
+        monospace;
+
+    font-size: 1rem;
+    text-align: left;
+
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
+}
+
+.tarjeta-receta:hover {
+    background-color: #dce6b7;
+
+    border-color: var(--verde-oscuro);
+
+    transform: translateX(5px);
+}
+
+.numero-receta {
+    color: var(--morado-bruja);
+
+    font-weight: bold;
+}
+
+.icono-receta {
+    margin-left: auto;
+
+    color: var(--verde-oscuro);
+}
+
+
+/* ==========================================================
+   10. PÁGINA INDIVIDUAL DE RECETA
+========================================================== */
+
+#pagina-receta:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Nombre de la receta */
+
+#pagina-receta h2 {
+    flex-shrink: 0;
+}
+
+
+/* Fotografía */
+
+#pagina-receta .imagen-receta {
+    width: min(420px, 100%);
+    height: clamp(100px, 22vh, 180px);
+
+    flex-shrink: 0;
+
+    margin: 10px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #bba582;
+
+    border: 4px solid var(--morado-bruja);
+
+    overflow: hidden;
+}
+
+.imagen-receta img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================
+   11. INGREDIENTES Y PREPARACIÓN
+
+   ÚNICA ZONA CON DESPLAZAMIENTO VERTICAL
+========================================================== */
+
+#pagina-receta .contenido-receta {
+    width: 100%;
+    max-width: 580px;
+
+    flex: 1;
+    min-height: 0;
+
+    margin: 10px auto 0;
+    padding: 20px;
+
+    background-color: rgba(255, 250, 226, 0.5);
+
+    border: 3px solid var(--verde-oscuro);
+    border-radius: 20px;
+
+    color: var(--tinta);
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        var(--verde-bruja)
+        var(--pergamino-oscuro);
+}
+
+
+/* Encabezados */
+
+.contenido-receta h3 {
+    margin: 10px 0 15px;
+
+    color: var(--morado-bruja);
+
+    font-family:
+        "Special Elite",
+        "Courier New",
+        monospace;
+
+    font-size: 1.2rem;
+}
+
+
+/* Listas */
+
+.contenido-receta ul,
+.contenido-receta ol {
+    padding-left: 25px;
+
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.contenido-receta li {
+    margin-bottom: 8px;
+}
+
+.preparacion {
+    margin-top: 25px;
+}
+
+
+/* ==========================================================
+   12. NAVEGACIÓN ENTRE PÁGINAS
+========================================================== */
+
+.navegacion-libro {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navegacion-libro[hidden] {
+    display: none;
+}
+
+
+/* Flechas */
+
+.flecha-libro {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--morado-bruja);
+
+    border: 3px solid var(--verde-bruja);
+    border-radius: 50%;
+
+    color: var(--pergamino);
+
+    font-size: 1.6rem;
+
+    transition: background-color 0.3s;
+}
+
+.flecha-libro:hover:not(:disabled) {
+    background-color: var(--verde-oscuro);
+}
+
+.flecha-libro:disabled {
+    opacity: 0.3;
+}
+
+
+/* Número de página */
+
+#numero-pagina {
+    color: var(--pergamino);
+
+    font-family:
+        "Special Elite",
+        "Courier New",
+        monospace;
+
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================================
+   13. PIE DE PÁGINA
+
+   Oculto para mantener el libro a pantalla completa.
+========================================================== */
+
+.pie-recetario {
+    display: none;
+}
+
+/* ==========================================================
+   TAMAÑO PROPORCIONAL DEL LIBRO
+========================================================== */
+
+.libro {
+    width: min(650px, calc((100dvh - 110px) * 0.67), 95vw);
+    height: 100%;
+}

@@ -1,31 +1,398 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museum 404: Not Found</title>
-</head>
-<body>
-    <header>
 
-        <h1>Museum 404: Not Found</h1>
-        <nav>
-            <a href="postres.html">Postres</a>
-            <a href="juego.html">No entres · Juego</a>
-            <a href="conocenos.html">Sobre nosotros</a>
-            <a href="contacto.php">Contactanos</a>
-        </nav>
-        <button type="button">Perfil</button>
+    <meta name="description"
+          content="Museum 404: Not Found. Un museo de errores informáticos históricos donde los objetos presentan anomalías inexplicables.">
+
+    <title>Museum 404: Not Found</title>
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/museum.css">
+
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <div class="escenario-museo">
+
+    <!-- =====================================================
+         1. CABECERA
+    ===================================================== -->
+
+    <header class="cabecera">
+
+        <div class="cabecera-espaciador" aria-hidden="true"></div>
+
+        <div class="cartel-titulo">
+            <h1>Museum 404: Not Found</h1>
+        </div>
+
+        <button id="btn-perfil" class="btn-perfil" type="button" aria-label="Acceder al perfil"> PERFIL </button>
 
     </header>
+
+
+    <!-- =====================================================
+         2. NAVEGACIÓN
+    ===================================================== -->
+
+    <nav class="navegacion-principal" aria-label="Navegación principal">
+
+        <a href="recetario.html" class="enlace-navegacion"> RECETAS </a>
+        <a href="juego.html" class="enlace-navegacion"> NO ENTRES · JUEGO </a>
+        <a href="conocenos.html" class="enlace-navegacion"> SOBRE NOSOTROS </a>
+        <a href="contacto.php" class="enlace-navegacion"> CONTÁCTANOS </a>
+
+    </nav>
+
+    <!-- =====================================================
+         3. CONTENIDO PRINCIPAL
+    ===================================================== -->
+
     <main>
-        <p> Bienvenidos al museo </p>
-        <section>
-            <h3></h3>
+
+        <aside class="advertencia-museo" aria-label="Advertencia del museo">
+
+            <p>
+                ⚠️ ADVERTENCIA:
+                Los objetos de este museo pueden presentar anomalías.
+                Si todo se descontrola, utiliza el botón rojo de
+                emergencia situado en la esquina inferior derecha
+                para restablecerlas.
+            </p>
+
+        </aside>
+
+        <!-- =================================================
+             4. EXPOSICIONES
+        ================================================= -->
+
+        <section id="exposiciones" class="exposiciones" aria-label="Exposiciones del museo">
+
+            <div class="contenedor-vitrinas">
+
+                <!-- =========================================
+                     VITRINA 1: GUSANO MORRIS
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-morris">
+
+                    <!-- Luz superior -->
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <!-- Caja de exposición -->
+                    <div class="imagen-vitrina" id="zona-morris">
+
+                        <img src="assets/img/museo/morris.png" alt="Disquete relacionado con el gusano Morris" id="objeto-morris" class="objeto-museo">
+                    
+                    </div>
+
+                    
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">2 de noviembre de 1988</span>
+
+                        <h2>El gusano Morris</h2>
+
+                        <p>
+                            En 1988, un experimento informático se convirtió en una epidemia digital. El gusano Morris se propagó sin control, infectando miles de ordenadores y paralizando numerosos sistemas.
+                            <br>
+                            El museo conserva un disquete que supuestamente contiene una copia del programa original. Los técnicos aseguran haberlo eliminado cientos de veces.
+                        </p>
+
+                        <p class="leyenda">
+                            Dicen que este disquete sigue creando
+                            copias de sí mismo.
+                        </p>
+
+                        <button id="btn-morris" type="button"> Tocar el disquete </button>
+
+                        <p id="mensaje-morris" class="mensaje-interaccion" aria-live="polite"></p>
+
+                    </div>
+
+                </article>
+
+                <!-- =========================================
+                     VITRINA 2: WINDOWS 98
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-windows">
+
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <div class="imagen-vitrina">
+
+                        <img src="assets/img/museo/windows98.png" alt="Monitor antiguo con Windows 98" id="objeto-windows" class="objeto-museo">
+
+                        <!-- Aparece mediante JavaScript -->
+                        <div id="pantallazo-azul" class="pantallazo-azul" hidden>
+
+                            <p>Windows</p>
+
+                            <p>
+                                A fatal exception has occurred.
+                            </p>
+
+                            <p>
+                                Press any key to continue...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">20 de abril de 1998</span>
+
+                        <h2>El pantallazo azul</h2>
+
+                        <p>
+                            Durante la presentación de Windows 98, un simple escáner USB provocó el temido pantallazo azul ante miles de espectadores. Bill Gates, entre risas, bromeó: «Por eso todavía no distribuimos Windows 98».
+                            <br>
+                            El museo conserva el supuesto monitor de aquella presentación. Lleva décadas desconectado, pero sigue mostrando el mismo error cada vez que alguien se acerca.
+                        </p>
+
+                        <p class="leyenda">
+                            Este monitor todavía recuerda aquel fallo.
+                        </p>
+
+                        <p class="instruccion">
+                            Acerca el cursor al monitor.
+                        </p>
+
+                    </div>
+
+                </article>
+
+                <!-- =========================================
+                     VITRINA 3: IBM DEATHSTAR
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-deathstar">
+
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <div class="imagen-vitrina">
+
+                        <img src="assets/img/museo/deathstar.png" alt="Disco duro IBM Deskstar" id="objeto-deathstar" class="objeto-museo">
+
+                    </div>
+
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">2000–2001</span>
+
+                        <h2>IBM Deathstar</h2>
+
+                        <p>
+                            Diseñado para almacenar recuerdos, este disco duro se hizo famoso por hacerlos desaparecer. Sus fallos provocaron pérdidas de información y le otorgaron un apodo tan inquietante como merecido: <b>Deathstar</b>.
+                            <br>
+                            El museo conserva uno de estos dispositivos. Según nuestros registros, todavía contiene miles de fotografías, documentos y proyectos de sus antiguos propietarios.
+                        </p>
+
+                        <p class="leyenda">
+                            Hay quienes aseguran que el disco
+                            desaparece de su propia vitrina.
+                        </p>
+
+                        <p id="mensaje-deathstar" class="mensaje-interaccion" aria-live="polite"></p>
+
+                    </div>
+
+                </article>
+
+                <!-- =========================================
+                     VITRINA 4: THERAC-25
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-therac">
+
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <div class="imagen-vitrina">
+
+                        <img src="assets/img/museo/therac25.png" alt="Panel de control de una máquina Therac-25" id="objeto-therac" class="objeto-museo">
+
+                    </div>
+
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">1985–1987</span>
+
+                        <h2>Therac-25</h2>
+
+                        <p>
+                            Diseñado para combatir el cáncer, el Therac-25 se convirtió en protagonista de una de las tragedias más conocidas de la historia del software.
+                            <br>
+                            Una combinación de errores de programación y fallos de seguridad permitió administrar dosis de radiación extremadamente peligrosas. Mientras los pacientes sufrían las consecuencias, la máquina mostraba un mensaje aparentemente inofensivo: <b>«Malfunction 54»</b>.
+                            <br>
+                            El museo conserva una réplica de su panel de control.
+
+                        </p>
+
+                        <p class="leyenda">
+                            El panel de control parece operativo.
+                            Nadie debería intentar encenderlo.
+                        </p>
+
+                        <button id="btn-therac" type="button"> Encender sistema </button>
+
+                        <p id="mensaje-therac" class="mensaje-interaccion" aria-live="polite"></p>
+
+                    </div>
+
+                </article>
+
+                <!-- =========================================
+                     VITRINA 5: PATRIOT
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-patriot">
+
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <div class="imagen-vitrina">
+
+                        <img src="assets/img/museo/patriot.png" alt="Reloj digital que representa el error del sistema Patriot" id="objeto-patriot" class="objeto-museo">
+
+                    </div>
+
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">25 de febrero de 1991</span>
+
+                        <h2>El error del Patriot</h2>
+
+                        <p>
+                            Durante la Guerra del Golfo, un diminuto error de precisión en el cálculo del tiempo se acumuló durante 100 horas de funcionamiento continuo.
+                            <br>
+                            El reloj interno terminó desviándose aproximadamente un tercio de segundo. Fue suficiente para que el sistema calculara incorrectamente la posición de un misil enemigo y no lograra interceptarlo.
+                            <br>
+                            El impacto causó la muerte de 28 soldados.
+                        </p>
+
+                        <p class="leyenda">
+                            Este reloj continúa acumulando
+                            segundos que no debería perder.
+                        </p>
+
+                        <div class="simulador-patriot">
+
+                            <p>
+                                Horas de funcionamiento:
+                                <strong id="horas-patriot">0</strong>
+                            </p>
+
+                            <p>
+                                Desfase acumulado:
+                                <strong id="desfase-patriot">0.000</strong>
+                                segundos
+                            </p>
+
+                            <button id="btn-patriot" type="button">
+                                Iniciar simulación
+                            </button>
+
+                        </div>
+
+                        <p id="mensaje-patriot" class="mensaje-interaccion" aria-live="polite"></p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================================
+                     VITRINA 6: PRIMER BUG
+                ========================================= -->
+
+                <article class="exposicion" id="vitrina-bug">
+
+                    <div class="luz-vitrina" aria-hidden="true"></div>
+
+                    <div class="imagen-vitrina">
+
+                        <img src="assets/img/museo/bug.png" alt="Polilla asociada al registro de un fallo en el Harvard Mark II" id="objeto-bug" class="objeto-museo">
+
+                    </div>
+
+                    <div class="descripcion-vitrina">
+
+                        <span class="fecha">9 de septiembre de 1947</span>
+
+                        <h2>El famoso bug</h2>
+
+                        <p>
+                            En 1947, los técnicos del ordenador Harvard Mark II descubrieron una polilla atrapada entre sus relés, causante de un fallo en la máquina.
+                            <br>
+                            El insecto fue retirado y pegado en el cuaderno de incidencias con una anotación que pasaría a la historia: «Primer caso real de un bug encontrado».
+                            <br>
+                            Aunque el término *bug* ya existía, aquella polilla se convirtió en una leyenda de la informática.
+                                                    </p>
+
+                        <p class="leyenda">
+                            La polilla parece negarse a permanecer
+                            dentro de su vitrina.
+                        </p>
+
+                        <p class="instruccion">
+                            Acerca el cursor a la polilla.
+                        </p>
+
+                        <p id="mensaje-bug" class="mensaje-interaccion" aria-live="polite"></p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
         </section>
+
     </main>
-    <footer>
+    
+    <!-- =====================================================
+         5. BOTÓN FLOTANTE DE EMERGENCIA
+    ===================================================== -->
+
+    <div class="zona-restaurar">
+
+        <button
+            id="btn-restaurar"
+            type="button"
+            title="Restablecer anomalías"
+            aria-label="Restablecer anomalías"
+        >
+            ↻
+        </button>
+
+    </div>
+
+    </div>
+
+    <!-- =====================================================
+         6. PIE DE PÁGINA
+    ===================================================== -->
+
+    <footer class="pie-pagina">
+
+        <h2>REDES SOCIALES</h2>
+
+        <p>
+            Museum 404: Not Found
+        </p>
+
+        <!-- Aquí añadiremos los enlaces o iconos
+             cuando decidamos qué redes mostrar. -->
 
     </footer>
+
 </body>
 </html>

@@ -9,7 +9,7 @@ La web combina elementos de terror, misterio y humor con diferentes funcionalida
 | Sección                   | Descripción                                                                           |
 | ------------------------- | ------------------------------------------------------------------------------------- |
 | 🏛️ **Museo del horror**   | Página principal con una exposición de objetos malditos y anomalías interactivas.     |
-| 📖 **Postres**            | Libro de recetas de Halloween con ingredientes e instrucciones.                       |
+| 📖 **Rescetario**         | Libro de recetas de Halloween con ingredientes e instrucciones.                       |
 | 👻 **No entres**          | Minijuego de aventura de texto inspirado en los videojuegos clásicos como Zork.       |
 | 🕯️ **Sobre nosotros**     | Información sobre el proyecto, sus inspiraciones y sus creadores.                     |
 | ✉️ **Contacto**           | Formulario para enviar un mensaje a Jack Skellington.                                 |

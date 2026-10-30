@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recetario de Bruja | Museum 404</title>
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/recetario.css">
+
+    <script src="js/recetario.js" defer></script>
+</head>
+
+<body class="pagina-recetario">
+
+    <!-- CABECERA -->
+    <header class="cabecera-recetario">
+
+        <a href="index.html"
+           class="volver-museo"
+           aria-label="Volver al museo">
+            &#8592;
+        </a>
+
+        <div class="titulo-recetario">
+            <h1>RECETARIO DE BRUJA</h1>
+            <p>Recetas recuperadas de los archivos prohibidos</p>
+        </div>
+
+    </header>
+
+    <main class="escenario-recetario">
+
+        <!-- LIBRO -->
+        <section class="libro" aria-label="Libro de recetas de Halloween">
+
+            <!-- PORTADA DEL RECETARIO -->
+            <div class="pagina-libro portada-libro activa" id="portada">
+
+                <button class="abrir-libro" id="abrir-libro" type="button" aria-label="Abrir el libro de recetas">
+                    <img src="assets/img/recetario/recetario.png" alt="Libro de recetas de bruja" class="imagen-libro">
+                </button>
+
+            </div>
+
+            <!-- ÍNDICE -->
+            <div class="pagina-libro pagina-interior" id="indice" hidden>
+
+                <h2>ÍNDICE DE RECETAS</h2>
+
+                <p class="introduccion-indice">
+                    Cuatro preparaciones encontradas entre las páginas
+                    de un antiguo grimorio.
+                </p>
+
+                <div class="lista-recetas">
+
+                    <button class="tarjeta-receta" data-receta="0" type="button">
+                        <span class="numero-receta">I</span>
+                        <span>Dedos de bruja</span>
+                        <span class="icono-receta" aria-hidden="true">✦</span>
+                    </button>
+
+                    <button class="tarjeta-receta" data-receta="1" type="button">
+                        <span class="numero-receta">II</span>
+                        <span>Ojos monstruosos</span>
+                        <span class="icono-receta" aria-hidden="true">✦</span>
+                    </button>
+
+                    <button class="tarjeta-receta" data-receta="2" type="button">
+                        <span class="numero-receta">III</span>
+                        <span>Pócima de frutos rojos</span>
+                        <span class="icono-receta" aria-hidden="true">✦</span>
+                    </button>
+
+                    <button class="tarjeta-receta" data-receta="3" type="button">
+                        <span class="numero-receta">IV</span>
+                        <span>Calabazas de hojaldre</span>
+                        <span class="icono-receta" aria-hidden="true">✦</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- PÁGINA DE RECETA -->
+            <div class="pagina-libro pagina-interior" id="pagina-receta" hidden>
+
+                <h2 id="nombre-receta"></h2>
+
+                <div class="imagen-receta">
+                    <img id="foto-receta" src="" alt="">
+                </div>
+
+                <div class="contenido-receta">
+
+                    <section class="ingredientes">
+                        <h3>INGREDIENTES</h3>
+                        <ul id="lista-ingredientes"></ul>
+                    </section>
+
+                    <section class="preparacion">
+                        <h3>PREPARACIÓN</h3>
+                        <ol id="lista-pasos"></ol>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <!-- NAVEGACIÓN DEL LIBRO -->
+            <nav class="navegacion-libro" id="navegacion-libro"
+                 aria-label="Navegación entre páginas" hidden>
+
+                <button id="pagina-anterior"
+                        class="flecha-libro"
+                        type="button"
+                        aria-label="Página anterior">
+                    &#8592;
+                </button>
+
+                <span id="numero-pagina" aria-live="polite"></span>
+
+                <button id="pagina-siguiente"
+                        class="flecha-libro"
+                        type="button"
+                        aria-label="Página siguiente">
+                    &#8594;
+                </button>
+
+            </nav>
+
+        </section>
+
+    </main>
+
+    <footer class="pie-recetario">
+        <p>Museum 404: Not Found — Archivo de recetas prohibidas</p>
+    </footer>
+
+</body>
+</html>
