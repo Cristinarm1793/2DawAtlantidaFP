@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfil | Museum 404</title>
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/perfil.css">
+
+    <script src="js/comunicacion.js" defer></script>
+    <script src="js/perfil.js" defer></script>
+</head>
+
+<body class="pagina-perfil">
+
+    <!-- CABECERA -->
+    <header class="cabecera-perfil">
+
+        <a href="index.html" class="volver-museo" aria-label="Volver al museo">
+            &#8592;
+        </a>
+
+        <div class="titulo-perfil">
+            <h1>EXPEDIENTE DEL VISITANTE</h1>
+            <p>ARCHIVO PERSONAL — MUSEUM 404</p>
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor-perfil">
+
+        <article class="expediente-perfil">
+
+            <div class="encabezado-expediente">
+                <span class="sello-confidencial">
+                    CONFIDENCIAL
+                </span>
+
+                <p>EXPEDIENTE N.º 404-P</p>
+            </div>
+
+            <!-- Mensajes de error o confirmación -->
+            <div id="aviso-perfil" aria-live="polite"></div>
+
+            <!-- PANEL PARA VISITANTES SIN SESIÓN -->
+            <section id="panel-acceso" class="seccion-perfil" hidden>
+
+                <h2>01. IDENTIFICACIÓN DEL VISITANTE</h2>
+
+                <div class="formularios-perfil">
+
+                    <!-- INICIO DE SESIÓN -->
+                    <form id="form-login" class="formulario-perfil">
+
+                        <h3>INICIAR SESIÓN</h3>
+
+                        <label for="login-email">
+                            Correo electrónico
+                        </label>
+
+                        <input id="login-email" name="email" type="email" maxlength="254" required autocomplete="email">
+
+                        <label for="login-password">
+                            Contraseña
+                        </label>
+
+                        <input id="login-password" name="password" type="password" required
+                            autocomplete="current-password">
+
+                        <button type="submit">ENTRAR</button>
+
+                    </form>
+
+                    <!-- REGISTRO -->
+                    <form id="form-registro" class="formulario-perfil">
+
+                        <h3>REGISTRAR VISITANTE</h3>
+
+                        <label for="registro-nombre">Nombre</label>
+
+                        <input id="registro-nombre" name="nombre" maxlength="100" required autocomplete="name">
+
+                        <label for="registro-email">
+                            Correo electrónico
+                        </label>
+
+                        <input id="registro-email" name="email" type="email" maxlength="254" required
+                            autocomplete="email">
+
+                        <label for="registro-password">
+                            Contraseña (mínimo 8 caracteres)
+                        </label>
+
+                        <input id="registro-password" name="password" type="password" minlength="8" required
+                            autocomplete="new-password">
+
+                        <label for="registro-confirmar">
+                            Repetir contraseña
+                        </label>
+
+                        <input id="registro-confirmar" name="confirmar" type="password" minlength="8" required
+                            autocomplete="new-password">
+
+                        <button type="submit">REGISTRARSE</button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- PANEL DEL USUARIO IDENTIFICADO -->
+            <div id="panel-usuario" hidden>
+
+                <section class="datos-visitante">
+
+                    <div class="avatar-visitante">
+                        <span aria-hidden="true">?</span>
+                    </div>
+
+                    <div class="informacion-visitante">
+
+                        <h2 id="nombre-usuario"></h2>
+
+                        <p>
+                            <strong>Correo:</strong>
+                            <span id="correo-usuario"></span>
+                        </p>
+
+                        <p>
+                            <strong>Fecha de registro:</strong>
+                            <span id="fecha-usuario"></span>
+                        </p>
+
+                        <p>
+                            <strong>Clasificación:</strong>
+                            Investigador
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- ACTIVIDAD -->
+                <section class="seccion-perfil">
+
+                    <h2>01. ACTIVIDAD DEL VISITANTE</h2>
+
+                    <p>
+                        Las estadísticas se incorporarán cuando
+                        el museo registre las visitas y actividades.
+                    </p>
+
+                </section>
+
+                <!-- CAMBIAR CONTRASEÑA -->
+                <section class="seccion-perfil">
+
+                    <h2>02. SEGURIDAD DEL EXPEDIENTE</h2>
+
+                    <form id="form-password" class="formulario-perfil">
+
+                        <h3>CAMBIAR CONTRASEÑA</h3>
+
+                        <label for="password-actual">
+                            Contraseña actual
+                        </label>
+
+                        <input id="password-actual" name="actual" type="password" required
+                            autocomplete="current-password">
+
+                        <label for="password-nueva">
+                            Nueva contraseña (mínimo 8 caracteres)
+                        </label>
+
+                        <input id="password-nueva" name="nueva" type="password" minlength="8" required
+                            autocomplete="new-password">
+
+                        <label for="password-confirmar">
+                            Repetir nueva contraseña
+                        </label>
+
+                        <input id="password-confirmar" name="confirmar" type="password" minlength="8" required
+                            autocomplete="new-password">
+
+                        <button type="submit">
+                            ACTUALIZAR CONTRASEÑA
+                        </button>
+
+                    </form>
+
+                </section>
+
+                <!-- ACCIONES -->
+                <section class="seccion-perfil">
+
+                    <h2>03. ACCIONES DISPONIBLES</h2>
+
+                    <div class="acciones-perfil">
+
+                        <a href="index.html" class="boton-perfil">
+                            VOLVER AL MUSEO
+                        </a>
+
+                        <a href="contacto.html" class="boton-perfil">
+                            CONTACTAR CON EL MUSEO
+                        </a>
+
+                        <button type="button" id="cerrar-sesion" class="boton-perfil">
+                            CERRAR SESIÓN
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- ADVERTENCIA -->
+            <div class="advertencia-perfil">
+
+                <p>
+                    ADVERTENCIA: Este expediente se encuentra
+                    bajo supervisión del sistema.
+                </p>
+
+                <p>
+                    NO TODOS LOS VISITANTES CONSIGUEN SALIR.
+                </p>
+
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer class="pie-perfil">
+        <p>
+            © 2026 Museum 404: Not Found
+            — Archivo de visitantes
+        </p>
+    </footer>
+
+</body>
+
+</html>

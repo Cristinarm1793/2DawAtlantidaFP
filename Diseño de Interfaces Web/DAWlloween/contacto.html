@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contáctanos | Museum 404</title>
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/contactanos.css">
+
+    <script src="js/comunicacion.js" defer></script>
+    <script src="js/contacto.js" defer></script>
+</head>
+
+<body class="pagina-contacto">
+
+    <!-- CABECERA -->
+    <header class="cabecera-contacto">
+
+        <a href="index.html"
+           class="volver-museo"
+           aria-label="Volver al museo">
+            &#8592;
+        </a>
+
+        <div class="titulo-contacto">
+            <h1>CONTÁCTANOS</h1>
+            <p>DEPARTAMENTO DE COMUNICACIONES — MUSEUM 404</p>
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor-contacto">
+
+        <section class="expediente-contacto">
+
+            <div class="encabezado-contacto">
+
+                <span class="sello-contacto">
+                    FORMULARIO 404-C
+                </span>
+
+                <h2>ENVIAR COMUNICACIÓN</h2>
+
+                <p>
+                    ¿Has encontrado una anomalía en el museo?
+                    ¿Quieres comunicarte con nuestro equipo?
+                    Completa el siguiente formulario.
+                </p>
+
+            </div>
+
+            <!-- Respuesta que mostrará JavaScript -->
+            <div id="respuesta-contacto" aria-live="polite"></div>
+
+            <!-- FORMULARIO -->
+            <form id="formulario-contacto" class="formulario-contacto" action="php/enviar-contacto.php" method="POST">
+
+                <div class="campo-formulario">
+                    <label for="nombre">NOMBRE DEL REMITENTE</label>
+
+                    <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre" maxlength="100" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="email">CORREO ELECTRÓNICO</label>
+
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" maxlength="254" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="asunto">ASUNTO DE LA COMUNICACIÓN</label>
+
+                    <select id="asunto" name="asunto" required>
+                        <option value="">Selecciona un asunto</option>
+                        <option value="consulta">Consulta general</option>
+                        <option value="anomalia">Informar de una anomalía</option>
+                        <option value="sugerencia">Sugerencia para el museo</option>
+                        <option value="otro">Otro asunto</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="mensaje">MENSAJE</label>
+
+                    <textarea id="mensaje" name="mensaje" rows="7" maxlength="3000" placeholder="Escribe aquí tu mensaje..." required ></textarea>
+                </div>
+
+                <div class="botones-contacto">
+                    <button type="reset" class="boton-limpiar">
+                        BORRAR MENSAJE
+                    </button>
+
+                    <button type="submit" class="boton-enviar">
+                        ENVIAR COMUNICACIÓN
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer class="pie-contacto">
+        <p>
+            © 2026 Museum 404: Not Found
+            — Departamento de comunicaciones
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,16 +1,12 @@
 "use strict";
 
-/* =====================================================
-   MUSEUM 404: NOT FOUND
-   INTERACCIONES DE LAS SEIS VITRINAS
-===================================================== */
-
+/* MUSEUM 404: NOT FOUND*/
 
 /* =====================================================
    1. GUSANO MORRIS
-   Cada clic crea una copia del disquete.
-   Cuando la vitrina está llena, deja de multiplicarse.
 ===================================================== */
+
+//Cada clic crea una copia del disquete y cuando la vitrina está llena, deja de multiplicarse.
 
 const btnMorris = document.getElementById("btn-morris");
 const zonaMorris = document.getElementById("zona-morris");
@@ -24,38 +20,30 @@ btnMorris.addEventListener("click", () => {
 
     if (copiasMorris < MAX_COPIAS) {
 
-        // Creamos una copia de la imagen original
         const copia = document.createElement("img");
 
         copia.src = objetoMorris.src;
         copia.alt = "Copia del disquete infectado";
         copia.classList.add("copia-morris");
 
-        // Añadimos la copia a la vitrina
         zonaMorris.appendChild(copia);
 
         copiasMorris++;
 
-        mensajeMorris.textContent =
-            `El gusano se ha replicado. Copias: ${copiasMorris}`;
+        mensajeMorris.textContent = `El gusano se ha replicado. Copias: ${copiasMorris}`;
 
         if (copiasMorris === MAX_COPIAS) {
-            mensajeMorris.textContent =
-                "ERROR: La vitrina está completamente infectada.";
-
+            mensajeMorris.textContent = "ERROR: La vitrina está completamente infectada.";
             btnMorris.disabled = true;
         }
-
     }
-
 });
-
 
 /* =====================================================
    2. WINDOWS 98
-   Al pasar el cursor sobre el monitor aparece
-   un pantallazo azul durante unos segundos.
 ===================================================== */
+
+//Al pasar el cursor sobre el monitor aparece un pantallazo azul durante unos segundos.
 
 const objetoWindows = document.getElementById("objeto-windows");
 const pantallazoAzul = document.getElementById("pantallazo-azul");
@@ -80,14 +68,13 @@ objetoWindows.addEventListener("mouseenter", () => {
         temporizadorWindows = null;
 
     }, 2500);
-
 });
-
 
 /* =====================================================
    3. DEATHSTAR
-   El disco duro desaparece y reaparece repetidamente.
 ===================================================== */
+
+// El disco duro desaparece y reaparece repetidamente.
 
 const objetoDeathstar = document.getElementById("objeto-deathstar");
 const mensajeDeathstar = document.getElementById("mensaje-deathstar");
@@ -104,25 +91,20 @@ const intervaloDeathstar = setInterval(() => {
     );
 
     if (deathstarDesaparecido) {
-
         mensajeDeathstar.textContent =
             "ERROR: Dispositivo no encontrado.";
-
     } else {
-
         mensajeDeathstar.textContent =
             "Dispositivo detectado... por ahora.";
-
     }
-
 }, 3000);
 
 
 /* =====================================================
    4. THERAC-25
-   El sistema se bloquea permanentemente
-   al intentar encenderlo.
 ===================================================== */
+
+// El sistema se bloquea permanentemente al intentar encenderlo.
 
 const btnTherac = document.getElementById("btn-therac");
 const mensajeTherac = document.getElementById("mensaje-therac");
@@ -136,17 +118,13 @@ btnTherac.addEventListener("click", () => {
     btnTherac.disabled = true;
 
     btnTherac.textContent = "Sistema bloqueado";
-
 });
-
 
 /* =====================================================
    5. PATRIOT
-   Simulación de 100 horas de funcionamiento
-   en aproximadamente 10 segundos.
-
-   El desfase aumenta hasta 0,34 segundos.
 ===================================================== */
+
+// Simulación de 100 horas de funcionamiento en aproximadamente 10 segundos. El desfase aumenta hasta 0,34 segundos.
 
 const btnPatriot = document.getElementById("btn-patriot");
 const horasPatriot = document.getElementById("horas-patriot");
@@ -158,7 +136,6 @@ let horasSimuladas = 0;
 
 btnPatriot.addEventListener("click", () => {
 
-    // Evitamos iniciar dos simulaciones a la vez
     if (intervaloPatriot !== null) {
         return;
     }
@@ -176,7 +153,6 @@ btnPatriot.addEventListener("click", () => {
 
         horasSimuladas++;
 
-        // El desfase aumenta proporcionalmente
         const desfase = (horasSimuladas / 100) * 0.34;
 
         horasPatriot.textContent = horasSimuladas;
@@ -187,25 +163,17 @@ btnPatriot.addEventListener("click", () => {
             clearInterval(intervaloPatriot);
             intervaloPatriot = null;
 
-            mensajePatriot.textContent =
-                "ERROR DE SINCRONIZACIÓN. " +
-                "Desfase acumulado: 0,34 segundos. " +
-                "La simulación ha finalizado.";
-
+            mensajePatriot.textContent = "ERROR DE SINCRONIZACIÓN. " + "Desfase acumulado: 0,34 segundos. " + "La simulación ha finalizado.";
             btnPatriot.textContent = "Simulación finalizada";
-
         }
-
     }, 100);
-
 });
-
 
 /* =====================================================
    6. POLILLA DEL HARVARD MARK II
-   Al pasar el cursor sobre la polilla,
-   comienza una animación de vuelo.
 ===================================================== */
+
+// Al pasar el cursor sobre la polilla, comienza una animación de vuelo.
 
 const objetoBug = document.getElementById("objeto-bug");
 const mensajeBug = document.getElementById("mensaje-bug");
@@ -223,25 +191,23 @@ objetoBug.addEventListener("mouseenter", () => {
     mensajeBug.textContent = "BUG DETECTED";
 
     objetoBug.classList.add("volando");
-
 });
 
 objetoBug.addEventListener("animationend", () => {
 
     objetoBug.classList.remove("volando");
 
-    mensajeBug.textContent =
-        "Error solucionado. Hasta el próximo bug.";
+    mensajeBug.textContent = "Error solucionado. Hasta el próximo bug.";
 
     bugVolando = false;
-
 });
 
 
 /* =====================================================
    7. RESTAURAR MUSEO
-   Reinicia todas las anomalías de las vitrinas.
 ===================================================== */
+
+// Reinicia todas las anomalías de las vitrinas.
 
 const btnRestaurar = document.getElementById("btn-restaurar");
 
@@ -321,5 +287,4 @@ btnRestaurar.addEventListener("click", () => {
     /* ---------- CONFIRMACIÓN ---------- */
 
     alert("Museo restaurado. Todas las anomalías han sido reiniciadas.");
-
 });

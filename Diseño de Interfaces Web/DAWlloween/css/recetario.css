@@ -131,7 +131,9 @@ body.pagina-recetario {
 .titulo-recetario {
     width: min(600px, 75%);
 
-    padding: 12px 20px;
+    padding: 5px 20px;
+    font-size: 1rem;
+    margin: 0;
 
     background-color: rgba(19, 8, 20, 0.95);
 
@@ -145,14 +147,13 @@ body.pagina-recetario {
 }
 
 .titulo-recetario h1 {
-    font-family:
-        "Special Elite",
-        "Courier New",
-        monospace;
+    font-family: "Special Elite", "Courier New", monospace;
 
     color: var(--verde-bruja);
 
-    font-size: clamp(1.3rem, 2vw, 2rem);
+    font-size: 1.3rem;
+    margin: 0;
+    line-height: 1.2;
     font-weight: bold;
 
     letter-spacing: 2px;

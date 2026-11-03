@@ -1,15 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NO ENTRES · juego</title>
+
+    <title>No debiste entrar | Museum 404</title>
+
 
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/juego.css">
-    
+
+
+    <script src="js/juego.js" defer></script>
 </head>
-<body>
-    
+
+<body class="pagina-juego">
+
+    <!-- ==========================================
+         CABECERA
+    =========================================== -->
+
+    <header class="cabecera-juego">
+
+        <a href="index.html" class="volver-museo" aria-label="Volver al museo">
+            &#8592;
+        </a>
+
+        <div class="titulo-juego">
+            <h1>NO DEBISTE ENTRAR</h1>
+            <p>Hay lugares que deberían permanecer cerrados...</p>
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         CONTENIDO PRINCIPAL
+    =========================================== -->
+
+    <main class="contenedor-juego">
+
+        <!-- PANTALLA DEL JUEGO -->
+        <section class="pantalla-juego" aria-label="Juego de terror">
+
+            <!-- INTRODUCCIÓN -->
+            <div id="pantalla-inicio" class="escena-juego">
+
+                <h2>NO DEBISTE ENTRAR</h2>
+
+                <p>
+                    1986. Una carretera desierta.
+                    Tu coche acaba de averiarse.
+                </p>
+
+                <p>
+                    A lo lejos distingues una casa.
+                    Parece abandonada, pero hay una luz encendida.
+                </p>
+
+                <p>
+                    Necesitas ayuda.
+                    Aunque algo te dice que deberías marcharte.
+                </p>
+
+                <button id="iniciar-juego" type="button">
+                    COMENZAR
+                </button>
+
+            </div>
+
+
+            <!-- ESCENA PRINCIPAL -->
+            <div id="pantalla-historia" class="escena-juego" hidden>
+
+                <!-- IMAGEN DE LA ESCENA -->
+                <div class="imagen-escena">
+
+                    <img id="imagen-historia" src="" alt="Escena actual del juego">
+
+                </div>
+
+                <!-- TEXTO NARRATIVO -->
+                <div class="texto-historia">
+
+                    <p id="descripcion-historia"></p>
+
+                </div>
+
+                <!-- DECISIONES -->
+                <div class="opciones-historia" id="opciones-historia">
+
+                    <!-- Los botones se generarán con JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- INVENTARIO -->
+            <aside class="inventario-juego">
+
+                <h3>INVENTARIO</h3>
+
+                <div id="objetos-inventario">
+
+                    <p>No llevas ningún objeto.</p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         PIE DE PÁGINA
+    =========================================== -->
+
+    <footer class="pie-juego">
+
+        <p>Museum 404: Not Found — No debiste entrar.</p>
+
+    </footer>
+
 </body>
+
 </html>

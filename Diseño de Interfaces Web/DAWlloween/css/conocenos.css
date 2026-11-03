@@ -1,0 +1,420 @@
+
+/* ==========================================================
+   MUSEUM 404: NOT FOUND
+   SOBRE NOSOTROS - EXPEDIENTE CONFIDENCIAL
+========================================================== */
+
+/* ==========================================================
+   1. VARIABLES DE COLOR
+========================================================== */
+
+:root {
+    --conocenos-negro: #0b0808;
+    --conocenos-rojo: #a51d24;
+    --conocenos-rojo-oscuro: #580e14;
+    --conocenos-rojo-brillante: #d83b42;
+
+    --conocenos-papel: #d8c7a5;
+    --conocenos-papel-oscuro: #b8a47e;
+    --conocenos-tinta: #30241e;
+
+    --conocenos-blanco: #e8e0d5;
+}
+
+/* ==========================================================
+   2. PÁGINA
+========================================================== */
+
+body.pagina-conocenos {
+    min-height: 100dvh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #301014 0%,
+            #17090b 50%,
+            var(--conocenos-negro) 100%
+        );
+
+    color: var(--conocenos-blanco);
+    font-family: "Courier New", monospace;
+}
+
+/* ==========================================================
+   3. CABECERA
+========================================================== */
+
+.cabecera-conocenos {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px 65px;
+
+    background: rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid var(--conocenos-rojo-oscuro);
+}
+
+.cabecera-conocenos .volver-museo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #100909;
+
+    border: 1px solid var(--conocenos-rojo);
+    border-radius: 4px;
+
+    color: var(--conocenos-blanco);
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.cabecera-conocenos .volver-museo:hover {
+    background: var(--conocenos-rojo-oscuro);
+    border-color: var(--conocenos-rojo-brillante);
+}
+
+.titulo-conocenos {
+    text-align: center;
+}
+
+.titulo-conocenos h1 {
+    margin: 0;
+
+    color: var(--conocenos-rojo-brillante);
+
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    letter-spacing: 4px;
+
+    text-shadow: 2px 2px 0 #000;
+}
+
+.titulo-conocenos p {
+    margin: 6px 0 0;
+
+    color: #aa9292;
+
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================
+   4. CONTENEDOR PRINCIPAL
+========================================================== */
+
+.contenedor-conocenos {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 35px 20px;
+
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ==========================================================
+   5. EXPEDIENTE PRINCIPAL
+========================================================== */
+
+.expediente-museo {
+    position: relative;
+
+    width: 100%;
+    max-width: 850px;
+
+    padding: 45px 55px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 34px,
+            rgba(75, 47, 31, 0.035) 35px
+        ),
+        linear-gradient(
+            135deg,
+            #e0d0ae 0%,
+            var(--conocenos-papel) 45%,
+            #c5b18b 100%
+        );
+
+    color: var(--conocenos-tinta);
+
+    border: 1px solid #8c7656;
+
+    box-shadow:
+        0 0 0 7px rgba(0, 0, 0, 0.35),
+        0 15px 40px rgba(0, 0, 0, 0.7),
+        inset 0 0 35px rgba(74, 44, 24, 0.15);
+}
+
+/* Esquinas ligeramente oscurecidas */
+.expediente-museo::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 55%,
+            rgba(66, 35, 21, 0.15) 100%
+        );
+}
+
+/* ==========================================================
+   6. ENCABEZADO DEL EXPEDIENTE
+========================================================== */
+
+.encabezado-expediente {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    padding-bottom: 22px;
+    margin-bottom: 30px;
+
+    border-bottom: 2px solid #6f5542;
+}
+
+.encabezado-expediente p {
+    margin: 0;
+
+    color: #594336;
+
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sello-confidencial {
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    border: 3px solid var(--conocenos-rojo);
+
+    color: var(--conocenos-rojo);
+
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    transform: rotate(-5deg);
+
+    text-shadow: 1px 1px 0 rgba(165, 29, 36, 0.15);
+}
+
+/* ==========================================================
+   7. SECCIONES DEL EXPEDIENTE
+========================================================== */
+
+.seccion-expediente {
+    position: relative;
+
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+
+    border-bottom: 1px dashed #947b60;
+}
+
+.seccion-expediente h2 {
+    margin: 0 0 18px;
+
+    color: var(--conocenos-rojo-oscuro);
+
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+}
+
+.seccion-expediente p {
+    margin: 0 0 15px;
+
+    color: var(--conocenos-tinta);
+
+    font-size: 0.95rem;
+    line-height: 1.9;
+    text-align: justify;
+}
+
+.seccion-expediente p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================
+   8. EQUIPO DE INVESTIGACIÓN
+========================================================== */
+
+.equipo-museo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+.miembro-equipo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(255, 250, 230, 0.3);
+
+    border: 1px solid #9c8668;
+
+    text-align: center;
+}
+
+.foto-miembro {
+    width: 140px;
+    height: 165px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #574a3c;
+
+    border: 5px solid #e2d3b5;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+    transform: rotate(-2deg);
+}
+
+.foto-miembro span {
+    color: #b8a68e;
+
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+}
+
+.miembro-equipo:nth-child(even) .foto-miembro {
+    transform: rotate(3deg);
+}
+
+.miembro-equipo h3 {
+    margin: 0 0 8px;
+
+    color: var(--conocenos-rojo-oscuro);
+
+    font-size: 1rem;
+}
+
+.miembro-equipo p {
+    margin: 0;
+
+    color: #5d493b;
+
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Si añadimos fotografías reales */
+.foto-miembro img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    filter: grayscale(100%) sepia(25%);
+}
+
+/* ==========================================================
+   9. ADVERTENCIA FINAL
+========================================================== */
+
+.advertencia-expediente {
+    padding: 25px;
+
+    background: rgba(122, 24, 29, 0.08);
+
+    border: 2px solid var(--conocenos-rojo-oscuro);
+
+    text-align: center;
+}
+
+.advertencia-expediente h2 {
+    margin: 0 0 15px;
+
+    color: var(--conocenos-rojo);
+
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+}
+
+.advertencia-expediente p {
+    margin: 0 0 15px;
+
+    color: var(--conocenos-tinta);
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.advertencia-expediente .mensaje-final {
+    margin-bottom: 0;
+
+    color: var(--conocenos-rojo-oscuro);
+
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================
+   10. PIE DE PÁGINA
+========================================================== */
+
+.pie-conocenos {
+    padding: 15px 20px;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    border-top: 1px solid var(--conocenos-rojo-oscuro);
+
+    text-align: center;
+}
+
+.pie-conocenos p {
+    margin: 0;
+
+    color: #aa9292;
+
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
