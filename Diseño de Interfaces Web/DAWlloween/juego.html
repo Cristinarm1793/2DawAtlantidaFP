@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,10 +8,8 @@
 
     <title>No debiste entrar | Museum 404</title>
 
-
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/juego.css">
-
 
     <script src="js/juego.js" defer></script>
 </head>
@@ -30,6 +29,12 @@
         <div class="titulo-juego">
             <h1>NO DEBISTE ENTRAR</h1>
             <p>Hay lugares que deberían permanecer cerrados...</p>
+        </div>
+
+        <div class="controles-partida">
+            <button id="btn-guardar" type="button">Guardar</button>
+            <button id="btn-cargar" type="button">Cargar</button>
+            <button id="btn-reiniciar" type="button">Reiniciar</button>
         </div>
 
     </header>
@@ -64,9 +69,7 @@
                     Aunque algo te dice que deberías marcharte.
                 </p>
 
-                <button id="iniciar-juego" type="button">
-                    COMENZAR
-                </button>
+                <button id="iniciar-juego" type="button"> COMENZAR </button>
 
             </div>
 
@@ -77,23 +80,19 @@
                 <!-- IMAGEN DE LA ESCENA -->
                 <div class="imagen-escena">
 
-                    <img id="imagen-historia" src="" alt="Escena actual del juego">
+                    <img id="imagen-escena" src="" alt="Escena actual del juego">
 
                 </div>
 
                 <!-- TEXTO NARRATIVO -->
                 <div class="texto-historia">
 
-                    <p id="descripcion-historia"></p>
+                    <p id="texto-escena"></p>
 
                 </div>
 
                 <!-- DECISIONES -->
-                <div class="opciones-historia" id="opciones-historia">
-
-                    <!-- Los botones se generarán con JavaScript -->
-
-                </div>
+                <div class="opciones-historia" id="opciones-escena"></div>
 
             </div>
 
@@ -103,11 +102,7 @@
 
                 <h3>INVENTARIO</h3>
 
-                <div id="objetos-inventario">
-
-                    <p>No llevas ningún objeto.</p>
-
-                </div>
+                <div id="inventario"> Inventario vacío </div>
 
             </aside>
 

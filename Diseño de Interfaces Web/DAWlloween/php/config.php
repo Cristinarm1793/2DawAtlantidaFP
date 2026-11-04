@@ -14,13 +14,15 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-function responder(int $codigo, array $datos): void {
+function responder(int $codigo, array $datos): void
+{
     http_response_code($codigo);
     echo json_encode($datos, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-function exigirPost(): void {
+function exigirPost(): void
+{
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         responder(405, ['ok' => false, 'error' => 'Método no permitido.']);
     }
@@ -49,12 +51,14 @@ function exigirPost(): void {
     }
 }
 
-function campo(string $nombre): string {
+function campo(string $nombre): string
+{
     $valor = $_POST[$nombre] ?? '';
     return is_string($valor) ? trim($valor) : '';
 }
 
-function baseDatos(): PDO {
+function baseDatos(): PDO
+{
     try {
         $directorio = dirname(__DIR__) . '/datos_privados';
 
@@ -92,7 +96,6 @@ function baseDatos(): PDO {
         );
 
         return $db;
-
     } catch (Throwable $e) {
         responder(500, [
             'ok' => false,
@@ -101,7 +104,8 @@ function baseDatos(): PDO {
     }
 }
 
-function usuarioActual(PDO $db): ?array {
+function usuarioActual(PDO $db): ?array
+{
     if (empty($_SESSION['usuario_id'])) {
         return null;
     }

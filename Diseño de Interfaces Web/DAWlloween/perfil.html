@@ -36,74 +36,53 @@
         <article class="expediente-perfil">
 
             <div class="encabezado-expediente">
-                <span class="sello-confidencial">
-                    CONFIDENCIAL
-                </span>
-
+                <span class="sello-confidencial"> CONFIDENCIAL </span>
                 <p>EXPEDIENTE N.º 404-P</p>
             </div>
 
-            <!-- Mensajes de error o confirmación -->
             <div id="aviso-perfil" aria-live="polite"></div>
 
-            <!-- PANEL PARA VISITANTES SIN SESIÓN -->
             <section id="panel-acceso" class="seccion-perfil" hidden>
 
                 <h2>01. IDENTIFICACIÓN DEL VISITANTE</h2>
 
                 <div class="formularios-perfil">
 
-                    <!-- INICIO DE SESIÓN -->
                     <form id="form-login" class="formulario-perfil">
 
                         <h3>INICIAR SESIÓN</h3>
 
-                        <label for="login-email">
-                            Correo electrónico
-                        </label>
+                        <label for="login-email"> Correo electrónico </label>
 
                         <input id="login-email" name="email" type="email" maxlength="254" required autocomplete="email">
 
-                        <label for="login-password">
-                            Contraseña
-                        </label>
+                        <label for="login-password"> Contraseña </label>
 
-                        <input id="login-password" name="password" type="password" required
-                            autocomplete="current-password">
+                        <input id="login-password" name="password" type="password" required autocomplete="current-password">
 
                         <button type="submit">ENTRAR</button>
 
                     </form>
 
-                    <!-- REGISTRO -->
                     <form id="form-registro" class="formulario-perfil">
 
-                        <h3>REGISTRAR VISITANTE</h3>
+                        <h3>REGISTRARSE</h3>
 
                         <label for="registro-nombre">Nombre</label>
 
                         <input id="registro-nombre" name="nombre" maxlength="100" required autocomplete="name">
 
-                        <label for="registro-email">
-                            Correo electrónico
-                        </label>
+                        <label for="registro-email"> Correo electrónico </label>
 
-                        <input id="registro-email" name="email" type="email" maxlength="254" required
-                            autocomplete="email">
+                        <input id="registro-email" name="email" type="email" maxlength="254" required autocomplete="email">
 
-                        <label for="registro-password">
-                            Contraseña (mínimo 8 caracteres)
-                        </label>
+                        <label for="registro-password"> Contraseña (mínimo 8 caracteres) </label>
 
-                        <input id="registro-password" name="password" type="password" minlength="8" required
-                            autocomplete="new-password">
+                        <input id="registro-password" name="password" type="password" minlength="8" required autocomplete="new-password">
 
-                        <label for="registro-confirmar">
-                            Repetir contraseña
-                        </label>
+                        <label for="registro-confirmar"> Repetir contraseña </label>
 
-                        <input id="registro-confirmar" name="confirmar" type="password" minlength="8" required
-                            autocomplete="new-password">
+                        <input id="registro-confirmar" name="confirmar" type="password" minlength="8" required autocomplete="new-password">
 
                         <button type="submit">REGISTRARSE</button>
 
@@ -145,7 +124,6 @@
 
                 </section>
 
-                <!-- ACTIVIDAD -->
                 <section class="seccion-perfil">
 
                     <h2>01. ACTIVIDAD DEL VISITANTE</h2>
@@ -157,7 +135,6 @@
 
                 </section>
 
-                <!-- CAMBIAR CONTRASEÑA -->
                 <section class="seccion-perfil">
 
                     <h2>02. SEGURIDAD DEL EXPEDIENTE</h2>
@@ -166,58 +143,38 @@
 
                         <h3>CAMBIAR CONTRASEÑA</h3>
 
-                        <label for="password-actual">
-                            Contraseña actual
-                        </label>
+                        <label for="password-actual"> Contraseña actual </label>
 
-                        <input id="password-actual" name="actual" type="password" required
-                            autocomplete="current-password">
+                        <input id="password-actual" name="actual" type="password" required autocomplete="current-password">
 
-                        <label for="password-nueva">
-                            Nueva contraseña (mínimo 8 caracteres)
-                        </label>
+                        <label for="password-nueva"> Nueva contraseña (mínimo 8 caracteres) </label>
 
-                        <input id="password-nueva" name="nueva" type="password" minlength="8" required
-                            autocomplete="new-password">
+                        <input id="password-nueva" name="nueva" type="password" minlength="8" required autocomplete="new-password">
 
-                        <label for="password-confirmar">
-                            Repetir nueva contraseña
-                        </label>
+                        <label for="password-confirmar"> Repetir nueva contraseña </label>
 
-                        <input id="password-confirmar" name="confirmar" type="password" minlength="8" required
-                            autocomplete="new-password">
+                        <input id="password-confirmar" name="confirmar" type="password" minlength="8" required autocomplete="new-password">
 
-                        <button type="submit">
-                            ACTUALIZAR CONTRASEÑA
-                        </button>
+                        <button type="submit"> ACTUALIZAR CONTRASEÑA </button>
 
                     </form>
 
                 </section>
 
-                <!-- ACCIONES -->
                 <section class="seccion-perfil">
 
                     <h2>03. ACCIONES DISPONIBLES</h2>
 
                     <div class="acciones-perfil">
 
-                        <a href="index.html" class="boton-perfil">
-                            VOLVER AL MUSEO
-                        </a>
+                        <a href="index.html" class="boton-perfil"> VOLVER AL MUSEO </a>
 
-                        <a href="contacto.html" class="boton-perfil">
-                            CONTACTAR CON EL MUSEO
-                        </a>
+                        <a href="contacto.html" class="boton-perfil"> CONTACTAR CON EL MUSEO </a>
 
-                        <button type="button" id="cerrar-sesion" class="boton-perfil">
-                            CERRAR SESIÓN
-                        </button>
+                        <button type="button" id="cerrar-sesion" class="boton-perfil"> CERRAR SESIÓN </button>
 
                     </div>
-
                 </section>
-
             </div>
 
             <!-- ADVERTENCIA -->
@@ -233,7 +190,6 @@
                 </p>
 
             </div>
-
         </article>
 
     </main>
