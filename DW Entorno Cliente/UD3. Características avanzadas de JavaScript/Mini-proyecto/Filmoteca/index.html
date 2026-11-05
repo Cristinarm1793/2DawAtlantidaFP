@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Plano a plano · Cartelera</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="#">P<span>/</span>P <small>PLANO A PLANO</small></a
+      ><a class="nav" href="#cartelera">Cartelera</a
+      ><a class="nav" href="#sesion">Mi sesión <span id="contador">0</span></a>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">APAGA EL MÓVIL. ENCIENDE LA HISTORIA.</p>
+          <h1>
+            La magia empieza<br />cuando se apagan<br /><em>las luces.</em>
+          </h1>
+          <p>
+            Grandes clásicos, otros mundos e historias que se quedan.<br />Encuentra
+            tu próxima película y monta tu propia sesión.
+          </p>
+          <a class="boton" href="#cartelera"
+            >EXPLORAR CARTELERA <span>↗</span></a
+          >
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="carteles/Origen.png" alt="" /><img
+            src="carteles/Interstellar.png"
+            alt=""
+          /><span class="sello"
+            >EL PLAN ES<br /><b>BUEN CINE</b><br />★ ★ ★ ★ ★</span
+          >
+        </div>
+      </section>
+      <div class="cinta">
+        <span>12 HISTORIAS</span><span>✦</span><span>6 GÉNEROS</span
+        ><span>✦</span><span>UNA BUTACA PARA TI</span><span>✦</span
+        ><span>CINE SIN PRISAS</span>
+      </div>
+      <section id="cartelera">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">ELIGE TU PRÓXIMA HISTORIA</p>
+            <h2>En cartelera<span>.</span></h2>
+          </div>
+          <p id="resultados" aria-live="polite"></p>
+        </div>
+        <form id="filtros">
+          <label
+            >BUSCAR PELÍCULA<input
+              id="busqueda"
+              type="search"
+              placeholder="¿Qué te apetece ver?" /></label
+          ><label
+            >GÉNERO<select id="genero">
+              <option value="">Todos los géneros</option>
+            </select></label
+          ><label
+            >ORDENAR POR<select id="orden">
+              <option value="nota">Mejor valoradas</option>
+              <option value="titulo">Título: A a Z</option>
+              <option value="anio">Más recientes</option>
+              <option value="duracion">Menor duración</option>
+            </select></label
+          ><button class="secundario" type="reset">Limpiar filtros</button>
+        </form>
+        <div id="catalogo" class="catalogo"></div>
+      </section>
+      <section id="sesion" class="sesion">
+        <div class="ticket-title">
+          <p class="eyebrow">ENTRADA PARA UNA GRAN NOCHE</p>
+          <h2>Tu sesión.<br />Tus reglas.</h2>
+          <p>Hasta tres películas.<br />Las palomitas corren de tu cuenta.</p>
+          <span class="ticket-number">ADMIT ONE / P–P 003</span>
+        </div>
+        <div class="ticket-content">
+          <ul id="seleccion"></ul>
+          <p id="estado-sesion" aria-live="polite"></p>
+          <button id="vaciar" class="secundario" type="button">
+            Vaciar sesión
+          </button>
+        </div>
+      </section>
+      <p id="mensaje" role="status"></p>
+      <dialog id="detalle">
+        <button id="cerrar" type="button" class="secundario">
+          Cerrar ficha ×
+        </button>
+        <p class="eyebrow">FICHA DE LA PELÍCULA</p>
+        <h2 id="detalle-titulo"></h2>
+        <dl id="detalle-datos"></dl>
+      </dialog>
+    </main>
+    <footer>
+      <span class="logo">P<span>/</span>P</span>
+      <p>EL CINE SE VIVE. LAS HISTORIAS SE QUEDAN.</p>
+      <small>Proyecto DWEC</small>
+    </footer>
+  </body>
+</html>
