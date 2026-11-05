@@ -313,7 +313,7 @@ body.pagina-recetario {
 
 /* Pergamino del índice */
 #indice {
-  background-image: url("../assets/img/recetario/recetario-hoja.png");
+  background-image: url("../assets/img/recetario/recetario-indice.png");
 }
 
 /* Pergamino de las recetas */
@@ -694,25 +694,127 @@ body.pagina-recetario {
     padding-inline: 18px;
   }
 }
-#indice-completo {
-  background-image: url("../assets/img/recetario/recetario-hoja.png");
-  overflow-y: auto;
+/* ==========================================================
+   ÍNDICE COMPLETO DEL RECETARIO
+========================================================== */
+
+/* Medimos el espacio que tiene el libro en la pantalla. */
+.libro:has(#indice-completo:not([hidden])) {
+  container-type: size;
 }
 
+/* La hoja conserva su proporción vertical de 2:3. */
+#indice-completo:not([hidden]) {
+  box-sizing: border-box;
+  width: min(100cqw, 66.67cqh);
+  height: min(100cqh, 150cqw);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+
+  background: url("../assets/img/recetario/recetario-hoja.png") center / contain
+    no-repeat;
+
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 7% auto minmax(0, 1fr) auto 7%;
+  overflow: hidden;
+  color: #321d12;
+}
+
+/* Título dentro del marco dibujado en el pergamino. */
+#indice-completo > h2 {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0 0 0.5rem;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: clamp(1.1rem, 5cqw, 1.65rem);
+  color: #43243c;
+  text-decoration: none;
+}
+
+/* Solo esta zona se desplaza si hay muchas recetas. */
 #lista-indice-completo {
-  padding-left: 2rem;
-  text-align: left;
+  grid-column: 2;
+  grid-row: 3;
+  min-height: 0;
+  margin: 0;
+  padding: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #806547 transparent;
+
+  list-style: none;
+  counter-reset: receta;
 }
 
+#lista-indice-completo li {
+  counter-increment: receta;
+  margin-bottom: 5px;
+}
+
+/* Cada nombre es un minibotón con su número dentro. */
 #lista-indice-completo button {
-  padding: 0.5rem;
-  border: 0;
-  background: transparent;
-  color: var(--tinta);
-  font: inherit;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 36px;
+  padding: 0.35rem 0.65rem;
+
+  border: 1px solid #95724d;
+  border-radius: 4px;
+  background: rgb(244 222 179 / 75%);
+  color: #321d12;
+  font:
+    1rem/1.2 Georgia,
+    serif;
   text-align: left;
-  text-decoration: underline;
+  text-decoration: none;
+  overflow-wrap: anywhere;
   cursor: pointer;
+}
+
+#lista-indice-completo button::before {
+  content: counter(receta) ".";
+  min-width: 1.6em;
+  flex-shrink: 0;
+  color: #603c51;
+  font-weight: bold;
+}
+
+#lista-indice-completo button:hover {
+  background-color: #f4dfb5;
+  border-color: #59334c;
+}
+
+/* La vuelta ocupa su propia fila y queda centrada. */
+#indice-completo #volver-a-tarjetas {
+  grid-column: 2;
+  grid-row: 4;
+  justify-self: center;
+  width: min(250px, 100%);
+  min-height: 54px;
+  margin: 0.45rem 0 0;
+  padding: 8px 20px;
+
+  border: 0;
+  background: transparent url("../assets/img/recetario/recetario-placa.png")
+    center / 100% 100% no-repeat;
+  color: #321b12;
+  font:
+    bold 1rem Georgia,
+    serif;
+  cursor: pointer;
+}
+
+#indice-completo button:focus-visible {
+  outline: 2px solid #59334c;
+  outline-offset: 1px;
 }
 /* Placa de navegación del recetario */
 #indice #abrir-indice-completo,
@@ -754,4 +856,177 @@ body.pagina-recetario {
 #indice #abrir-indice-completo:focus-visible {
   outline: 3px solid #502643;
   outline-offset: 2px;
+}
+#indice .foto-tarjeta {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+}
+
+#indice .tarjeta-receta span {
+  flex-shrink: 0;
+  text-align: center;
+}
+/* HOJA DE RECETA */
+.libro:has(#pagina-receta:not([hidden])) {
+  container-type: size;
+}
+
+#pagina-receta:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  box-sizing: border-box;
+
+  /* La hoja siempre conserva su proporción de 2:3. */
+  width: min(100cqw, 66.667cqh);
+  height: min(100cqh, 150cqw);
+  padding: 0;
+  background: url("../assets/img/recetario/recetario-hoja.png") center / 100%
+    100% no-repeat;
+
+  display: grid;
+  grid-template-columns: 11% minmax(0, 1fr) 11%;
+  grid-template-rows: 8% auto 13% minmax(0, 1fr) auto 7%;
+  row-gap: 1%;
+  overflow: hidden;
+}
+
+/* Título, foto, texto y pie comparten el mismo eje central. */
+#pagina-receta > * {
+  grid-column: 2;
+  min-width: 0;
+}
+
+#pagina-receta #nombre-receta {
+  grid-row: 2;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1rem, 4cqi, 1.5rem);
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+#pagina-receta .imagen-receta {
+  grid-row: 3;
+  justify-self: center;
+  width: 58%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+#pagina-receta #foto-receta {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Solo esta parte se desplaza cuando la receta es larga. */
+#pagina-receta .contenido-receta {
+  grid-row: 4;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0.4rem 4%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-align: left;
+}
+
+#pagina-receta .contenido-receta h3 {
+  margin: 0.6rem 0;
+  color: var(--morado-bruja);
+  text-align: center;
+}
+
+#pagina-receta .contenido-receta ul,
+#pagina-receta .contenido-receta ol {
+  margin: 0 0 1rem;
+  padding-left: 1.6em;
+  font-size: clamp(0.9rem, 3cqi, 1rem);
+  line-height: 1.45;
+}
+
+/* Pie de la hoja: medallón, placa, medallón. */
+#pagina-receta #navegacion-libro:not([hidden]) {
+  grid-row: 5;
+  position: static;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 3fr) 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 2px 2%;
+}
+
+#pagina-receta .flecha-libro {
+  box-sizing: border-box;
+  width: min(100%, 44px);
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent url("../assets/img/recetario/recetario-boton.png")
+    center / contain no-repeat;
+  font-size: 0;
+  cursor: pointer;
+}
+
+#pagina-receta #pagina-anterior {
+  transform: scaleX(-1);
+}
+
+#pagina-receta #volver-al-indice {
+  width: min(100%, 210px);
+  min-height: 40px;
+  margin: 0;
+  padding: 6px 10%;
+  border: 0;
+  background: transparent url("../assets/img/recetario/recetario-placa.png")
+    center / 100% 100% no-repeat;
+  color: #321b12;
+  font:
+    bold clamp(0.85rem, 3cqi, 1rem) Georgia,
+    serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+#pagina-receta #numero-pagina {
+  grid-column: 1 / -1;
+  color: #493223;
+  font:
+    0.85rem Georgia,
+    serif;
+  text-align: center;
+}
+
+#pagina-receta button:focus-visible {
+  outline: 2px solid var(--morado-bruja);
+  outline-offset: 2px;
+}
+
+/* La hoja del índice gira y descubre la receta que tiene debajo. */
+.libro.girando-indice {
+  perspective: 1200px;
+  isolation: isolate;
+}
+
+.libro.girando-indice .hoja-que-gira {
+  position: absolute;
+  z-index: 2;
+  transform-origin: left center;
+  backface-visibility: hidden;
+  pointer-events: none;
+  animation: abrir-tapa 850ms ease-in-out forwards;
 }

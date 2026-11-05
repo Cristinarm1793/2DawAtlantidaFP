@@ -9,118 +9,13 @@
    1. RECETAS
 ========================================================== */
 
-const recetas = [
-  {
-    nombre: "Dedos de bruja",
-    imagen: "assets/img/recetario/dedos-bruja.jpg",
+const respuesta = await fetch("./recetas.json");
 
-    ingredientes: [
-      "250 g de harina",
-      "125 g de mantequilla",
-      "100 g de azúcar",
-      "1 huevo",
-      "1 cucharadita de esencia de vainilla",
-      "Almendras enteras para las uñas",
-      "Mermelada de fresa",
-    ],
+if (!respuesta.ok) {
+  throw new Error(`No se pudo cargar recetas.json (HTTP ${respuesta.status}).`);
+}
 
-    pasos: [
-      "Mezcla la mantequilla con el azúcar hasta obtener una crema.",
-      "Añade el huevo y la esencia de vainilla.",
-      "Incorpora la harina poco a poco hasta formar una masa.",
-      "Refrigera la masa durante 30 minutos.",
-      "Forma cilindros alargados que parezcan dedos.",
-      "Coloca una almendra en la punta de cada dedo.",
-      "Marca los nudillos con un cuchillo.",
-      "Hornea a 180 °C durante 12-15 minutos, hasta que estén ligeramente dorados.",
-      "Deja enfriar y añade un poco de mermelada alrededor de las uñas.",
-    ],
-  },
-
-  {
-    nombre: "Ojos monstruosos",
-    imagen: "assets/img/recetario/ojos-monstruosos.jpg",
-
-    ingredientes: [
-      "200 g de chocolate blanco",
-      "100 g de queso crema",
-      "150 g de galletas trituradas",
-      "Lacasitos o caramelos redondos",
-      "Chocolate negro para las pupilas",
-      "Colorante alimentario rojo",
-    ],
-
-    pasos: [
-      "Mezcla las galletas trituradas con el queso crema.",
-      "Forma pequeñas bolas y refrigéralas durante 20 minutos.",
-      "Derrite el chocolate blanco al baño maría.",
-      "Cubre las bolas con el chocolate blanco.",
-      "Coloca un caramelo redondo sobre cada bola para formar el iris.",
-      "Añade una gota de chocolate negro para crear la pupila.",
-      "Dibuja pequeñas venas con colorante alimentario rojo.",
-      "Deja enfriar hasta que el chocolate se endurezca.",
-    ],
-  },
-
-  {
-    nombre: "Pócima de frutos rojos",
-    imagen: "assets/img/recetario/pocima.jpg",
-
-    ingredientes: [
-      "250 ml de zumo de frutos rojos",
-      "250 ml de zumo de uva",
-      "250 ml de agua con gas",
-      "2 cucharadas de zumo de limón",
-      "Frambuesas y arándanos",
-      "Hielo",
-    ],
-
-    pasos: [
-      "Enfría los zumos antes de comenzar.",
-      "Mezcla el zumo de frutos rojos con el zumo de uva.",
-      "Añade el zumo de limón.",
-      "Incorpora el agua con gas justo antes de servir.",
-      "Reparte el hielo entre los vasos.",
-      "Sirve la mezcla y decora con frambuesas y arándanos.",
-    ],
-  },
-
-  {
-    nombre: "Calabazas de hojaldre",
-    imagen: "assets/img/recetario/calabazas-hojaldre.jpg",
-
-    ingredientes: [
-      "2 láminas de hojaldre",
-      "150 g de puré de calabaza cocida",
-      "2 cucharadas de azúcar moreno",
-      "1 cucharadita de canela",
-      "1 huevo para pintar",
-      "Un poco de harina para trabajar la masa",
-    ],
-
-    pasos: [
-      "Precalienta el horno a 190 °C.",
-      "Mezcla el puré de calabaza con el azúcar y la canela.",
-      "Extiende una lámina de hojaldre y corta figuras de calabaza.",
-      "Coloca una pequeña cantidad de relleno en el centro.",
-      "Corta otras figuras de hojaldre para utilizarlas como tapas.",
-      "Haz pequeños cortes en las tapas para formar ojos y boca.",
-      "Cubre las bases con las tapas y sella los bordes con un tenedor.",
-      "Pinta con huevo batido.",
-      "Hornea durante 15-20 minutos, hasta que el hojaldre esté dorado.",
-    ],
-  },
-
-  {
-    nombre: "Receta 1",
-    imagen: "assets/img/recetario/receta-1.jpg",
-    ingredientes: [
-      "Cantidad y nombre del primer ingrediente",
-      "Cantidad y nombre del segundo ingrediente",
-    ],
-    pasos: ["Explicación del primer paso.", "Explicación del segundo paso."],
-  },
-];
+const recetas = await respuesta.json();
 
 /* ==========================================================
    2. ELEMENTOS HTML
@@ -288,20 +183,82 @@ const listaIndiceCompleto = document.getElementById("lista-indice-completo");
 const abrirIndiceCompleto = document.getElementById("abrir-indice-completo");
 const volverATarjetas = document.getElementById("volver-a-tarjetas");
 
+let pasandoHoja = false;
+
+function abrirRecetaConAnimacion(posicion, paginaOrigen) {
+  if (pasandoHoja) return;
+
+  const numeroDestino = posicion + 2;
+  const reducirMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (reducirMovimiento) {
+    mostrarPagina(numeroDestino);
+    return;
+  }
+
+  pasandoHoja = true;
+
+  // Preparamos la receta debajo de la hoja que vamos a girar.
+  mostrarPagina(numeroDestino);
+  paginaOrigen.hidden = false;
+  paginaOrigen.inert = true;
+  paginaReceta.inert = true;
+
+  function terminarGiro(evento) {
+    if (
+      evento.target !== paginaOrigen ||
+      evento.animationName !== "abrir-tapa"
+    ) {
+      return;
+    }
+
+    paginaOrigen.removeEventListener("animationend", terminarGiro);
+    paginaOrigen.removeEventListener("animationcancel", terminarGiro);
+
+    paginaOrigen.hidden = true;
+    paginaOrigen.classList.remove("hoja-que-gira");
+    libro.classList.remove("girando-indice");
+
+    paginaOrigen.inert = false;
+    paginaReceta.inert = false;
+    pasandoHoja = false;
+
+    document.getElementById("volver-al-indice").focus({ preventScroll: true });
+  }
+
+  paginaOrigen.addEventListener("animationend", terminarGiro);
+  paginaOrigen.addEventListener("animationcancel", terminarGiro);
+
+  libro.classList.add("girando-indice");
+  paginaOrigen.classList.add("hoja-que-gira");
+}
+
 recetas.forEach(function (receta, posicion) {
   const tarjeta = document.createElement("button");
 
   tarjeta.type = "button";
   tarjeta.className = "tarjeta-receta";
   tarjeta.dataset.receta = posicion;
-  tarjeta.textContent = receta.nombre || `Receta ${posicion + 1}`;
+  const titulo = receta.nombre || `Receta ${posicion + 1}`;
+
+  const foto = document.createElement("img");
+  foto.src = receta.imagen;
+  foto.alt = "";
+  foto.className = "foto-tarjeta";
+
+  const nombre = document.createElement("span");
+  nombre.textContent = titulo;
+
+  tarjeta.append(foto, nombre);
 
   listaRecetas.appendChild(tarjeta);
   const elemento = document.createElement("li");
   const botonReceta = document.createElement("button");
 
   botonReceta.type = "button";
-  botonReceta.textContent = tarjeta.textContent;
+  botonReceta.textContent = titulo;
 
   botonReceta.addEventListener("click", function () {
     mostrarTarjeta(posicion);
@@ -388,10 +345,13 @@ botonSiguiente.addEventListener("click", function () {
    9. ESTADO INICIAL
 ========================================================== */
 
-const volverAlIndice = document.getElementById("volver-al-indice");
-
 volverAlIndice.addEventListener("click", function () {
   mostrarPagina(1);
+  indice.hidden = true;
+  indiceCompleto.hidden = false;
+
+  const primerBoton = listaIndiceCompleto.querySelector("button");
+  primerBoton?.focus({ preventScroll: true });
 });
 
 mostrarPagina(0);
