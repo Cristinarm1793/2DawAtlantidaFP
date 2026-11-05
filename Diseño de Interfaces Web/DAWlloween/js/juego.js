@@ -7,6 +7,7 @@
 let escenaActual = "inicio";
 let inventario = [];
 let juegoTerminado = false;
+let decisiones = crearDecisionesIniciales();
 
 function crearDecisionesIniciales() {
     return {
@@ -16,8 +17,6 @@ function crearDecisionesIniciales() {
         verjaAbierta: false
     };
 }
-
-let decisiones = crearDecisionesIniciales();
 
 /* ==========================================
    2. GUARDAR, CARGAR Y REINICIAR PARTIDA

@@ -17,26 +17,25 @@ const MAX_COPIAS = 12;
 let copiasMorris = 0;
 
 btnMorris.addEventListener("click", () => {
+  if (copiasMorris < MAX_COPIAS) {
+    const copia = document.createElement("img");
 
-    if (copiasMorris < MAX_COPIAS) {
+    copia.src = objetoMorris.src;
+    copia.alt = "Copia del disquete infectado";
+    copia.classList.add("copia-morris");
 
-        const copia = document.createElement("img");
+    zonaMorris.appendChild(copia);
 
-        copia.src = objetoMorris.src;
-        copia.alt = "Copia del disquete infectado";
-        copia.classList.add("copia-morris");
+    copiasMorris++;
 
-        zonaMorris.appendChild(copia);
+    mensajeMorris.textContent = `El gusano se ha replicado. Copias: ${copiasMorris}`;
 
-        copiasMorris++;
-
-        mensajeMorris.textContent = `El gusano se ha replicado. Copias: ${copiasMorris}`;
-
-        if (copiasMorris === MAX_COPIAS) {
-            mensajeMorris.textContent = "ERROR: La vitrina está completamente infectada.";
-            btnMorris.disabled = true;
-        }
+    if (copiasMorris === MAX_COPIAS) {
+      mensajeMorris.textContent =
+        "ERROR: La vitrina está completamente infectada.";
+      btnMorris.disabled = true;
     }
+  }
 });
 
 /* =====================================================
@@ -51,23 +50,22 @@ const pantallazoAzul = document.getElementById("pantallazo-azul");
 let temporizadorWindows = null;
 let windowsActivo = false;
 
-objetoWindows.addEventListener("mouseenter", () => {
+const btnWindows = document.getElementById("btn-windows");
 
-    if (windowsActivo) {
-        return;
-    }
+btnWindows.addEventListener("click", () => {
+  if (windowsActivo) {
+    return;
+  }
 
-    windowsActivo = true;
+  windowsActivo = true;
 
-    pantallazoAzul.hidden = false;
+  pantallazoAzul.hidden = false;
 
-    temporizadorWindows = setTimeout(() => {
-
-        pantallazoAzul.hidden = true;
-        windowsActivo = false;
-        temporizadorWindows = null;
-
-    }, 2500);
+  temporizadorWindows = setTimeout(() => {
+    pantallazoAzul.hidden = true;
+    windowsActivo = false;
+    temporizadorWindows = null;
+  }, 2500);
 });
 
 /* =====================================================
@@ -82,23 +80,16 @@ const mensajeDeathstar = document.getElementById("mensaje-deathstar");
 let deathstarDesaparecido = false;
 
 const intervaloDeathstar = setInterval(() => {
+  deathstarDesaparecido = !deathstarDesaparecido;
 
-    deathstarDesaparecido = !deathstarDesaparecido;
+  objetoDeathstar.classList.toggle("desaparecido", deathstarDesaparecido);
 
-    objetoDeathstar.classList.toggle(
-        "desaparecido",
-        deathstarDesaparecido
-    );
-
-    if (deathstarDesaparecido) {
-        mensajeDeathstar.textContent =
-            "ERROR: Dispositivo no encontrado.";
-    } else {
-        mensajeDeathstar.textContent =
-            "Dispositivo detectado... por ahora.";
-    }
+  if (deathstarDesaparecido) {
+    mensajeDeathstar.textContent = "ERROR: Dispositivo no encontrado.";
+  } else {
+    mensajeDeathstar.textContent = "Dispositivo detectado... por ahora.";
+  }
 }, 3000);
-
 
 /* =====================================================
    4. THERAC-25
@@ -110,14 +101,13 @@ const btnTherac = document.getElementById("btn-therac");
 const mensajeTherac = document.getElementById("mensaje-therac");
 
 btnTherac.addEventListener("click", () => {
+  mensajeTherac.textContent =
+    "MALFUNCTION 54 — SISTEMA BLOQUEADO. " +
+    "Por seguridad, la máquina no puede encenderse.";
 
-    mensajeTherac.textContent =
-        "MALFUNCTION 54 — SISTEMA BLOQUEADO. " +
-        "Por seguridad, la máquina no puede encenderse.";
+  btnTherac.disabled = true;
 
-    btnTherac.disabled = true;
-
-    btnTherac.textContent = "Sistema bloqueado";
+  btnTherac.textContent = "Sistema bloqueado";
 });
 
 /* =====================================================
@@ -127,6 +117,7 @@ btnTherac.addEventListener("click", () => {
 // Simulación de 100 horas de funcionamiento en aproximadamente 10 segundos. El desfase aumenta hasta 0,34 segundos.
 
 const btnPatriot = document.getElementById("btn-patriot");
+const panelPatriot = document.getElementById("panel-patriot");
 const horasPatriot = document.getElementById("horas-patriot");
 const desfasePatriot = document.getElementById("desfase-patriot");
 const mensajePatriot = document.getElementById("mensaje-patriot");
@@ -135,38 +126,38 @@ let intervaloPatriot = null;
 let horasSimuladas = 0;
 
 btnPatriot.addEventListener("click", () => {
+  if (intervaloPatriot !== null) {
+    return;
+  }
 
-    if (intervaloPatriot !== null) {
-        return;
+  horasSimuladas = 0;
+
+  horasPatriot.textContent = "0";
+  desfasePatriot.textContent = "0.000";
+  panelPatriot.hidden = false;
+  btnPatriot.setAttribute("aria-expanded", "true");
+  mensajePatriot.textContent = "Simulación en curso...";
+
+  btnPatriot.disabled = true;
+
+  intervaloPatriot = setInterval(() => {
+    horasSimuladas++;
+
+    const desfase = (horasSimuladas / 100) * 0.34;
+
+    horasPatriot.textContent = horasSimuladas;
+    desfasePatriot.textContent = desfase.toFixed(3);
+
+    if (horasSimuladas >= 100) {
+      clearInterval(intervaloPatriot);
+      intervaloPatriot = null;
+
+      mensajePatriot.textContent =
+        "ERROR DE SINCRONIZACIÓN. " +
+        "Desfase acumulado: 0,34 segundos. " +
+        "La simulación ha finalizado.";
     }
-
-    horasSimuladas = 0;
-
-    horasPatriot.textContent = "0";
-    desfasePatriot.textContent = "0.000";
-    mensajePatriot.textContent = "";
-
-    btnPatriot.disabled = true;
-    btnPatriot.textContent = "Simulación en curso...";
-
-    intervaloPatriot = setInterval(() => {
-
-        horasSimuladas++;
-
-        const desfase = (horasSimuladas / 100) * 0.34;
-
-        horasPatriot.textContent = horasSimuladas;
-        desfasePatriot.textContent = desfase.toFixed(3);
-
-        if (horasSimuladas >= 100) {
-
-            clearInterval(intervaloPatriot);
-            intervaloPatriot = null;
-
-            mensajePatriot.textContent = "ERROR DE SINCRONIZACIÓN. " + "Desfase acumulado: 0,34 segundos. " + "La simulación ha finalizado.";
-            btnPatriot.textContent = "Simulación finalizada";
-        }
-    }, 100);
+  }, 100);
 });
 
 /* =====================================================
@@ -181,27 +172,24 @@ const mensajeBug = document.getElementById("mensaje-bug");
 let bugVolando = false;
 
 objetoBug.addEventListener("mouseenter", () => {
+  if (bugVolando) {
+    return;
+  }
 
-    if (bugVolando) {
-        return;
-    }
+  bugVolando = true;
 
-    bugVolando = true;
+  mensajeBug.textContent = "BUG DETECTED";
 
-    mensajeBug.textContent = "BUG DETECTED";
-
-    objetoBug.classList.add("volando");
+  objetoBug.classList.add("volando");
 });
 
 objetoBug.addEventListener("animationend", () => {
+  objetoBug.classList.remove("volando");
 
-    objetoBug.classList.remove("volando");
+  mensajeBug.textContent = "Error solucionado. Hasta el próximo bug.";
 
-    mensajeBug.textContent = "Error solucionado. Hasta el próximo bug.";
-
-    bugVolando = false;
+  bugVolando = false;
 });
-
 
 /* =====================================================
    7. RESTAURAR MUSEO
@@ -212,79 +200,71 @@ objetoBug.addEventListener("animationend", () => {
 const btnRestaurar = document.getElementById("btn-restaurar");
 
 btnRestaurar.addEventListener("click", () => {
+  /* ---------- MORRIS ---------- */
 
-    /* ---------- MORRIS ---------- */
+  const copias = zonaMorris.querySelectorAll(".copia-morris");
 
-    const copias = zonaMorris.querySelectorAll(".copia-morris");
+  copias.forEach((copia) => {
+    copia.remove();
+  });
 
-    copias.forEach(copia => {
-        copia.remove();
-    });
+  copiasMorris = 0;
 
-    copiasMorris = 0;
+  mensajeMorris.textContent = "";
 
-    mensajeMorris.textContent = "";
+  btnMorris.disabled = false;
 
-    btnMorris.disabled = false;
+  /* ---------- WINDOWS 98 ---------- */
 
+  if (temporizadorWindows !== null) {
+    clearTimeout(temporizadorWindows);
+    temporizadorWindows = null;
+  }
 
-    /* ---------- WINDOWS 98 ---------- */
+  pantallazoAzul.hidden = true;
+  windowsActivo = false;
 
-    if (temporizadorWindows !== null) {
-        clearTimeout(temporizadorWindows);
-        temporizadorWindows = null;
-    }
+  /* ---------- DEATHSTAR ---------- */
 
-    pantallazoAzul.hidden = true;
-    windowsActivo = false;
+  deathstarDesaparecido = false;
 
+  objetoDeathstar.classList.remove("desaparecido");
 
-    /* ---------- DEATHSTAR ---------- */
+  mensajeDeathstar.textContent = "";
 
-    deathstarDesaparecido = false;
+  /* ---------- THERAC-25 ---------- */
 
-    objetoDeathstar.classList.remove("desaparecido");
+  btnTherac.disabled = false;
 
-    mensajeDeathstar.textContent = "";
+  btnTherac.textContent = "Encender sistema";
 
+  mensajeTherac.textContent = "";
 
-    /* ---------- THERAC-25 ---------- */
+  /* ---------- PATRIOT ---------- */
 
-    btnTherac.disabled = false;
+  if (intervaloPatriot !== null) {
+    clearInterval(intervaloPatriot);
+    intervaloPatriot = null;
+  }
 
-    btnTherac.textContent = "Encender sistema";
+  horasSimuladas = 0;
+  horasPatriot.textContent = "0";
+  desfasePatriot.textContent = "0.000";
+  mensajePatriot.textContent = "";
 
-    mensajeTherac.textContent = "";
+  panelPatriot.hidden = true;
+  btnPatriot.disabled = false;
+  btnPatriot.setAttribute("aria-expanded", "false");
 
+  /* ---------- POLILLA ---------- */
 
-    /* ---------- PATRIOT ---------- */
+  objetoBug.classList.remove("volando");
 
-    if (intervaloPatriot !== null) {
-        clearInterval(intervaloPatriot);
-        intervaloPatriot = null;
-    }
+  mensajeBug.textContent = "";
 
-    horasSimuladas = 0;
+  bugVolando = false;
 
-    horasPatriot.textContent = "0";
-    desfasePatriot.textContent = "0.000";
+  /* ---------- CONFIRMACIÓN ---------- */
 
-    mensajePatriot.textContent = "";
-
-    btnPatriot.disabled = false;
-    btnPatriot.textContent = "Iniciar simulación";
-
-
-    /* ---------- POLILLA ---------- */
-
-    objetoBug.classList.remove("volando");
-
-    mensajeBug.textContent = "";
-
-    bugVolando = false;
-
-
-    /* ---------- CONFIRMACIÓN ---------- */
-
-    alert("Museo restaurado. Todas las anomalías han sido reiniciadas.");
+  alert("Museo restaurado. Todas las anomalías han sido reiniciadas.");
 });

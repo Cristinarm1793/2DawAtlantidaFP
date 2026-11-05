@@ -24,96 +24,94 @@
 ========================================================== */
 
 .cabecera {
-    width: min(1100px, 94%);
-    margin: 0 auto;
+  width: min(1100px, 94%);
+  margin: 0 auto;
 
-    padding-top: 65px;
+  padding-top: 65px;
 
-    display: grid;
-    grid-template-columns: 110px minmax(0, 1fr) 110px;
-    align-items: center;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 30px;
 }
 
 /* Espacio invisible para mantener el título centrado */
 .cabecera-espaciador {
-    width: 110px;
-    height: 110px;
+  width: 110px;
+  height: 110px;
 }
 
 .cartel-titulo {
-    min-height: 125px;
-    padding: 20px;
+  min-height: 125px;
+  padding: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background-color: #110a0a;
+  background-color: #110a0a;
 
-    border: 4px solid var(--rojo);
-    box-shadow: var(--sombra-roja);
+  border: 4px solid var(--rojo);
+  box-shadow: var(--sombra-roja);
 
-    text-align: center;
+  text-align: center;
 }
 
 .cartel-titulo h1 {
-    /* Tipografía de error informático */
-    font-family: "Courier New", Courier, monospace;
+  /* Tipografía de error informático */
+  font-family: "Courier New", Courier, monospace;
 
-    /* Tamaño y grosor */
-    font-size: clamp(1.5rem, 3vw, 2.4rem);
-    font-weight: 900;
+  /* Tamaño y grosor */
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 900;
 
-    /* Aspecto de terminal */
-    text-transform: uppercase;
-    letter-spacing: 3px;
+  /* Aspecto de terminal */
+  text-transform: uppercase;
+  letter-spacing: 3px;
 
-    /* Colores del museo */
-    color: var(--blanco-hueso);
+  /* Colores del museo */
+  color: var(--blanco-hueso);
 
-    /* Efecto de pantalla antigua */
-    text-shadow:
-        2px 2px 0 #8b0000,
-        0 0 10px rgba(193, 18, 31, 0.6),
-        0 0 20px rgba(193, 18, 31, 0.3);
+  /* Efecto de pantalla antigua */
+  text-shadow:
+    2px 2px 0 #8b0000,
+    0 0 10px rgba(193, 18, 31, 0.6),
+    0 0 20px rgba(193, 18, 31, 0.3);
 }
-
 
 /* ==========================================================
    4. PERFIL CIRCULAR
 ========================================================== */
 
 .btn-perfil {
-    width: 110px;
-    height: 110px;
+  width: 110px;
+  height: 110px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    border: 4px solid var(--rojo);
-    border-radius: 50%;
+  border: 4px solid var(--rojo);
+  border-radius: 50%;
 
-    background-color: #110a0a;
-    color: var(--blanco-hueso);
+  background-color: #110a0a;
+  color: var(--blanco-hueso);
 
-    font-size: 1rem;
-    font-weight: bold;
+  font-size: 1rem;
+  font-weight: bold;
 
-    box-shadow: var(--sombra-roja);
+  box-shadow: var(--sombra-roja);
 
-    transition:
-        background-color 0.3s,
-        box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .btn-perfil:hover {
-    background-color: var(--rojo-oscuro);
+  background-color: var(--rojo-oscuro);
 
-    box-shadow: 0 0 25px rgba(193, 18, 31, 0.5);
+  box-shadow: 0 0 25px rgba(193, 18, 31, 0.5);
 }
-
 
 /* ==========================================================
    5. NAVEGACIÓN
@@ -123,89 +121,87 @@
 ========================================================== */
 
 .navegacion-principal {
-    width: min(1100px, 94%);
-    margin: 50px auto 0;
+  width: min(1100px, 94%);
+  margin: 50px auto 0;
 
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
 }
 
 .enlace-navegacion {
-    min-height: 95px;
-    padding: 15px;
+  min-height: 95px;
+  padding: 15px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background-color: #110a0a;
+  background-color: #110a0a;
 
-    border: 3px solid var(--rojo);
+  border: 3px solid var(--rojo);
 
-    color: var(--blanco-hueso);
+  color: var(--blanco-hueso);
 
-    text-align: center;
-    font-size: 0.95rem;
-    font-weight: 800;
-    text-transform: uppercase;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
 
-    box-shadow: var(--sombra-roja);
+  box-shadow: var(--sombra-roja);
 
-    transition:
-        background-color 0.3s,
-        border-color 0.3s,
-        box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .enlace-navegacion:hover {
-    background-color: var(--rojo-oscuro);
-    border-color: var(--rojo-brillante);
+  background-color: var(--rojo-oscuro);
+  border-color: var(--rojo-brillante);
 
-    box-shadow: 0 0 25px rgba(193, 18, 31, 0.45);
+  box-shadow: 0 0 25px rgba(193, 18, 31, 0.45);
 }
 
 .navegacion-principal a {
-    font-family: "Special Elite", "Courier New", monospace;
+  font-family: "Special Elite", "Courier New", monospace;
 
-    font-size: 1.3rem;
-    font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: bold;
 
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.4;
 
-    color: var(--blanco-hueso);
+  color: var(--blanco-hueso);
 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
-
 
 /* ==========================================================
    6. ADVERTENCIA
 ========================================================== */
 
 .advertencia-museo {
-    width: 1000px;
-    max-width: none;
+  width: 1000px;
+  max-width: none;
 
-    margin: 30px auto;
-    padding: 18px 25px;
+  margin: 30px auto;
+  padding: 18px 25px;
 
-    background-color: rgba(8, 4, 4, 0.85);
+  background-color: rgba(8, 4, 4, 0.85);
 
-    border: 1px solid rgba(193, 18, 31, 0.5);
-    border-radius: 5px;
+  border: 1px solid rgba(193, 18, 31, 0.5);
+  border-radius: 5px;
 
-    color: #fff5e6;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    text-align: center;
+  color: #fff5e6;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
-
 
 /* ==========================================================
    7. ZONA DE EXPOSICIONES
@@ -215,24 +211,23 @@
 ========================================================== */
 
 .exposiciones {
-    width: min(1000px, 94%);
+  width: min(1000px, 94%);
 
-    margin: 45px auto 0;
-    padding-bottom: 120px;
+  margin: 45px auto 0;
+  padding-bottom: 120px;
 }
 
 .contenedor-vitrinas {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    column-gap: 65px;
-    row-gap: 55px;
+  column-gap: 65px;
+  row-gap: 55px;
 
-    justify-items: center;
-    align-items: start;
+  justify-items: center;
+  align-items: start;
 }
-
 
 /* ==========================================================
    8. CADA EXPOSICIÓN
@@ -244,14 +239,13 @@
 ========================================================== */
 
 .exposicion {
-    width: 100%;
-    min-width: 0;
+  width: 100%;
+  min-width: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 
 /* ==========================================================
    9. LUZ SUPERIOR DE CADA VITRINA
@@ -260,54 +254,48 @@
 ========================================================== */
 
 .luz-vitrina {
-    position: relative;
+  position: relative;
 
-    width: 85px;
-    height: 24px;
+  width: 85px;
+  height: 24px;
 
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 
-    background-color: #3b0c11;
+  background-color: #3b0c11;
 
-    border: 3px solid var(--rojo);
-    border-radius: 7px;
+  border: 3px solid var(--rojo);
+  border-radius: 7px;
 
-    box-shadow:
-        0 0 12px rgba(193, 18, 31, 0.65),
-        0 0 25px rgba(193, 18, 31, 0.3);
+  box-shadow:
+    0 0 12px rgba(193, 18, 31, 0.65),
+    0 0 25px rgba(193, 18, 31, 0.3);
 }
 
 /* Haz de luz que cae sobre el objeto */
 .luz-vitrina::after {
-    content: "";
+  content: "";
 
-    position: absolute;
+  position: absolute;
 
-    top: 100%;
-    left: 50%;
+  top: 100%;
+  left: 50%;
 
-    width: 240px;
-    height: 280px;
+  width: 240px;
+  height: 280px;
 
-    transform: translateX(-50%);
+  transform: translateX(-50%);
 
-    background: linear-gradient(
-        to bottom,
-        rgba(193, 18, 31, 0.12),
-        rgba(193, 18, 31, 0.03) 60%,
-        transparent
-    );
+  background: linear-gradient(
+    to bottom,
+    rgba(193, 18, 31, 0.12),
+    rgba(193, 18, 31, 0.03) 60%,
+    transparent
+  );
 
-    clip-path: polygon(
-        40% 0,
-        60% 0,
-        100% 100%,
-        0 100%
-    );
+  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
 
-    pointer-events: none;
+  pointer-events: none;
 }
-
 
 /* ==========================================================
    10. VITRINA VERTICAL
@@ -317,95 +305,79 @@
 ========================================================== */
 
 .imagen-vitrina {
-    position: relative;
+  position: relative;
 
-    width: 100%;
-    max-width: 205px;
-    height: 285px;
+  width: 100%;
+  max-width: 205px;
+  height: 285px;
 
-    padding: 15px;
+  padding: 15px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    background:
-        radial-gradient(
-            ellipse at top,
-            rgba(193, 18, 31, 0.15),
-            transparent 70%
-        ),
-        linear-gradient(
-            180deg,
-            #201013,
-            #090707
-        );
+  background:
+    radial-gradient(ellipse at top, rgba(193, 18, 31, 0.15), transparent 70%),
+    linear-gradient(180deg, #201013, #090707);
 
-    border: 4px solid var(--rojo);
+  border: 4px solid var(--rojo);
 
-    box-shadow:
-        inset 0 0 30px rgba(0, 0, 0, 0.7),
-        0 0 15px rgba(193, 18, 31, 0.2);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(193, 18, 31, 0.2);
 
-    transition:
-        border-color 0.3s,
-        box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 /* Reflejo sutil del cristal */
 .imagen-vitrina::before {
-    content: "";
+  content: "";
 
-    position: absolute;
+  position: absolute;
 
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 
-    width: 35%;
-    height: 100%;
+  width: 35%;
+  height: 100%;
 
-    background: linear-gradient(
-        110deg,
-        rgba(255, 255, 255, 0.05),
-        transparent
-    );
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.05), transparent);
 
-    pointer-events: none;
-    z-index: 1;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .imagen-vitrina:hover {
-    border-color: var(--rojo-brillante);
+  border-color: var(--rojo-brillante);
 
-    box-shadow:
-        inset 0 0 30px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(193, 18, 31, 0.4);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(193, 18, 31, 0.4);
 }
-
 
 /* ==========================================================
    11. OBJETOS DENTRO DE LAS VITRINAS
 ========================================================== */
 
 .objeto-museo {
-    display: block;
+  display: block;
 
-    max-width: 100%;
-    max-height: 220px;
+  max-width: 100%;
+  max-height: 220px;
 
-    object-fit: contain;
+  object-fit: contain;
 
-    filter: drop-shadow(
-        0 10px 12px rgba(0, 0, 0, 0.7)
-    );
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.7));
 
-    transition:
-        transform 0.3s,
-        opacity 0.3s;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
 }
-
 
 /* ==========================================================
    12. PLACAS INFORMATIVAS DEL MUSEO
@@ -413,72 +385,72 @@
 ========================================================== */
 
 .descripcion-vitrina {
-    width: 310px;
-    max-width: none;
+  width: 310px;
+  max-width: none;
 
-    margin-top: 12px;
-    padding: 14px 16px;
+  margin-top: 12px;
+  padding: 14px 16px;
 
-    background-color: rgba(10, 5, 5, 0.92);
+  background-color: rgba(10, 5, 5, 0.92);
 
-    border: 2px solid var(--rojo);
-    border-radius: 5px;
+  border: 2px solid var(--rojo);
+  border-radius: 5px;
 
-    box-shadow: var(--sombra-roja);
+  box-shadow: var(--sombra-roja);
 
-    text-align: center;
-    height: auto;
-    overflow: visible;
+  text-align: center;
+  height: auto;
+  overflow: visible;
 }
 
 /* Fecha de la exposición */
 .descripcion-vitrina .fecha {
-    display: block;
+  display: block;
 
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 
-    color: #ff6464;
+  color: #ff6464;
 
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Nombre del objeto */
 .descripcion-vitrina h2 {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
-    color: #fff5e6;
+  color: #fff5e6;
 
-    font-size: 1.2rem;
-    font-weight: bold;
-    line-height: 1.3;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.3;
 }
 
 /* Descripción histórica */
 .descripcion-vitrina p {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
-    color: #f0e5dc;
+  color: #f0e5dc;
 
-    font-size: 0.9rem;
-    line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* Leyenda paranormal */
 .descripcion-vitrina .leyenda {
-    margin-top: 8px;
+  margin-top: 8px;
 
-    color: #ff7777;
+  color: #ff7777;
 
-    font-size: 0.8rem;
-    font-style: italic;
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 /* Instrucciones de interacción */
 .descripcion-vitrina .instruccion {
-    font-size: 0.8rem;
-    font-style: italic;
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 /* ==========================================================
@@ -486,330 +458,307 @@
 ========================================================== */
 
 .descripcion-vitrina button {
-    width: 100%;
+  width: 100%;
 
-    margin-top: 5px;
-    padding: 6px 8px;
+  margin-top: 5px;
+  padding: 6px 8px;
 
-    background-color: var(--rojo-oscuro);
+  background-color: var(--rojo-oscuro);
 
-    border: 1px solid var(--rojo-brillante);
-    border-radius: 3px;
+  border: 1px solid var(--rojo-brillante);
+  border-radius: 3px;
 
-    color: var(--blanco-hueso);
+  color: var(--blanco-hueso);
 
-    font-size: 0.8rem;
-    font-weight: bold;
+  font-size: 0.8rem;
+  font-weight: bold;
 
-    transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 .descripcion-vitrina button:hover:not(:disabled) {
-    background-color: var(--rojo);
+  background-color: var(--rojo);
 }
-
 
 /* ==========================================================
    14. MENSAJES DE INTERACCIÓN
 ========================================================== */
 
 .mensaje-interaccion {
-    min-height: 0;
+  min-height: 0;
 
-    margin-top: 12px;
+  margin-top: 12px;
 
-    color: var(--rojo-brillante) !important;
+  color: var(--rojo-brillante) !important;
 
-    font-size: 0.78rem !important;
-    font-weight: bold;
+  font-size: 0.78rem !important;
+  font-weight: bold;
 }
 
 .mensaje-interaccion:empty {
-    display: none;
+  display: none;
 }
-
 
 /* ==========================================================
    15. GUSANO MORRIS
-
-   Los disquetes se multiplican dentro
-   de la vitrina.
 ========================================================== */
 
 #zona-morris {
-    flex-wrap: wrap;
-    align-content: center;
-    gap: 5px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 5px;
 }
 
 #zona-morris .objeto-museo {
-    max-width: 110px;
-    max-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
 }
 
 #zona-morris .copia-morris {
-    width: 38px;
-    height: 38px;
+  width: 38px;
+  height: 38px;
 
-    object-fit: contain;
+  object-fit: contain;
 
-    animation: aparecer-copia 0.3s ease-out;
+  animation: aparecer-copia 0.3s ease-out;
 }
 
 @keyframes aparecer-copia {
-    from {
-        opacity: 0;
-        transform: scale(0.3);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
-
 
 /* ==========================================================
    16. WINDOWS 98
-
-   Pantallazo azul dentro de la vitrina.
 ========================================================== */
 
 .pantallazo-azul {
-    position: absolute;
+  position: absolute;
 
-    inset: 0;
-    z-index: 5;
+  inset: 0;
+  z-index: 5;
 
-    padding: 15px;
+  padding: 15px;
 
-    background-color: #0000aa;
-    color: #ffffff;
+  background-color: #0000aa;
+  color: #ffffff;
 
-    font-family: "Courier New", monospace;
-    text-align: center;
+  font-family: "Courier New", monospace;
+  text-align: center;
 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    gap: 15px;
+  gap: 15px;
 }
 
 .pantallazo-azul[hidden] {
-    display: none;
+  display: none;
 }
 
 .pantallazo-azul:not([hidden]) {
-    display: flex;
+  display: flex;
 }
 
 .pantallazo-azul p {
-    margin: 0;
+  margin: 0;
 
-    color: #ffffff;
+  color: #ffffff;
 
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
-
 
 /* ==========================================================
    17. IBM DEATHSTAR
-
-   Disco duro que desaparece y reaparece.
 ========================================================== */
 
 #objeto-deathstar.desaparecido {
-    opacity: 0;
-    transform: scale(0.85);
+  opacity: 0;
+  transform: scale(0.85);
 }
-
 
 /* ==========================================================
    18. POLILLA DEL HARVARD MARK II
 ========================================================== */
 
 #objeto-bug {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #objeto-bug.volando {
-    animation: vuelo-polilla 3s ease-in-out;
+  animation: vuelo-polilla 3s ease-in-out;
 }
 
 @keyframes vuelo-polilla {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 
-    20% {
-        transform: translate(45px, -40px) rotate(20deg);
-    }
+  20% {
+    transform: translate(45px, -40px) rotate(20deg);
+  }
 
-    45% {
-        transform: translate(-45px, -65px) rotate(-30deg);
-    }
+  45% {
+    transform: translate(-45px, -65px) rotate(-30deg);
+  }
 
-    70% {
-        transform: translate(45px, 25px) rotate(25deg);
-    }
+  70% {
+    transform: translate(45px, 25px) rotate(25deg);
+  }
 
-    100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
-
 
 /* ==========================================================
    19. SIMULADOR PATRIOT
 ========================================================== */
 
 .simulador-patriot {
-    width: 100%;
+  width: 100%;
 
-    margin-top: 12px;
-    padding: 12px;
+  margin-top: 12px;
+  padding: 12px;
 
-    background-color: #090e14;
+  background-color: #090e14;
 
-    border: 1px solid #33404e;
-    border-radius: 5px;
+  border: 1px solid #33404e;
+  border-radius: 5px;
 
-    font-family: "Courier New", monospace;
+  font-family: "Courier New", monospace;
 }
 
 .simulador-patriot p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 
-    font-size: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .simulador-patriot strong {
-    color: #8bffac;
+  color: #8bffac;
 }
-
 
 /* ==========================================================
    20. BOTÓN DE EMERGENCIA FLOTANTE
-
-   WIREFRAME:
-   Esquina inferior derecha.
-
-   Permanece en esa posición al hacer scroll.
 ========================================================== */
 
 .zona-restaurar {
-    position: fixed;
+  position: fixed;
 
-    right: 25px;
-    bottom: 25px;
+  right: 25px;
+  bottom: 25px;
 
-    z-index: 1000;
+  z-index: 1000;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
 }
 
 /* No mostramos texto al lado del botón.
    La explicación está en la advertencia. */
 .zona-restaurar p {
-    display: none;
+  display: none;
 }
 
 #btn-restaurar {
-    width: 75px;
-    height: 75px;
+  width: 75px;
+  height: 75px;
 
-    padding: 0;
+  padding: 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background-color: var(--rojo);
+  background-color: var(--rojo);
 
-    border: 4px solid var(--blanco-hueso);
-    border-radius: 50%;
+  border: 4px solid var(--blanco-hueso);
+  border-radius: 50%;
 
-    color: var(--blanco-hueso);
+  color: var(--blanco-hueso);
 
-    font-size: 2.8rem;
-    font-weight: bold;
-    line-height: 1;
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    box-shadow:
-        0 0 15px rgba(193, 18, 31, 0.7),
-        0 0 30px rgba(193, 18, 31, 0.35);
+  box-shadow:
+    0 0 15px rgba(193, 18, 31, 0.7),
+    0 0 30px rgba(193, 18, 31, 0.35);
 
-    animation: pulso-emergencia 2.5s infinite;
+  animation: pulso-emergencia 2.5s infinite;
 
-    transition:
-        background-color 0.3s,
-        transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 }
 
 #btn-restaurar:hover {
-    background-color: var(--rojo-brillante);
+  background-color: var(--rojo-brillante);
 
-    transform: scale(1.1);
+  transform: scale(1.1);
 
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 @keyframes pulso-emergencia {
-    0%,
-    100% {
-        box-shadow:
-            0 0 12px rgba(193, 18, 31, 0.5),
-            0 0 25px rgba(193, 18, 31, 0.2);
-    }
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(193, 18, 31, 0.5),
+      0 0 25px rgba(193, 18, 31, 0.2);
+  }
 
-    50% {
-        box-shadow:
-            0 0 25px rgba(230, 57, 70, 0.9),
-            0 0 45px rgba(193, 18, 31, 0.5);
-    }
+  50% {
+    box-shadow:
+      0 0 25px rgba(230, 57, 70, 0.9),
+      0 0 45px rgba(193, 18, 31, 0.5);
+  }
 }
-
 
 /* ==========================================================
    21. PIE DE PÁGINA
-
-   WIREFRAME:
-   Línea horizontal y redes sociales centradas.
 ========================================================== */
 
 .pie-pagina {
-    width: 100%;
+  width: 100%;
 
-    padding: 35px 20px 50px;
+  padding: 35px 20px 50px;
 
-    background-color: #0d0808;
+  background-color: #0d0808;
 
-    border-top: 4px solid var(--rojo);
+  border-top: 4px solid var(--rojo);
 
-    text-align: center;
+  text-align: center;
 }
 
 .pie-pagina h2 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 
-    color: var(--blanco-hueso);
+  color: var(--blanco-hueso);
 
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: 1px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 .pie-pagina p {
-    color: var(--texto-secundario);
+  color: var(--texto-secundario);
 
-    font-size: 0.85rem;
+  font-size: 0.85rem;
 }
 
 /* ==========================================
@@ -817,23 +766,23 @@
 ========================================== */
 
 .escenario-museo {
-    position: relative;
+  position: relative;
 
-    width: 100%;
-    max-width: none;
-    min-height: 100vh;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
 
-    left: 50%;
-    transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 
-    background-image: url("../assets/img/museo/fondo-museo-red.png");
-    background-repeat: no-repeat;
-    background-position: center top;
+  background-image: url("../assets/img/museo/fondo-museo-red.png");
+  background-repeat: no-repeat;
+  background-position: center top;
 
-    /* La pared se amplía sin deformarse */
-    background-size: 100% 100%;
+  /* La pared se amplía sin deformarse */
+  background-size: 100% 100%;
 
-    background-color: #080606;
+  background-color: #080606;
 }
 
 /* ==========================================
@@ -841,24 +790,450 @@
 ========================================== */
 
 .exposiciones {
-    width: min(1100px, 94%);
+  width: min(1100px, 94%);
 
-    margin: 10px auto 0;
-    padding-bottom: 100px;
+  margin: 10px auto 0;
+  padding-bottom: 100px;
 }
 
 .contenedor-vitrinas {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    column-gap: 35px;
-    row-gap: 25px;
+  column-gap: 35px;
+  row-gap: 25px;
 
-    justify-items: center;
-    align-items: start;
+  justify-items: center;
+  align-items: start;
 }
 
 .luz-vitrina {
-    visibility: hidden;
+  visibility: hidden;
+}
+
+/* ==========================================================
+   4. MÓVIL
+========================================================== */
+
+@media (max-width: 700px) {
+  .muro-museo {
+    aspect-ratio: auto;
+    padding: 30px 0 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    background-size: cover;
+    background-position: center;
+    container-type: normal;
+  }
+
+  .vitrina {
+    position: static;
+    transform: none;
+    width: 220px;
+    height: 330px;
+    gap: 6px;
+  }
+
+  .imagen-vitrina {
+    padding: 12px;
+    border-width: 3px;
+  }
+  .placa-mini {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 6px;
+    border-width: 2px;
+  }
+  .placa-mini span {
+    font-size: 0.75rem;
+  }
+}
+
+/* La cabecera y el menú quedan fuera de la pared del museo. */
+.escenario-museo {
+  left: auto;
+  transform: none;
+  background: #080606;
+}
+
+.advertencia-museo {
+  width: min(1000px, 94%);
+  box-sizing: border-box;
+}
+
+#exposiciones {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Pared original de 1536 × 1024.
+   Las medidas sitúan los objetos bajo los focos de la imagen. */
+#exposiciones .contenedor-vitrinas {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: url("../assets/img/museo/fondo-museo.png") center / contain
+    no-repeat;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0;
+
+  /* Los porcentajes de padding se calculan sobre el ancho. */
+  padding: 14.8% 19.2% 17.2%;
+  align-items: stretch;
+  justify-items: center;
+  container-type: inline-size;
+}
+
+#exposiciones .exposicion {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* El foco ya está dibujado en la pared. */
+#exposiciones .luz-vitrina {
+  display: none;
+}
+
+#exposiciones .imagen-vitrina {
+  box-sizing: border-box;
+  width: 55%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1.1;
+  flex: none;
+  padding: 3%;
+  border: 2px solid #901825;
+  background: rgb(12 5 6 / 82%);
+}
+
+#exposiciones .objeto-museo {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#exposiciones .descripcion-vitrina {
+  box-sizing: border-box;
+  width: 62%;
+  max-width: none;
+  margin: 1% 0 0;
+  padding: 1% 2%;
+  border: 1px solid #75151f;
+  background: #10090a;
+  color: #fff5e6;
+}
+
+#exposiciones .descripcion-vitrina .fecha,
+#exposiciones .descripcion-vitrina h2 {
+  margin: 0;
+  line-height: 1.15;
+}
+
+#exposiciones .descripcion-vitrina .fecha {
+  font-size: clamp(0.55rem, 1.25cqw, 0.8rem);
+}
+
+#exposiciones .descripcion-vitrina h2 {
+  font-size: clamp(0.65rem, 1.65cqw, 1rem);
+}
+
+/* Móvil: una vitrina por fila, con su propio arco. */
+@media (max-width: 760px) {
+  #exposiciones .contenedor-vitrinas {
+    width: min(100%, 460px);
+    margin-inline: auto;
+    aspect-ratio: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 1rem;
+    padding: 0;
+    background: none;
+  }
+
+  #exposiciones .exposicion {
+    box-sizing: border-box;
+    padding: 24% 0 2%;
+    background: url("../assets/img/museo/arco-movil.png") center top / 100% auto
+      no-repeat;
+  }
+
+  #exposiciones .imagen-vitrina {
+    width: 45%;
+    aspect-ratio: 1;
+  }
+
+  #exposiciones .descripcion-vitrina {
+    width: 76%;
+    margin-top: 2%;
+    padding: 0.65rem;
+  }
+
+  #exposiciones .descripcion-vitrina .fecha {
+    font-size: 0.8rem;
+  }
+
+  #exposiciones .descripcion-vitrina h2 {
+    font-size: 1rem;
+  }
+}
+
+.ficha-objeto > summary {
+  cursor: pointer;
+  color: #f5cfca;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 761px) {
+  #exposiciones .exposicion:has(.ficha-objeto[open]) {
+    z-index: 2;
+  }
+
+  #exposiciones .ficha-objeto[open] {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(28vw, 360px);
+    padding: 0.8rem;
+    border: 1px solid #901825;
+    background: #10090a;
+    box-sizing: border-box;
+  }
+}
+
+.ficha-objeto > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #a8323f;
+  border-radius: 3px;
+  background: #210c10;
+  color: #fff5e6;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ficha-objeto > summary::after {
+  content: "+";
+}
+
+.ficha-objeto[open] > summary::after {
+  content: "−";
+}
+
+.ficha-objeto > summary:hover,
+.ficha-objeto > summary:focus-visible {
+  outline: 2px solid #ff8088;
+  outline-offset: 2px;
+}
+
+.ficha-objeto > .leyenda {
+  margin: 0.75rem 0 0;
+  text-align: left;
+}
+
+/* MUSEO: sala completa en escritorio y vitrinas individuales en móvil */
+.escenario-museo {
+  left: auto;
+  transform: none;
+  background: #0c0707;
+}
+
+.advertencia-museo {
+  box-sizing: border-box;
+  width: min(1000px, 94%);
+}
+
+#exposiciones {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* El fondo y los seis huecos comparten la proporción original: 1536 × 1024. */
+#exposiciones .contenedor-vitrinas {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  margin: 0 auto;
+  padding: 0;
+  background: url("../assets/img/museo/fondo-museo.png") center / 100% 100%
+    no-repeat;
+}
+
+/* Cada artículo se centra bajo uno de los focos dibujados. */
+#exposiciones .exposicion {
+  position: absolute;
+  top: 21%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 15.5%;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+#exposiciones .exposicion:nth-child(3n + 1) {
+  left: 29.5%;
+}
+#exposiciones .exposicion:nth-child(3n) {
+  left: 70.5%;
+}
+#exposiciones .exposicion:nth-child(n + 4) {
+  top: 52.5%;
+}
+
+#exposiciones .luz-vitrina {
+  display: none;
+}
+
+/* El marco pertenece a la vitrina. Todos miden lo mismo. */
+#exposiciones .imagen-vitrina {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 76%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1.18;
+  margin: 0;
+  padding: 4%;
+  overflow: hidden;
+  border: 2px solid #861d2a;
+  background: rgb(15 6 7 / 82%);
+}
+
+/* El objeto conserva sus proporciones dentro del marco. */
+#exposiciones .imagen-vitrina > img.objeto-museo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  border: 0;
+  background: transparent;
+}
+
+/* La placa crece al abrir la historia o activar la simulación.
+   Si hay mucho contenido, se puede desplazar dentro de ella. */
+#exposiciones .descripcion-vitrina {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: min(9.5vw, 146px);
+  overflow: auto;
+  margin: 2% 0 0;
+  padding: 3%;
+  background: #10090a;
+  overflow-wrap: anywhere;
+}
+
+#exposiciones .ficha-objeto[open] {
+  position: static;
+  width: auto;
+  transform: none;
+}
+
+/* Móvil: cada arco, objeto y placa forman una unidad.
+   Si se abre la simulación, la vitrina siguiente baja. */
+@media (max-width: 760px) {
+  #exposiciones .contenedor-vitrinas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 1rem;
+    max-width: 460px;
+    aspect-ratio: auto;
+    background: none;
+  }
+
+  #exposiciones .contenedor-vitrinas > .exposicion {
+    position: static;
+    transform: none;
+    width: 100%;
+    padding: 24% 0 4%;
+    background: url("../assets/img/museo/arco-movil.png") center top / 100% auto
+      no-repeat;
+  }
+
+  #exposiciones .imagen-vitrina {
+    width: 45%;
+  }
+
+  #exposiciones .descripcion-vitrina {
+    width: 76%;
+    max-height: none;
+    overflow: visible;
+    padding: 0.65rem;
+  }
+}
+/* Toda la superficie de la imagen activa la anomalía. */
+#exposiciones .imagen-vitrina {
+  position: relative;
+}
+
+#exposiciones .imagen-vitrina > .activar-anomalia {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+#exposiciones .activar-anomalia:focus-visible {
+  outline: 3px solid #fff5e6;
+  outline-offset: -4px;
+}
+
+#exposiciones .activar-anomalia:disabled {
+  cursor: default;
+}
+
+#exposiciones .pista-anomalia {
+  margin: 0.25rem 0;
+  color: #fff5e6;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  text-align: center;
 }
