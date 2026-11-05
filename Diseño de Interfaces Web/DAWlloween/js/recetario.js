@@ -31,6 +31,7 @@ const navegacion = document.getElementById("navegacion-libro");
 
 const botonAnterior = document.getElementById("pagina-anterior");
 const botonSiguiente = document.getElementById("pagina-siguiente");
+const volverAlIndice = document.getElementById("volver-al-indice");
 
 const numeroPagina = document.getElementById("numero-pagina");
 
@@ -347,11 +348,6 @@ botonSiguiente.addEventListener("click", function () {
 
 volverAlIndice.addEventListener("click", function () {
   mostrarPagina(1);
-  indice.hidden = true;
-  indiceCompleto.hidden = false;
-
-  const primerBoton = listaIndiceCompleto.querySelector("button");
-  primerBoton?.focus({ preventScroll: true });
 });
 
 mostrarPagina(0);

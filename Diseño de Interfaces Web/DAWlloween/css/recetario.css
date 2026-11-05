@@ -661,9 +661,13 @@ body.pagina-recetario {
   box-sizing: border-box;
   width: 100%;
   aspect-ratio: 3 / 4;
-  padding: 12px;
-  flex-direction: column;
-  justify-content: center;
+  contain: size;
+
+  display: grid;
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 8px;
+  padding: 10px;
+
   text-align: center;
   cursor: pointer;
 }
@@ -858,14 +862,20 @@ body.pagina-recetario {
   outline-offset: 2px;
 }
 #indice .foto-tarjeta {
+  display: block;
   width: 100%;
+  height: 100%;
+  min-width: 0;
   min-height: 0;
-  flex: 1;
   object-fit: contain;
 }
 
 #indice .tarjeta-receta span {
-  flex-shrink: 0;
+  align-self: center;
+  min-width: 0;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
   text-align: center;
 }
 /* HOJA DE RECETA */
@@ -1029,4 +1039,71 @@ body.pagina-recetario {
   backface-visibility: hidden;
   pointer-events: none;
   animation: abrir-tapa 850ms ease-in-out forwards;
+}
+.cabecera-recetario .volver-museo {
+  display: inline-flex;
+  align-items: center;
+  width: clamp(115px, 18vw, 185px);
+  height: auto;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cabecera-recetario .volver-museo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cabecera-recetario .volver-museo:hover img {
+  filter: brightness(1.15);
+}
+
+.cabecera-recetario .volver-museo:focus-visible {
+  outline: 2px solid #e5bc72;
+  outline-offset: 3px;
+}
+/* Cabecera: placa a la izquierda y título centrado */
+.cabecera-recetario {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 3fr) 1fr;
+  align-items: center;
+  gap: 6px 12px;
+  height: auto;
+  min-height: 80px;
+  flex: 0 0 auto;
+}
+
+.cabecera-recetario .volver-museo {
+  position: static;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  max-width: 100%;
+}
+
+.cabecera-recetario .titulo-recetario {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  box-sizing: border-box;
+  width: min(600px, 100%);
+  min-width: 0;
+}
+
+/* En pantallas estrechas, la placa queda encima del título */
+@media (max-width: 760px) {
+  .cabecera-recetario {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cabecera-recetario .titulo-recetario {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
