@@ -428,3 +428,67 @@ body.pagina-juego {
     letter-spacing: 1px;
 }
 
+/* La habitación ocupa el fondo de la zona de juego. */
+#pantalla-historia {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    aspect-ratio: 3 / 2;
+    min-height: 340px;
+    padding: clamp(14px, 3vw, 30px);
+
+    justify-content: flex-end;
+    background-color: #000;
+}
+
+/* Este es el contenedor de la imagen que ya tienes en el HTML. */
+#pantalla-historia .imagen-escena {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    border: 0;
+}
+
+#pantalla-historia #imagen-escena {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    image-rendering: auto;
+}
+
+/* El texto permanece legible sobre cualquier escenario. */
+#pantalla-historia .texto-historia {
+    background-color: rgb(8 5 5 / 80%);
+}
+
+/* Capa temporal para atravesar una puerta. */
+.paso-puerta {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    display: grid;
+    place-items: center;
+    background-color: #000;
+}
+
+.paso-puerta img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 640px) {
+    #pantalla-historia {
+        aspect-ratio: auto;
+        padding-top: 110px;
+    }
+}

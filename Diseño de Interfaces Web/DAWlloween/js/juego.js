@@ -121,38 +121,77 @@ async function reiniciarPartida() {
    ========================================== */
 
 const historia = {
-
     inicio: {
-        texto: "Tu coche se ha averiado en mitad de la noche. A lo lejos ves una casa.",
-        imagen: "assets/img/coche.png",
+        imagen: "assets/img/juego/cinematica/accidente coche.png",
+        texto: "1986. El motor se ha parado. Al otro lado de la carretera, " +
+            "una ventana sigue encendida. La guantera se ha abierto con el golpe.",
 
         opciones: [
             {
-                texto: "Acercarse a la casa",
-                destino: "entrada"
+                texto: "Registrar la guantera",
+                objeto: "Linterna",
+                mensaje: "Entre los papeles encuentras una linterna. Te la guardas."
             },
             {
-                texto: "Examinar el coche",
-                destino: "coche"
+                texto: "Acercarse a la casa",
+                destino: "entrada"
             }
         ]
     },
 
     entrada: {
-        texto: "La puerta principal está cerrada. No parece haber nadie dentro.",
-        imagen: "assets/img/puerta.png",
+        imagen: "assets/img/juego/cinematica/Cinematica entrada.png",
+        texto: "Subes los escalones. Antes de que llegues a llamar, " +
+            "la puerta se entreabre. Desde dentro oyes una campanada.",
 
         opciones: [
             {
-                texto: "Llamar a la puerta",
-                destino: "llamar"
+                texto: "Cruzar el umbral",
+                destino: "salon",
+                puerta: true
             },
             {
-                texto: "Buscar otra entrada",
-                destino: "exterior"
+                texto: "Regresar al coche",
+                destino: "inicio"
+            }
+        ]
+    },
+
+    salon: {
+        imagen: "assets/img/juego/escenarios/salon.png",
+        texto: "Hay un reloj de pie junto al escritorio. " +
+            "Esperas la siguiente campanada, pero el péndulo está quieto.",
+
+        opciones: [
+            {
+                texto: "Examinar el reloj",
+                mensaje: "Las agujas están inmóviles. " +
+                    "Entonces vuelves a oír la campanada. Viene del piso de arriba."
+            },
+            {
+                texto: "Salir a la entrada",
+                destino: "entrada",
+                puerta: true
             }
         ]
     }
+};
+
+entrada: {
+    texto: "La puerta principal está cerrada. No parece haber nadie dentro.",
+        imagen: "assets/img/puerta.png",
+
+            opciones: [
+                {
+                    texto: "Llamar a la puerta",
+                    destino: "llamar"
+                },
+                {
+                    texto: "Buscar otra entrada",
+                    destino: "exterior"
+                }
+            ]
+}
 };
 
 /* ==========================================
@@ -315,34 +354,110 @@ function mostrarEscena(nombreEscena) {
     mostrarInventario();
 }
 
-function seleccionarOpcion(opcion) {
-
-    if (opcion.condicion) {
-
-        if (!comprobarCondicion(opcion.condicion)) {
-            alert("No puedes realizar esta acción todavía.");
-            return;
-        }
+async function cruzarPuerta(destino) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        mostrarEscena(destino);
+        return;
     }
 
-    if (opcion.accion) {
+    const pantalla = document.getElementById("pantalla-historia");
+    const controles = document.querySelector(".controles-partida");
 
-        const resultado = realizarAccion(opcion.accion);
+    // Durante el paso por la puerta evitamos un segundo clic.
+    pantalla.inert = true;
+    controles.inert = true;
 
-        if (!resultado) {
-            return;
-        }
+    const capa = document.createElement("div");
+    capa.className = "paso-puerta";
+    capa.setAttribute("aria-hidden", "true");
+    pantalla.appendChild(capa);
+
+    const puerta = new Image();
+    puerta.alt = "";
+
+    try {
+        // 1. La habitación actual se funde a negro.
+        await capa.animate(
+            [{ opacity: 0 }, { opacity: 1 }],
+            { duration: 250 }
+        ).finished;
+
+        // 2. Aparece la puerta cerrada y la cámara se acerca.
+        puerta.src = "assets/img/juego/puerta cerrada.png";
+        await puerta.decode();
+        capa.appendChild(puerta);
+
+        await puerta.animate(
+            [{ transform: "scale(0.92)" }, { transform: "scale(1)" }],
+            { duration: 450, fill: "forwards" }
+        ).finished;
+
+        // 3. Cambia a abierta y avanzamos hacia el hueco.
+        puerta.src = "assets/img/juego/puerta abierta.png";
+        await puerta.decode();
+
+        await puerta.animate(
+            [{ transform: "scale(1)" }, { transform: "scale(1.18)" }],
+            { duration: 400, fill: "forwards" }
+        ).finished;
+    } catch {
+        // Si falta un PNG, el jugador puede continuar igualmente.
+    }
+
+    try {
+        // 4. Preparamos el nuevo escenario detrás de la capa negra.
+        puerta.remove();
+        mostrarEscena(destino);
+
+        const fondo = document.getElementById("imagen-escena");
+        await fondo.decode().catch(() => {});
+
+        await capa.animate(
+            [{ opacity: 1 }, { opacity: 0 }],
+            { duration: 300, fill: "forwards" }
+        ).finished;
+    } finally {
+        capa.remove();
+        pantalla.inert = false;
+        controles.inert = false;
+
+        const primeraOpcion = pantalla.querySelector("#opciones-escena button");
+        primeraOpcion?.focus({ preventScroll: true });
+    }
+}
+
+function seleccionarOpcion(opcion) {
+    const texto = document.getElementById("texto-escena");
+
+    if (opcion.condicion && !comprobarCondicion(opcion.condicion)) {
+        texto.textContent = "Todavía no puedes hacerlo.";
+        return;
+    }
+
+    if (opcion.accion && !realizarAccion(opcion.accion)) {
+        texto.textContent = "Te falta algo para realizar esta acción.";
+        return;
     }
 
     if (opcion.objeto) {
+        if (tieneObjeto(opcion.objeto)) {
+            texto.textContent = "Ya has registrado la guantera. Está vacía.";
+            return;
+        }
+
         recogerObjeto(opcion.objeto);
     }
 
-    if (opcion.destino) {
-        mostrarEscena(opcion.destino);
+    if (opcion.mensaje) {
+        texto.textContent = opcion.mensaje;
+    }
 
-    } else {
-        mostrarEscena(escenaActual);
+    if (opcion.destino) {
+        if (opcion.puerta) {
+            cruzarPuerta(opcion.destino);
+        } else {
+            mostrarEscena(opcion.destino);
+        }
     }
 }
 
