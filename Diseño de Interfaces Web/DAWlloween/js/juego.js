@@ -132,11 +132,11 @@ const mapa = {
   },
 
   almacen: {
-    nombre: "Almacén del sótano",
+    nombre: "Sótano",
     imagen: carpetaEscenarios + "sotano.png",
     texto:
-      "Las estanterías forman un pasillo. Desde aquí puedes alcanzar la sala eléctrica y la ventana.",
-    salidas: ["recibidor", "electrica", "ventana"],
+      "Las estanterías forman un pasillo. Hay una ventana cubierta con tablones y una puerta hacia la sala eléctrica.",
+    salidas: ["recibidor", "electrica"],
     objetos: [
       { accion: "Registrar las estanterías", nombre: "Destornillador" },
     ],
@@ -151,13 +151,7 @@ const mapa = {
     objetos: [{ accion: "Buscar en la caja de repuestos", nombre: "Fusible" }],
   },
 
-  ventana: {
-    nombre: "Ventana del sótano",
-    imagen: carpetaEscenarios + "sotano.png",
-    texto:
-      "Entra aire entre los tablones. Si consigues retirarlos, cabes por la ventana.",
-    salidas: ["almacen"],
-  },
+
 };
 
 /* El asesino recorre habitaciones contiguas.
@@ -182,7 +176,7 @@ const patrulla = [
   "almacen",
   "electrica",
   "almacen",
-  "ventana",
+  "almacen", // Pausa junto a la ventana; conserva los índices de guardados anteriores.
   "almacen",
   "recibidor",
 ];
@@ -266,6 +260,7 @@ function pasarTurno(mensaje, origenJugador = partida.lugar) {
 
     if (!partida.escondido && (mismaHabitacion || cruce || estabaContigo)) {
       partida.vidas--;
+      const curado = curarConBotiquin();
       let avisoCaptura;
 
       if (partida.vidas === 0) {
@@ -402,9 +397,16 @@ const documentosCasa = {
   ],
   salon: [
     {
+      titulo: "Cinta 2",
+      accion: "Buscar junto al teléfono",
+      imagen: "Cinta casete.png",
+      fragmento: "La etiqueta de esta cinta lleva el número 2.",
+      audio: "assets/audio/juego/casete 2.mp3",
+    },
+    {
       titulo: "Fotografía familiar",
       accion: "Examinar la fotografía familiar",
-      imagen: "objetos historia/Fotografía familiar desgastada.png",
+      imagen: "Fotografía familiar desgastada.png",
       fragmento: "Tres personas posan en el patio. La cuarta silla está vacía.",
       reverso:
         "Elena, Julián y Clara Velasco. Patio de la casa, 12 de junio de 1978.",
@@ -415,6 +417,15 @@ const documentosCasa = {
       imagen: "Fotografía del protagonista.png",
       fragmento: "Reconoces tu abrigo antes de reconocerte a ti.",
       reverso: "Álex. Porche de los Velasco, 4 de noviembre de 1986.",
+    },
+  ],
+  cobertizo: [
+    {
+      titulo: "Cinta 3",
+      accion: "Abrir la caja del banco de trabajo",
+      imagen: "Cinta casete.png",
+      fragmento: "La etiqueta de esta cinta lleva el número 3.",
+      audio: "assets/audio/juego/casete 3.mp3",
     },
   ],
   secundario: [
@@ -440,6 +451,7 @@ function abrirAvisoPendiente() {
   const dialogo = elemento("aviso-juego");
   if (dialogo.open || avisosPendientes.length === 0) return;
 
+  const { titulo, rutaImagen, documento } = avisosPendientes.shift();
   const fragmento = elemento("fragmento-aviso");
   const audio = elemento("audio-casete");
   const esDocumento = Boolean(documento.fragmento || documento.reverso);
@@ -459,6 +471,8 @@ function abrirAvisoPendiente() {
   if (documento.audio) {
     audio.src = documento.audio;
   }
+
+  dialogo.showModal();
 }
 
 elemento("play-casete").onclick = async () => {
@@ -476,7 +490,6 @@ elemento("stop-casete").onclick = () => {
   audio.currentTime = 0;
 };
 
-elemento("saltar-casete").onclick = () => elemento("aviso-juego").close();
 
 elemento("aviso-juego").addEventListener("close", () => {
   const audio = elemento("audio-casete");
@@ -533,9 +546,9 @@ function mostrarInventario() {
 }
 
 const imagenesDeHuida = {
-  recibidor: carpetaJuego + "Salidas/ChatGPT Image 29 oct 2026, 00_54_54.png",
-  patio: carpetaJuego + "Salidas/ChatGPT Image 29 oct 2026, 00_52_24.png",
-  ventana: carpetaJuego + "Salidas/ChatGPT Image 29 oct 2026, 00_39_10.png",
+  recibidor: carpetaJuego + "salidas/huida-recibidor.png",
+  patio: carpetaJuego + "salidas/huida-patio.png",
+  almacen: carpetaJuego + "salidas/huida-sotano.png",
 };
 
 function obtenerImagenDePantalla(sala) {
@@ -556,22 +569,6 @@ function mostrarJuego(mensaje) {
 
   const foto = elemento("imagen-escena");
   const ruta = obtenerImagenDePantalla(sala);
-  const imagenesDeHuida = {
-    recibidor: carpetaJuego + "salidas/huida-recibidor.png",
-    patio: carpetaJuego + "salidas/huida-patio.png",
-    ventana: carpetaJuego + "salidas/huida-sotano.png",
-  };
-
-  function obtenerImagenDePantalla(sala) {
-    if (!partida.final) return sala.imagen;
-
-    if (partida.vidas === 0) {
-      return carpetaJuego + "No debiste entrar.png";
-    }
-
-    return imagenesDeHuida[partida.lugar] || sala.imagen;
-  }
-
   elemento("pantalla-historia").classList.toggle(
     "pantalla-final",
     Boolean(partida.final),
@@ -719,7 +716,7 @@ function mostrarAccionesEspeciales() {
     });
   }
 
-  if (partida.lugar === "ventana") {
+  if (partida.lugar === "almacen") {
     crearBoton("Quitar los tablones", () => {
       if (tieneObjeto("Palanca")) {
         terminarPartida(
@@ -739,7 +736,7 @@ function mostrarAccionesEspeciales() {
 async function controlarPartida(accion) {
   if (ocupado) return;
 
-  if (accion === "reiniciar" && !confirm("¿Quieres reiniciar la partida?")) {
+  if (accion === "reiniciar" && !confirm("¿Quieres comenzar una nueva partida? Se borrará el guardado de esta sesión.")) {
     return;
   }
 
@@ -763,17 +760,23 @@ async function controlarPartida(accion) {
     if (accion === "cargar") {
       const guardada = await respuesta.json();
 
+      // La ventana ahora pertenece al sótano.
+      if (guardada?.lugar === "ventana") guardada.lugar = "almacen";
+
       if (
         !guardada ||
         !mapa[guardada.lugar] ||
         !Array.isArray(guardada.inventario) ||
-        !Array.isArray(guardada.encontrados)
+        !Array.isArray(guardada.encontrados) ||
+        !Number.isInteger(guardada.vidas) || guardada.vidas < 0 || guardada.vidas > 2 ||
+        !Number.isInteger(guardada.pasoAsesino) ||
+        guardada.pasoAsesino < -1 || guardada.pasoAsesino >= patrulla.length
       ) {
         alert("Todavía no hay una partida guardada de esta versión.");
         return;
       }
 
-      partida = guardada;
+      partida = { ...crearPartida(), ...guardada };
       mostrarJuego();
     } else if (accion === "reiniciar") {
       partida = crearPartida();

@@ -288,7 +288,7 @@ body.pagina-juego {
   align-items: center;
 }
 
-#descripcion-historia {
+#texto-escena {
   margin: 0;
 
   color: var(--juego-blanco);
@@ -364,44 +364,6 @@ body.pagina-juego {
 
   font-size: 0.85rem;
   letter-spacing: 3px;
-}
-
-#objetos-inventario {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-#objetos-inventario p {
-  margin: 0;
-
-  color: var(--juego-gris);
-  font-size: 0.85rem;
-}
-
-/* Clases preparadas para objetos del inventario */
-
-.objeto-inventario {
-  min-width: 70px;
-  padding: 8px;
-
-  background: #1a0d0f;
-
-  border: 1px solid var(--juego-borde);
-
-  text-align: center;
-  font-size: 0.75rem;
-}
-
-.objeto-inventario img {
-  width: 48px;
-  height: 48px;
-
-  display: block;
-  margin: 0 auto 5px;
-
-  object-fit: contain;
-  image-rendering: pixelated;
 }
 
 /* ==========================================================
@@ -487,7 +449,7 @@ body.pagina-juego {
 @media (max-width: 640px) {
   #pantalla-historia {
     aspect-ratio: auto;
-    padding-top: 110px;
+    padding-top: 14px;
   }
 }
 
@@ -510,29 +472,28 @@ body.pagina-juego {
   text-align: center;
 }
 
-/* El cartel ocupa el espacio superior también en móvil. */
-@media (max-width: 640px) {
-  #pantalla-historia {
-    padding-top: 14px;
-  }
-}
 
 /* Pantalla de objeto obtenido o captura */
 #aviso-juego {
   box-sizing: border-box;
-  width: min(420px, 90vw);
+  width: min(440px, 92vw);
   max-height: 90dvh;
   padding: 20px;
-
   border: 1px solid #865749;
   border-radius: 5px;
   background: #100b0c;
   color: #f3dfc7;
   text-align: center;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  overflow: auto;
 }
 
 #aviso-juego::backdrop {
-  background: rgb(0 0 0 / 82%);
+  background: rgb(0 0 0 / 76%);
+  backdrop-filter: blur(6px);
 }
 
 #titulo-aviso {
@@ -543,7 +504,7 @@ body.pagina-juego {
 #imagen-aviso {
   display: block;
   width: 100%;
-  height: min(32dvh, 240px);
+  height: min(35dvh, 260px);
   margin: 0 auto 16px;
   object-fit: contain;
 }
@@ -574,29 +535,11 @@ body.pagina-juego {
   object-fit: contain;
   object-position: center;
 }
-#aviso-juego {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  box-sizing: border-box;
-  width: min(440px, 92vw);
-  height: fit-content;
-  max-height: 90dvh;
-  overflow: auto;
-  text-align: center;
-}
 
-#aviso-juego::backdrop {
-  background: rgb(0 0 0 / 68%);
-  backdrop-filter: blur(5px);
-}
 
-#imagen-aviso {
-  display: block;
-  width: 100%;
-  height: min(35dvh, 260px);
-  object-fit: contain;
-}
+
+
+
 .sala-del-juego {
   position: relative;
   width: 100%;
@@ -681,19 +624,9 @@ body.pagina-juego {
 .sala-del-juego #pantalla-historia.pantalla-final {
   min-height: 220px;
 }
-#aviso-juego {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  height: fit-content;
-  max-height: 90dvh;
-  overflow: auto;
-}
 
-#aviso-juego::backdrop {
-  background: rgb(0 0 0 / 76%);
-  backdrop-filter: blur(6px);
-}
+
+
 
 #aviso-juego.modo-documento {
   width: min(540px, 92vw);

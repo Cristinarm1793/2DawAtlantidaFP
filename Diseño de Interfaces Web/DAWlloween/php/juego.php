@@ -2,57 +2,71 @@
 
 session_start();
 
-// Crear una partida si todavía no existe
-if (!isset($_SESSION['partida'])) {
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
 
-    $_SESSION['partida'] = [
-        'escena' => 'inicio',
-        'inventario' => [],
-        'terminado' => false
-    ];
+function responder($datos, $codigo = 200)
+{
+    http_response_code($codigo);
+
+    echo json_encode(
+        $datos,
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
+
+    exit;
 }
 
-// Consultar qué acción solicita JavaScript
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    responder(['error' => 'Utiliza una petición POST.'], 405);
+}
+
 $accion = $_POST['accion'] ?? '';
 
-// GUARDAR PARTIDA
-if ($accion === 'guardar') {
+switch ($accion) {
+    case 'guardar':
+        $texto = $_POST['estado'] ?? '';
 
-    $escena = $_POST['escena'] ?? 'inicio';
-    $inventario = $_POST['inventario'] ?? [];
+        if (!is_string($texto)) {
+            responder(['error' => 'La partida recibida no es válida.'], 400);
+        }
 
-    if (is_string($escena) && is_array($inventario)) {
+        $partida = json_decode($texto, true);
 
-        $_SESSION['partida']['escena'] = $escena;
-        $_SESSION['partida']['inventario'] = $inventario;
+        if (
+            !is_array($partida) ||
+            !isset(
+                $partida['lugar'],
+                $partida['inventario'],
+                $partida['encontrados'],
+                $partida['vidas'],
+                $partida['pasoAsesino']
+            ) ||
+            !is_string($partida['lugar']) ||
+            !is_array($partida['inventario']) ||
+            !is_array($partida['encontrados']) ||
+            !is_int($partida['vidas']) ||
+            $partida['vidas'] < 0 ||
+            $partida['vidas'] > 2 ||
+            !is_int($partida['pasoAsesino'])
+        ) {
+            responder(['error' => 'Faltan datos de la partida.'], 400);
+        }
 
-        echo "Partida guardada";
+        // Conservamos todo: objetos, habitación, vidas,
+        // posición del enemigo, reparaciones y documentos.
+        $_SESSION['casa_velasco'] = $partida;
 
-    } else {
-        http_response_code(400);
-        echo "Datos de partida incorrectos";
-    }
+        responder(['ok' => true]);
 
-// CARGAR PARTIDA
-} elseif ($accion === 'cargar') {
+    case 'cargar':
+        responder($_SESSION['casa_velasco'] ?? null);
 
-    header('Content-Type: application/json; charset=utf-8');
+    case 'reiniciar':
+        unset($_SESSION['casa_velasco']);
 
-    echo json_encode($_SESSION['partida']);
+        responder(['ok' => true]);
 
-// REINICIAR PARTIDA
-} elseif ($accion === 'reiniciar') {
-
-    $_SESSION['partida'] = [
-        'escena' => 'inicio',
-        'inventario' => [],
-        'terminado' => false
-    ];
-
-    echo "Partida reiniciada";
-
-} else {
-
-    http_response_code(400);
-    echo "Acción no válida";
+    default:
+        responder(['error' => 'Acción desconocida.'], 400);
 }
