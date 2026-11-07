@@ -1,123 +1,117 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>No debiste entrar | Museum 404</title>
 
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/juego.css">
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/juego.css" />
 
     <script src="js/juego.js" defer></script>
-</head>
+  </head>
 
-<body class="pagina-juego">
-
+  <body class="pagina-juego">
     <!-- ==========================================
          CABECERA
     =========================================== -->
 
     <header class="cabecera-juego">
+      <a href="index.html" class="volver-museo" aria-label="Volver al museo">
+        &#8592;
+      </a>
 
-        <a href="index.html" class="volver-museo" aria-label="Volver al museo">
-            &#8592;
-        </a>
-
-        <div class="titulo-juego">
-            <h1>NO DEBISTE ENTRAR</h1>
-            <p>Hay lugares que deberían permanecer cerrados...</p>
-        </div>
-
-        <div class="controles-partida">
-            <button id="btn-guardar" type="button">Guardar</button>
-            <button id="btn-cargar" type="button">Cargar</button>
-            <button id="btn-reiniciar" type="button">Reiniciar</button>
-        </div>
-
+      <div class="titulo-juego">
+        <h1>NO DEBISTE ENTRAR</h1>
+        <p>Hay lugares que deberían permanecer cerrados...</p>
+      </div>
     </header>
-
 
     <!-- ==========================================
          CONTENIDO PRINCIPAL
     =========================================== -->
-
-    <main class="contenedor-juego">
-
+    <div class="sala-del-juego">
+      <main class="contenedor-juego">
         <!-- PANTALLA DEL JUEGO -->
         <section class="pantalla-juego" aria-label="Juego de terror">
+          <!-- INTRODUCCIÓN -->
+          <div id="pantalla-inicio" class="escena-juego">
+            <h2>NO DEBISTE ENTRAR</h2>
 
-            <!-- INTRODUCCIÓN -->
-            <div id="pantalla-inicio" class="escena-juego">
+            <p>1986. Una carretera desierta. Tu coche acaba de averiarse.</p>
 
-                <h2>NO DEBISTE ENTRAR</h2>
+            <p>
+              A lo lejos distingues una casa. Parece abandonada, pero hay una
+              luz encendida.
+            </p>
 
-                <p>
-                    1986. Una carretera desierta.
-                    Tu coche acaba de averiarse.
-                </p>
+            <p>Necesitas ayuda. Aunque algo te dice que deberías marcharte.</p>
 
-                <p>
-                    A lo lejos distingues una casa.
-                    Parece abandonada, pero hay una luz encendida.
-                </p>
+            <button id="iniciar-juego" type="button">COMENZAR</button>
+          </div>
 
-                <p>
-                    Necesitas ayuda.
-                    Aunque algo te dice que deberías marcharte.
-                </p>
+          <!-- ESCENA PRINCIPAL -->
+          <div id="pantalla-historia" class="escena-juego" hidden>
+            <h2 id="cartel-sala" class="cartel-sala"></h2>
 
-                <button id="iniciar-juego" type="button"> COMENZAR </button>
-
+            <!-- IMAGEN DE LA ESCENA -->
+            <div class="imagen-escena">
+              <img id="imagen-escena" src="" alt="Escena actual del juego" />
             </div>
 
-            <!-- ESCENA PRINCIPAL -->
-            <div id="pantalla-historia" class="escena-juego" hidden>
-
-                <!-- IMAGEN DE LA ESCENA -->
-                <div class="imagen-escena">
-
-                    <img id="imagen-escena" src="" alt="Escena actual del juego">
-
-                </div>
-
-                <!-- TEXTO NARRATIVO -->
-                <div class="texto-historia">
-
-                    <p id="texto-escena"></p>
-
-                </div>
-
-                <!-- DECISIONES -->
-                <div class="opciones-historia" id="opciones-escena"></div>
-
+            <!-- TEXTO NARRATIVO -->
+            <div class="texto-historia">
+              <p id="texto-escena"></p>
             </div>
 
-            <!-- INVENTARIO -->
-            <aside class="inventario-juego">
+            <!-- DECISIONES -->
+            <div class="opciones-historia" id="opciones-escena"></div>
+          </div>
 
-                <p id="estado-vidas" aria-live="polite">Vidas: 2 de 2</p>
-                <h3>INVENTARIO</h3>
+          <!-- INVENTARIO -->
+          <aside class="inventario-juego">
+            <p id="estado-vidas" aria-live="polite">Vidas: 2 de 2</p>
+            <h3>INVENTARIO</h3>
 
-                <div id="inventario"> Inventario vacío </div>
-
-            </aside>
+            <div id="inventario">Inventario vacío</div>
+          </aside>
         </section>
-    </main>
+      </main>
 
+      <div class="controles-partida">
+        <button id="btn-guardar" type="button">Guardar</button>
+        <button id="btn-cargar" type="button">Cargar</button>
+        <button id="btn-reiniciar" type="button">Reiniciar</button>
+      </div>
+    </div>
+
+    <dialog id="aviso-juego" aria-labelledby="titulo-aviso">
+      <h2 id="titulo-aviso"></h2>
+      <div class="lectura-aviso">
+        <img id="imagen-aviso" alt="" />
+        <p id="fragmento-aviso" hidden></p>
+      </div>
+
+      <button id="girar-foto" type="button" hidden>Ver el reverso</button>
+
+      <div id="controles-casete" hidden>
+        <audio id="audio-casete" preload="none"></audio>
+        <button id="play-casete" type="button">▶ Reproducir</button>
+        <button id="stop-casete" type="button">■ Detener</button>
+        <button id="saltar-casete" type="button">Saltar escucha</button>
+      </div>
+      <form method="dialog">
+        <button type="submit" autofocus>Continuar</button>
+      </form>
+    </dialog>
 
     <!-- ==========================================
          PIE DE PÁGINA
     =========================================== -->
 
     <footer class="pie-juego">
-
-        <p>Museum 404: Not Found — No debiste entrar.</p>
-
+      <p>Museum 404: Not Found — No debiste entrar.</p>
     </footer>
-
-</body>
-
+  </body>
 </html>
