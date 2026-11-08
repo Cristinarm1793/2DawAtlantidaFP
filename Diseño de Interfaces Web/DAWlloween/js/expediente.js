@@ -1,7 +1,7 @@
 "use strict";
 
 // Añade aquí tu foto cuando esté preparada. Ejemplo: assets/img/otros/cristina.jpg
-const FOTO_AUTORA = "";
+const FOTO_AUTORA = "assets/img/otros/cristina.png";
 // Puedes sustituir el sonido provisional por un archivo de audio propio.
 const AUDIO_SUSTO = "";
 const IMAGEN_ENTE = "assets/img/otros/ente.png";
@@ -66,10 +66,25 @@ const contenidos = {
     ],
   },
   bibliografia: {
-    titulo: "Bibliografía",
+    titulo: "Bibliografía y reconocimientos",
     parrafos: [
-      "Este apartado está preparado para añadir las fuentes consultadas, los créditos de imágenes y las licencias de audio.",
-      "Pendiente de completar con las referencias definitivas del proyecto.",
+      "Proyecto creado por Cristina como parte de segundo curso de Desarrollo de Aplicaciones Web.",
+
+      "ChatGPT, de OpenAI: apoyo en la elaboración y revisión del código, resolución de dudas, documentación y generación de recursos visuales. Su utilización se reconoce como asistencia durante el desarrollo.",
+
+      "ElevenLabs y Descript: herramientas utilizadas durante la preparación de los recursos de voz y audio del proyecto.",
+
+      "Zork: inspiración para la exploración de habitaciones, el inventario y la narración de la aventura. Nuestro juego adapta esas ideas a decisiones mediante botones.",
+
+      "Otras referencias de ambientación: FAITH, Resident Evil y MediEvil. Jack Skellington es un personaje de referencia y no una creación original de este proyecto.",
+
+      "Gusano Morris — FBI, Morris Worm: https://www.fbi.gov/history/cases-and-criminals/morris-worm",
+
+      "Patriot — U.S. Government Accountability Office, Patriot Missile Defense: Software Problem Led to System Failure at Dhahran, Saudi Arabia: https://www.gao.gov/products/imtec-92-26",
+
+      "La polilla del Harvard Mark II — Smithsonian, Log Book With Computer Bug: https://americanhistory.si.edu/collections/object/nmah_334663",
+
+      "Los créditos de herramientas no sustituyen las atribuciones y licencias de las fotografías, tipografías y audios externos utilizados.",
     ],
   },
 };

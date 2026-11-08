@@ -1,55 +1,55 @@
-# 🎃 DAWlloween
+# Museum 404: Not Found — DAWlloween
 
-**DAWlloween** es un proyecto web interactivo desarrollado con motivo de Halloween para el segundo curso del Ciclo Formativo de Grado Superior de Desarrollo de Aplicaciones Web (DAW).
+Proyecto de 2.º DAW: museo interactivo de errores informáticos, recetario y aventura de terror con opciones de texto.
 
-La web combina elementos de terror, misterio y humor con diferentes funcionalidades e interacciones, ofreciendo una experiencia de navegación ambientada en Halloween.
+## Funciones implementadas
+- Museo con seis objetos y anomalías, expediente «Sobre nosotros» y bibliografía.
+- Recetario generado desde `recetas.json`.
+- Juego con inventario, dos vidas, escondites y tres salidas. Guardado de partida en sesión PHP.
+- Registro, acceso por email, recuperación por pregunta de seguridad y diez avatares.
+- Cuentas compartidas entre navegadores y persistentes en `usuarios.json` privado.
+- Contacto de Jack para visitantes identificados. Requiere configurar transporte de correo para entregar mensajes.
 
-## 🏚️ ¿Qué encontrarás en DAWlloween?
+## Ejecutar en Windows
+Requiere PHP 8 o superior (por ejemplo, XAMPP). No requiere MySQL ni Composer.
 
-| Sección                   | Descripción                                                                           |
-| ------------------------- | ------------------------------------------------------------------------------------- |
-| 🏛️ **Museo del horror**   | Página principal con una exposición de objetos malditos y anomalías interactivas.     |
-| 📖 **Recetario**         | Libro de recetas de Halloween con ingredientes e instrucciones.                       |
-| 👻 **No entres**          | Minijuego de aventura de texto inspirado en los videojuegos clásicos como Zork.       |
-| 🕯️ **Sobre nosotros**     | Información sobre el proyecto, sus inspiraciones y sus creadores.                     |
-| ✉️ **Contacto**           | Formulario para enviar un mensaje a Jack Skellington.                                 |
-| 🔐 **Acceso de usuarios** | Registro, inicio de sesión y cambio de contraseña mediante una pregunta de seguridad. |
+Opción local: si ya tienes `iniciar-local.bat`, puedes seguir usándolo. Si no, abrir CMD en la carpeta DAWlloween y ejecutar:
 
-> **Estado del proyecto:** En desarrollo. Las funcionalidades descritas están previstas y pueden experimentar cambios durante su implementación.
+```bat
+C:\xampp\php\php.exe -S 127.0.0.1:8088 -t .
+```
 
-## 💻 Tecnologías
+Visitar http://127.0.0.1:8088/index.html. Dejar la ventana abierta; Ctrl+C detiene el servidor. El lanzador local no está versionado en la base revisada.
 
-Las tecnologías previstas para el desarrollo son:
+Opción Apache: colocar el proyecto en `C:/xampp/htdocs/DAWlloween`, activar Apache y abrir http://localhost/DAWlloween/index.html. También se puede usar un VirtualHost cuyo DocumentRoot apunte al proyecto. Live Server no ejecuta PHP.
 
-- **HTML5:** estructura y contenido.
-- **CSS3:** diseño visual y efectos.
-- **JavaScript:** interactividad y minijuego.
-- **PHP:** formularios y gestión de sesiones.
-- **Apache:** servidor web local.
-- **Markdown:** documentación.
+## Dónde quedan las cuentas
+PHP crea `museum404-datos/usuarios.json` **al lado de la carpeta pública del servidor**, no dentro de ella. Si Apache sirve `C:/xampp/htdocs`, el archivo será `C:/xampp/museum404-datos/usuarios.json`. Si el servidor local sirve la carpeta DAWlloween, se crea en la carpeta inmediatamente superior, dentro de `museum404-datos`.
 
-## 📁 Documentación
+Se puede fijar otra carpeta mediante `MUSEUM_DATOS_DIR`, siempre fuera de DocumentRoot. PHP necesita permiso de lectura y escritura. Para compartir las mismas cuentas entre Apache y el lanzador, configurar ambos con la misma carpeta privada.
 
-La documentación del proyecto se encuentra en la carpeta `docs`.
+Las contraseñas y respuestas se guardan como hashes. La sesión conserva únicamente la identidad conectada, CSRF y el estado del juego. Cambiar la contraseña invalida los accesos anteriores de esa cuenta. La partida **no** se sincroniza entre navegadores.
 
-| Documento                                  | Contenido                                                     |
-| ------------------------------------------ | ------------------------------------------------------------- |
-| [Introducción](docs/01-introduccion.md)    | Descripción, objetivos, funcionalidades y tecnologías.        |
-| [Diseño](docs/02-diseno.md)                | Sitemap, labelling, wireframes y guía de estilo visual.       |
-| [Guía de usuario](docs/03-guia-usuario.md) | Instrucciones de uso de la aplicación.                        |
-| [Despliegue](docs/04-despliegue.md)        | Configuración del servidor Apache y puesta en funcionamiento. |
+Las cuentas de la antigua matriz de sesión no se importan automáticamente: crear de nuevo las cuentas de demostración una sola vez. No subir usuarios reales ni credenciales a Git. Copiar la carpeta privada, con el servidor detenido, si se necesita trasladar las cuentas a otro equipo.
 
-Consulta [el índice completo de documentación](docs/00-indice-documentacion.md), [las pruebas pendientes](docs/05-comprobacion.md) y [cómo ampliar la historia](docs/06-mantenimiento.md).
+## Organización
+| Archivo | Función |
+|---|---|
+| `php/usuarios.php` | API única: registro, acceso, contraseña, avatar, consulta y cierre de sesión. |
+| `php/funciones.php` | Funciones por secciones: sesión, validación, JSON privado, altas y contraseña. |
+| `php/correo.php` | Contacto autenticado y envío mediante mail(). |
+| `php/config-correo.php` | Destinatario y remitente, sin credenciales. |
+| `php/juego.php` | Guardado, carga y nueva partida del juego. |
+| `js/perfil.js` | Avatares, identidad en el museo y formularios de perfil. |
+| `js/comunicacion.js` | Peticiones compartidas por museo, perfil y contacto. |
+| `js/main.js`, `expediente.js`, `juego.js`, `recetario.js`, `contacto.js` | Interacciones separadas por sección. |
 
-## 🎮 Inspiración
+Se mantienen los CSS compartidos: `general.css` y `avatares.css` evitan duplicar reglas entre páginas.
 
-DAWlloween toma como referencia diferentes elementos del cine de terror, los videojuegos retro, los museos de objetos malditos y la estética de Halloween.
+## Correo
+El destinatario es `g78409890@gmail.com`. Configurar PHP/sendmail o el transporte SMTP elegido. Mailtrap Email Sandbox sirve para inspeccionar pruebas en su bandeja; Brevo permite envío real sujeto a configuración y verificación del remitente. Guardar credenciales solo en configuración local ajena a Git. Que mail() acepte un mensaje no demuestra que haya llegado a Gmail.
 
-Entre sus principales inspiraciones se encuentran:
+## Documentación y estado
+[Índice](docs/00-indice-documentacion.md) · [Guía de usuario](docs/03-guia-usuario.md) · [Despliegue](docs/04-despliegue.md) · [Pruebas](docs/05-comprobacion.md) · [Ampliar historia](docs/06-mantenimiento.md) · [Arquitectura](docs/07-arquitectura.md) · [Limpieza](docs/09-organizacion-json.md).
 
-- **FAITH: The Unholy Trinity:** estética de terror retro y pixel art.
-- **Zork:** aventuras de texto basadas en comandos.
-- **Cine de terror:** ambientación inquietante, sucesos paranormales, misterio y elementos de terror psicológico.
-- **Museos de colecciones malditas:** exposición de objetos con historias misteriosas, vitrinas y elementos sobrenaturales.
-- **Casas abandonadas:** escenarios deteriorados, iluminación tenue y atmósferas inquietantes.
-- **Grimorios y libros de brujería:** diseño y presentación del libro de recetas de Halloween.
+Esta versión se orienta a una demostración de clase. JSON permite persistencia sencilla; para un servicio público permanente conviene una base de datos, recuperación por correo verificado y controles de abuso globales. Quedan por verificar la recepción real de correo, recursos personales y el ajuste visual en los dispositivos de presentación.

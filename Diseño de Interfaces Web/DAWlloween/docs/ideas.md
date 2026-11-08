@@ -3,7 +3,7 @@
 Este archivo conserva propuestas de diseño. No acredita funciones implementadas.
 
 ## Pendientes opcionales
-- Registro permanente en base de datos para una versión pública (fuera del modelo de sesión académico).
+- Migrar del JSON de demostración a una base de datos para una versión pública.
 - Subida de fotografía propia como avatar.
 - Selector de campañas y guardados separados.
 - Ranking persistente.

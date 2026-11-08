@@ -42,7 +42,7 @@ Pulsa Visitante e Iniciar sesión. Escribe el correo con el que te registraste y
 ## Si has olvidado la contraseña
 En Iniciar sesión, pulsa ¿Has olvidado tu contraseña? Escribe tu nombre de usuario, selecciona la pregunta que elegiste y responde. Escribe dos veces la nueva contraseña y pulsa Cambiar contraseña. Cuando se confirme, inicia sesión con tu correo y la nueva contraseña. No se envía ningún enlace por email.
 
-Esta versión académica conserva las cuentas mientras dure la sesión del navegador. Cerrar sesión permite volver a entrar, pero otro navegador o una sesión caducada puede requerir registrarte de nuevo.
+Tu cuenta se conserva al cerrar el navegador. Puedes entrar desde otro dispositivo conectado a la misma instalación del museo. El nombre, correo y personaje se guardan; la partida del juego sigue dependiendo de cada navegador.
 
 ## Escribir a Jack
 1. Inicia sesión y abre Contactar con Jack.

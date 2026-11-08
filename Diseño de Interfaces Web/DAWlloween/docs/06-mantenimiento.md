@@ -41,7 +41,7 @@ Edita recetas.json. Conserva la estructura de una receta existente; añade nombr
 En js/expediente.js: FOTO_AUTORA apunta a tu fotografía; AUDIO_SUSTO a tu audio; IMAGEN_ENTE a la imagen del ente; contenidos contiene los párrafos de Sobre mí, El proyecto y Bibliografía. No introduzcas credenciales en estos archivos públicos.
 
 ## Contacto y perfil
-php/config-correo.php fija el destinatario. SMTP se configura fuera de Git en XAMPP. La lista de avatares se comparte entre js/avatares.js y php/VarGlobales.php: mantener mismos identificadores. Las cuentas de sesión no son permanentes; no borrar toda la sesión al salir, porque contiene la partida.
+php/config-correo.php fija el destinatario. SMTP se configura fuera de Git en XAMPP. La lista de avatares se comparte entre js/perfil.js y php/funciones.php: mantener mismos identificadores. Las cuentas se guardan en el JSON privado; no borrar toda la sesión al salir, porque contiene la partida. Las altas y cambios pasan por php/usuarios.php. Nunca modificar usuarios.json manualmente mientras la web esté en uso.
 
 ## Flujo de cambio
 Guardar una versión en Git, modificar una cosa, ejecutar comprobación de sintaxis y probar en Apache, revisar git diff, confirmar y subir. Si cambias nombres de recursos, actualizar cada referencia respetando mayúsculas, especialmente al publicar en Linux.

@@ -1,32 +1,241 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Visitantes | Museum 404</title><link rel="stylesheet" href="css/perfil.css"><link rel="stylesheet" href="css/avatares.css">
-<script src="js/comunicacion.js" defer></script><script src="js/avatares.js" defer></script><script src="js/perfil.js" defer></script></head>
-<body class="pagina-perfil"><main class="contenedor-perfil"><a class="volver-museo" href="index.html">← Volver al museo</a>
-<section class="expediente-perfil"><h1>Visitantes</h1><div id="aviso-perfil" aria-live="polite" tabindex="-1"></div><div class="contenido-perfil">
-<nav id="menu-perfil" class="menu-visitante" aria-label="Acceso de visitantes"><img id="mano-menu" src="assets/img/perfil/mano-perfil.png" alt=""><button type="button" data-vista="login">Iniciar sesión</button><button type="button" data-vista="registro">Registrarse</button></nav>
-<form id="form-login" class="formulario-perfil" action="php/login.php" method="post" hidden><h2>Iniciar sesión</h2>
-<label for="login-email">Correo electrónico</label><input id="login-email" name="email" type="email" autocomplete="username" required maxlength="254">
-<label for="login-clave">Contraseña</label><input id="login-clave" name="password" type="password" autocomplete="current-password" required>
-<button>Entrar</button><button type="button" class="enlace-texto" data-vista="recuperar">¿Has olvidado tu contraseña?</button><button type="button" data-vista="menu">← Volver</button></form>
-<form id="form-registro" class="formulario-perfil" action="php/altaUsuario.php" method="post" hidden><h2>Nuevo visitante</h2>
-<label for="registro-usuario">Usuario</label><input id="registro-usuario" name="usuario" autocomplete="username" minlength="3" maxlength="40" required>
-<label for="registro-email">Correo</label><input id="registro-email" name="email" type="email" autocomplete="email" maxlength="254" required>
-<label for="registro-clave">Contraseña (mínimo 8 caracteres)</label><input id="registro-clave" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
-<label for="registro-confirmar">Repite la contraseña</label><input id="registro-confirmar" name="confirmar" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
-<label for="registro-pregunta">Pregunta de recuperación</label><select id="registro-pregunta" name="pregunta"><option value="personaje">¿Cuál es tu personaje de ficción favorito?</option><option value="palabra">¿Qué palabra secreta elegiste para el museo?</option><option value="lugar">¿Qué lugar imaginario te gustaría visitar?</option></select>
-<label for="registro-respuesta">Respuesta secreta (respeta mayúsculas)</label><input id="registro-respuesta" name="respuesta" type="password" autocomplete="off" minlength="2" maxlength="72" required>
-<fieldset><legend>Tu personaje</legend><div id="avatares-registro" class="selector-avatares"></div></fieldset>
-<button>Crear cuenta</button><button type="button" data-vista="menu">← Volver</button></form>
-<form id="form-password" class="formulario-perfil" action="php/cambioPass.php" method="post" hidden><h2>Cambiar contraseña</h2>
-<label for="recuperar-usuario">Usuario</label><input id="recuperar-usuario" name="usuario" autocomplete="username" required>
-<label for="recuperar-pregunta">Tu pregunta de seguridad</label><select id="recuperar-pregunta" name="pregunta"><option value="personaje">¿Cuál es tu personaje de ficción favorito?</option><option value="palabra">¿Qué palabra secreta elegiste para el museo?</option><option value="lugar">¿Qué lugar imaginario te gustaría visitar?</option></select>
-<label for="recuperar-respuesta">Respuesta secreta</label><input id="recuperar-respuesta" name="respuesta" type="password" autocomplete="off" required maxlength="72">
-<label for="recuperar-clave">Nueva contraseña</label><input id="recuperar-clave" name="nueva" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
-<label for="recuperar-confirmar">Repite la nueva contraseña</label><input id="recuperar-confirmar" name="confirmar" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
-<button>Cambiar contraseña</button><button type="button" data-vista="menu">← Volver</button></form>
-<section id="panel-usuario" hidden><h2 id="nombre-usuario"></h2><p id="correo-usuario" class="datos-visitante"></p>
-<form id="form-avatar" class="formulario-perfil" action="php/sesiones.php" method="post"><input type="hidden" name="accion" value="avatar"><fieldset><legend>Cambiar personaje</legend><div id="avatares-perfil" class="selector-avatares"></div></fieldset><button>Guardar personaje</button></form>
-<div class="acciones-perfil seccion-perfil"><a class="boton-perfil" href="index.html">Entrar al museo</a><button type="button" data-vista="recuperar">Cambiar contraseña</button></div>
-<form id="form-salir" action="php/sesiones.php" method="post"><input type="hidden" name="accion" value="salir"><button class="enlace-texto">Cerrar sesión</button></form></section>
-<noscript>Activa JavaScript para utilizar los formularios del museo.</noscript></div></section></main></body></html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Visitantes | Museum 404</title>
+    <link rel="stylesheet" href="css/perfil.css" />
+    <link rel="stylesheet" href="css/avatares.css" />
+    <script src="js/comunicacion.js" defer></script>
+    <script src="js/perfil.js" defer></script>
+  </head>
+  <body class="pagina-perfil">
+    <main class="contenedor-perfil">
+      <a class="volver-museo" href="index.html">← Volver al museo</a>
+      <section class="expediente-perfil">
+        <h1>Visitantes</h1>
+        <div id="aviso-perfil" aria-live="polite" tabindex="-1"></div>
+        <div class="contenido-perfil">
+          <nav
+            id="menu-perfil"
+            class="menu-visitante"
+            aria-label="Acceso de visitantes"
+          >
+            <img
+              id="mano-menu"
+              src="assets/img/perfil/mano-perfil.png"
+              alt=""
+            /><button type="button" data-vista="login">Iniciar sesión</button
+            ><button type="button" data-vista="registro">Registrarse</button>
+          </nav>
+          <form
+            id="form-login"
+            class="formulario-perfil"
+            action="php/usuarios.php"
+            method="post"
+            hidden
+          >
+            <!-- Indica a usuarios.php que queremos iniciar sesión. -->
+            <input type="hidden" name="accion" value="login" />
+
+            <h2>Iniciar sesión</h2>
+            <label for="login-email">Correo electrónico</label
+            ><input
+              id="login-email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              required
+              maxlength="254"
+            />
+            <label for="login-clave">Contraseña</label
+            ><input
+              id="login-clave"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+            <button>Entrar</button
+            ><button type="button" class="enlace-texto" data-vista="recuperar">
+              ¿Has olvidado tu contraseña?</button
+            ><button type="button" data-vista="menu">← Volver</button>
+          </form>
+          <form
+            id="form-registro"
+            class="formulario-perfil"
+            action="php/usuarios.php"
+            method="post"
+            hidden
+          >
+            <input type="hidden" name="accion" value="registro" />
+
+            <h2>Nuevo visitante</h2>
+            <label for="registro-usuario">Usuario</label
+            ><input
+              id="registro-usuario"
+              name="usuario"
+              autocomplete="username"
+              minlength="3"
+              maxlength="40"
+              required
+            />
+            <label for="registro-email">Correo</label
+            ><input
+              id="registro-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
+            <label for="registro-clave">Contraseña (mínimo 8 caracteres)</label
+            ><input
+              id="registro-clave"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="72"
+              required
+            />
+            <label for="registro-confirmar">Repite la contraseña</label
+            ><input
+              id="registro-confirmar"
+              name="confirmar"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="72"
+              required
+            />
+            <label for="registro-pregunta">Pregunta de recuperación</label
+            ><select id="registro-pregunta" name="pregunta">
+              <option value="personaje">
+                ¿Cuál es tu personaje de ficción favorito?
+              </option>
+              <option value="palabra">
+                ¿Qué palabra secreta elegiste para el museo?
+              </option>
+              <option value="lugar">
+                ¿Qué lugar imaginario te gustaría visitar?
+              </option>
+            </select>
+            <label for="registro-respuesta"
+              >Respuesta secreta (respeta mayúsculas)</label
+            ><input
+              id="registro-respuesta"
+              name="respuesta"
+              type="password"
+              autocomplete="off"
+              minlength="2"
+              maxlength="72"
+              required
+            />
+            <fieldset>
+              <legend>Tu personaje</legend>
+              <div id="avatares-registro" class="selector-avatares"></div>
+            </fieldset>
+            <button>Crear cuenta</button
+            ><button type="button" data-vista="menu">← Volver</button>
+          </form>
+          <form
+            id="form-password"
+            class="formulario-perfil"
+            action="php/usuarios.php"
+            method="post"
+            hidden
+          >
+            <input type="hidden" name="accion" value="password" />
+
+            <h2>Cambiar contraseña</h2>
+            <label for="recuperar-usuario">Usuario</label
+            ><input
+              id="recuperar-usuario"
+              name="usuario"
+              autocomplete="username"
+              required
+            />
+            <label for="recuperar-pregunta">Tu pregunta de seguridad</label
+            ><select id="recuperar-pregunta" name="pregunta">
+              <option value="personaje">
+                ¿Cuál es tu personaje de ficción favorito?
+              </option>
+              <option value="palabra">
+                ¿Qué palabra secreta elegiste para el museo?
+              </option>
+              <option value="lugar">
+                ¿Qué lugar imaginario te gustaría visitar?
+              </option>
+            </select>
+            <label for="recuperar-respuesta">Respuesta secreta</label
+            ><input
+              id="recuperar-respuesta"
+              name="respuesta"
+              type="password"
+              autocomplete="off"
+              required
+              maxlength="72"
+            />
+            <label for="recuperar-clave">Nueva contraseña</label
+            ><input
+              id="recuperar-clave"
+              name="nueva"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="72"
+              required
+            />
+            <label for="recuperar-confirmar">Repite la nueva contraseña</label
+            ><input
+              id="recuperar-confirmar"
+              name="confirmar"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="72"
+              required
+            />
+            <button>Cambiar contraseña</button
+            ><button type="button" data-vista="menu">← Volver</button>
+          </form>
+          <section id="panel-usuario" hidden>
+            <h2 id="nombre-usuario"></h2>
+            <p id="correo-usuario" class="datos-visitante"></p>
+            <form
+              id="form-avatar"
+              class="formulario-perfil"
+              action="php/usuarios.php"
+              method="post"
+            >
+              <input type="hidden" name="accion" value="avatar" />
+              <fieldset>
+                <legend>Cambiar personaje</legend>
+                <div id="avatares-perfil" class="selector-avatares"></div>
+              </fieldset>
+              <button>Guardar personaje</button>
+            </form>
+            <div class="acciones-perfil seccion-perfil">
+              <a class="boton-perfil" href="index.html">Entrar al museo</a
+              ><button type="button" data-vista="recuperar">
+                Cambiar contraseña
+              </button>
+            </div>
+            <form id="form-salir" action="php/usuarios.php" method="post">
+              <input type="hidden" name="accion" value="salir" /><button
+                class="enlace-texto"
+              >
+                Cerrar sesión
+              </button>
+            </form>
+          </section>
+          <noscript
+            >Activa JavaScript para utilizar los formularios del
+            museo.</noscript
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+# Datos privados de demostración: nunca publicar usuarios ni credenciales.
+**/usuarios.json
+**/usuarios.lock
+**/.usuarios-*
+**/museum404-datos/
+.env
+.env.*
+!.env.example

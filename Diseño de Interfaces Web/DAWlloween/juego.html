@@ -13,23 +13,12 @@
   </head>
 
   <body class="pagina-juego">
-    <!-- ==========================================
-         CABECERA
-    =========================================== -->
-
-
-
-    <!-- ==========================================
-         CONTENIDO PRINCIPAL
-    =========================================== -->
     <div class="sala-del-juego">
       <a href="index.html" class="placa-volver" aria-label="Volver al museo">
-        <img src="assets/img/otros/placa-izq-museo.png" alt="Volver al museo">
+        <img src="assets/img/otros/placa-izq-museo.png" alt="Volver al museo" />
       </a>
       <main class="contenedor-juego">
-        <!-- PANTALLA DEL JUEGO -->
         <section class="pantalla-juego" aria-label="Juego de terror">
-          <!-- INTRODUCCIÓN -->
           <div id="pantalla-inicio" class="escena-juego">
             <h2>NO DEBISTE ENTRAR</h2>
 
@@ -45,30 +34,29 @@
             <button id="iniciar-juego" type="button">COMENZAR</button>
           </div>
 
-          <!-- ESCENA PRINCIPAL -->
           <div id="pantalla-historia" class="escena-juego" hidden>
             <h2 id="cartel-sala" class="cartel-sala"></h2>
 
-            <!-- IMAGEN DE LA ESCENA -->
             <div class="imagen-escena">
               <img id="imagen-escena" src="" alt="Escena actual del juego" />
             </div>
 
-            <!-- TEXTO NARRATIVO -->
             <div class="texto-historia">
               <p id="texto-escena"></p>
             </div>
 
-            <!-- DECISIONES -->
             <div class="opciones-historia" id="opciones-escena"></div>
             <nav id="navegacion-opciones" aria-label="Más acciones" hidden>
-              <button id="opciones-anteriores" type="button">← Anteriores</button>
+              <button id="opciones-anteriores" type="button">
+                ← Anteriores
+              </button>
               <span id="numero-opciones" aria-live="polite"></span>
-              <button id="opciones-siguientes" type="button">Más opciones →</button>
+              <button id="opciones-siguientes" type="button">
+                Más opciones →
+              </button>
             </nav>
           </div>
 
-          <!-- INVENTARIO -->
           <aside class="inventario-juego">
             <p id="estado-vidas" aria-live="polite">Vidas: 2 de 2</p>
             <h3>INVENTARIO</h3>
@@ -79,9 +67,18 @@
       </main>
 
       <div class="controles-partida">
-        <button id="btn-guardar" type="button" aria-label="Guardar"><img src="assets/img/otros/placa-guardar.png" alt="Guardar"></button>
-        <button id="btn-cargar" type="button" aria-label="Cargar"><img src="assets/img/otros/placa-cargar.png" alt="Cargar"></button>
-        <button id="btn-reiniciar" type="button" aria-label="Nueva partida"><img src="assets/img/otros/placa-nueva-partida.png" alt="Nueva partida"></button>
+        <button id="btn-guardar" type="button" aria-label="Guardar">
+          <img src="assets/img/otros/placa-guardar.png" alt="Guardar" />
+        </button>
+        <button id="btn-cargar" type="button" aria-label="Cargar">
+          <img src="assets/img/otros/placa-cargar.png" alt="Cargar" />
+        </button>
+        <button id="btn-reiniciar" type="button" aria-label="Nueva partida">
+          <img
+            src="assets/img/otros/placa-nueva-partida.png"
+            alt="Nueva partida"
+          />
+        </button>
       </div>
     </div>
 
@@ -101,11 +98,5 @@
         <button type="submit" autofocus>Continuar</button>
       </form>
     </dialog>
-
-    <!-- ==========================================
-         PIE DE PÁGINA
-    =========================================== -->
-
-
   </body>
 </html>

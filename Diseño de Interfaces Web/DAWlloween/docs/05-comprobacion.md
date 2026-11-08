@@ -1,54 +1,33 @@
-# Comprobación antes de entregar
+# 5. Comprobación de la versión JSON
 
-## Incluido en este parche
-- Registro, acceso por usuario, recuperación por pregunta y cambio de avatar.
-- Matriz `mimatriz`, rol user establecido en servidor, hashes, CSRF y límites de intentos por sesión.
-- Nombre/avatar de visitante en el museo. No se sustituye main.js ni los parches previos de diseño del museo/juego.
-- Momia sin uniforme, mano independiente y diez avatares de Halloween.
-- Contacto con mail(), identidad de sesión, errores controlados y destinatario fijo g78409890@gmail.com y transporte SMTP pendiente.
-- Compatibilidad con rutas PHP anteriores y aboutus.html hacia conocenos.html.
+Base: db2a7ec, revisión del 8 de noviembre de 2026. Se usan cuentas ficticias y un directorio temporal independiente; no se modifican usuarios reales.
 
-## Completar manualmente
-- [ ] Transporte SMTP local; probar recepción y spam.
-- [ ] Foto personal, foto del ente, imagen y audio de susto en los recursos del expediente de Sobre nosotros que hayas aplicado previamente.
-- [ ] Textos personales, bibliografía y créditos de recursos. Declarar las imágenes generadas y adaptar la entrega a las normas del profesor.
-- [ ] Comprobar que existe assets/otros/Jack Skellington.png, con ese nombre y mayúsculas.
-- [ ] Ajustar posición/tamaño de la mano si lo deseas tras verla en el navegador. Es una imagen independiente con traslado y giro CSS, no un modelo 3D articulado.
-- [ ] Capturas de sitemap, wireframes, paleta, fuentes, componentes y VirtualHost para contrastarlas con el enunciado completo.
+## Comprobado automáticamente
+- Sintaxis de todos los PHP con PHP 8.3 y de todos los JS con Node.
+- Referencias estáticas de HTML/CSS contrastadas con el inventario completo de Git y los archivos nuevos: sin destinos faltantes. Sin IDs HTML duplicados.
+- Sin referencias ejecutables a los PHP y JS retirados.
+- Registro, email duplicado rechazado y cuenta accesible desde otra sesión/navegador.
+- Acceso por email, rechazo de contraseña incorrecta y persistencia tras reiniciar PHP.
+- Cambio de avatar visible desde otra sesión; avatar no admitido rechazado.
+- CSRF ausente rechazado.
+- Recuperación con respuesta incorrecta rechazada; contraseña nueva aceptada y antigua rechazada.
+- Cambio de contraseña invalida otras sesiones que tenían acceso a esa cuenta.
+- Contraseña y respuesta guardadas como hashes; sin UsuarioActual global en el JSON.
+- Cinco procesos PHP con altas simultáneas: todas las cuentas se conservaron.
+- JSON corrupto: error controlado y archivo original intacto.
+- Guardar y cargar partida después de cerrar sesión de usuario conserva los datos.
+- Contacto sin sesión rechazado antes del envío.
 
-## Pruebas manuales en XAMPP
-- [ ] Registrar cuenta, rechazar duplicados, cerrar sesión y entrar de nuevo.
-- [ ] Cambiar clave con respuesta correcta; comprobar rechazo con respuesta incorrecta y con clave antigua.
-- [ ] Cambiar los diez avatares y comprobar nombre/avatar al volver al museo.
-- [ ] Contacto sin sesión, campos vacíos, fallo SMTP y recepción real configurada.
-- [ ] Las seis anomalías y Restablecer; Sobre nosotros, subventanas, atrás, cerrar, audio y screamer.
-- [ ] Libro: apertura, tarjetas, índice completo, las 13 recetas, avanzar/retroceder y volver al índice.
-- [ ] Juego: guardar/cargar/nueva partida, inventario, botiquín, escondites, tres cintas, enemigo, game over y tres salidas con sus objetos.
-- [ ] Pantalla pequeña y grande: sin solapamientos, botones accesibles, formularios completos visibles. Los formularios largos permiten desplazarse para no ocultar campos.
-- [ ] Teclado: Tab, Enter, foco visible y flechas del selector; reducción de movimiento del sistema.
+## Pendiente en tu instalación de Windows
+- [ ] Aplicar el parche sobre la base indicada y revisar git diff.
+- [ ] Registrar de nuevo una cuenta de prueba; entrar desde ventana privada.
+- [ ] Confirmar la ubicación privada de usuarios.json y hacer copia de seguridad.
+- [ ] Comprobar perfil, mano y diez avatares; volver al museo y ver la identidad.
+- [ ] Probar Jack con SMTP configurado y comprobar recepción real (o bandeja de Mailtrap Sandbox).
+- [ ] Probar las seis anomalías, Restablecer, expediente, audio y screamer.
+- [ ] Recetario: abrir libro, índices, recetas y navegación.
+- [ ] Juego: tres salidas, vidas, objetos, escondites, cintas, guardar/cargar/nueva partida.
+- [ ] Comprobar el diseño en escritorio y móvil, teclado y lectura de todos los formularios.
+- [ ] Completar foto personal, textos y créditos de imágenes/audio.
 
-No marcar estas pruebas como superadas hasta ejecutarlas en la versión local completa. El parche conserva el resto de archivos para no deshacer modificaciones anteriores que aún no estén subidas a Git.
-
-## Comprobaciones automáticas realizadas sobre este parche
-- Sintaxis de todos los archivos PHP y JavaScript: correcta.
-- HTML: sin identificadores duplicados; referencias locales de páginas contrastadas con el inventario de Git y archivos nuevos.
-- recetas.json: 13 entradas, imágenes referenciadas presentes en Git.
-- Lógica de juego: mapa con destinos válidos, patrulla contigua, rechazo/aceptación de requisitos de las tres salidas, botiquín consumido y títulos únicos de documentos.
-- Integración HTTP con PHP 8.3 y cuenta ficticia local: registro, duplicados, token CSRF inválido, rol user impuesto, avatar inválido/válido, cierre y nuevo acceso, respuesta secreta incorrecta/correcta, clave antigua rechazada y nueva aceptada.
-- Guardar/cargar conserva la partida al cerrar sesión de usuario; Nueva partida elimina el guardado.
-- Contacto rechaza ausencia de sesión y campos inválidos. No se ha enviado ningún correo externo ni probado la recepción SMTP.
-
-Estas pruebas no sustituyen las pruebas visuales, de audio, de teclado y de entrega de correo en XAMPP.
-
-## Corrección de formularios
-- Inicio de sesión cambiado a email; el nombre se mantiene para mostrar identidad y recuperar por pregunta.
-- Perfil limitado al marco de la ventana, con desplazamiento interno y barra dorada.
-- Contacto requiere sesión en interfaz y PHP; no solicita nombre/email de nuevo.
-- Hoja de Jack transparente, sin cabecera/pie externos, con regreso al museo.
-- contactanos.css reescrito: eliminadas las reglas copiadas del juego. perfil.css unificado: eliminadas reglas de mano duplicadas/sobrescritas.
-- Avisos técnicos de PHP sustituidos por mensajes comprensibles, sin fingir éxito ni ocultar un envío fallido.
-- GitHub consultado sigue en c246c8f; esta corrección se aplica después de museum404-c246c8f.patch.
-
-Pendiente: confirmar recorte y alineación de ambas imágenes en el navegador final, y recepción SMTP.
-
-Verificación de esta corrección: sintaxis PHP/JS correcta; referencias de formularios comprobadas; integración HTTP correcta para registro, acceso por correo, recuperación, avatar y conservación del guardado. Contacto rechaza usuarios sin sesión. No se ejecutó envío real de correo. El navegador de pruebas no estuvo disponible, por lo que no se certifica la alineación visual final.
+No se ha enviado correo externo ni certificado la entrega a Gmail. No se ha realizado una prueba visual completa de todas las páginas en un navegador en esta revisión. El análisis de rutas no sustituye la inspección visual ni permite asegurar que todos los recursos candidatos sobren.

@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     header('Location: ../contacto.html'); exit;
 }
-require_once __DIR__ . '/VarGlobales.php';
+require_once __DIR__ . '/funciones.php';
 exigirPost();
 $usuario = usuarioPublico();
 if ($usuario === null) responder(401, ['ok' => false, 'error' => 'Inicia sesión antes de escribir a Jack.']);

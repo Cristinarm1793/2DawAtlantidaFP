@@ -20,7 +20,7 @@ async function peticionMuseo(url, opciones = {}) {
     }
 }
 async function consultarSesion() {
-    const datos = await peticionMuseo("php/sesiones.php");
+    const datos = await peticionMuseo("php/usuarios.php");
     return datos.usuario;
 }
 async function enviarFormulario(formulario, destino) {

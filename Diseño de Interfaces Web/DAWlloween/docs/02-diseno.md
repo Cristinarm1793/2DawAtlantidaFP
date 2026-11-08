@@ -1,7 +1,7 @@
 # 2. Diseño de interfaces
 
 ## Navegación y etiquetas
-La portada index.html representa el museo. Recetario abre recetario.html; No entres · Juego abre juego.html; Visitante abre perfil.html y, tras acceder, muestra nombre y avatar. Contactar con Jack abre contacto.html. Sobre nosotros abre el expediente superpuesto; conocenos.html conserva la página independiente y aboutus.html redirige a ella.
+La portada index.html representa el museo. Recetario abre recetario.html; No entres · Juego abre juego.html; Visitante abre perfil.html y, tras acceder, muestra nombre y avatar. Contactar con Jack abre contacto.html. Sobre nosotros abre el expediente superpuesto; conocenos.html conserva la página independiente.
 
 ![Mapa de navegación original](img/sitemap.png)
 

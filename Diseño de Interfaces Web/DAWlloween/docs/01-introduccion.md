@@ -15,7 +15,7 @@ Aplicar estructura semántica HTML, diseño adaptable con CSS, eventos y manipul
 | Perfil | Registro, acceso por correo, recuperación por pregunta y diez avatares. |
 | Jack | Formulario con identidad de sesión, destinatario fijo y envío mediante mail(); requiere configurar transporte. |
 
-No se implementa un intérprete de comandos escritos, ranking persistente, subida de fotos de usuario ni recuperación por email. Las cuentas se almacenan en $_SESSION['mimatriz'] conforme al alcance académico, no en una base de datos permanente. Una nueva sesión no comparte cuentas ni partida.
+No se implementa un intérprete de comandos escritos, ranking persistente, subida de fotos de usuario ni recuperación por email. Las cuentas se conservan en un JSON privado compartido entre navegadores. Las partidas del juego siguen siendo de sesión y no se sincronizan entre dispositivos.
 
 ## Tecnologías y estructura
 HTML5 para páginas; CSS para marcos, vitrinas y adaptación; JavaScript para eventos, fetch, diálogo y estado de juego; PHP para sesión, autenticación y correo; Apache/XAMPP para ejecución. Markdown y diagramas draw.io para documentación.

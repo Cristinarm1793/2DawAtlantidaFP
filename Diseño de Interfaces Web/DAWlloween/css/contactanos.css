@@ -227,3 +227,47 @@ button:disabled {
     margin-top: 3px;
   }
 }
+/* Márgenes del formulario dentro del pergamino. */
+@media (min-width: 601px) {
+  .carta-jack {
+    left: calc((100vw - var(--escena-ancho)) / 2 + var(--escena-ancho) * 0.355);
+    width: calc(var(--escena-ancho) * 0.35);
+  }
+}
+
+.carta-jack h1 {
+  font-size: clamp(20px, 1.65vw, 28px);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.carta-jack p,
+.carta-jack label,
+.carta-jack button,
+#respuesta-contacto {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.carta-jack select,
+.carta-jack textarea {
+  font-size: 14px;
+}
+
+.contenido-carta {
+  padding-inline: 8px;
+  scrollbar-gutter: stable both-edges;
+}
+
+#respuesta-contacto:not(:empty) {
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* Evita que el móvil amplíe automáticamente los campos. */
+@media (max-width: 600px) {
+  .carta-jack select,
+  .carta-jack textarea {
+    font-size: 16px;
+  }
+}

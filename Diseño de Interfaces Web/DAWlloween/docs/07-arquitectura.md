@@ -1,26 +1,27 @@
 # 7. Arquitectura y datos
 
 ## Cliente
-index.html carga main.js (anomalías), expediente.js (Sobre nosotros) y visitante.js/avatares.js (identidad visual). perfil.html y contacto.html comparten comunicacion.js para obtener sesión/CSRF y enviar FormData. recetario.js carga recetas.json. juego.js mantiene el estado en memoria y llama a php/juego.php para guardarlo.
+El museo carga main.js (anomalías), expediente.js (Sobre nosotros), comunicacion.js (API) y perfil.js (avatar e identidad). En perfil.html, perfil.js activa también el menú de la momia y sus formularios. Cada inicializador comprueba que existe su contenedor antes de actuar. Contacto comparte comunicacion.js. Recetario carga recetas.json. El juego conserva su JS y API independientes.
 
 ## Servidor
 | Archivo | Responsabilidad |
 |---|---|
-| VarGlobales.php | Iniciar sesión, matriz, validación, hashes, CSRF y funciones compartidas. |
-| altaUsuario.php | Validar registro y activar usuario creado. |
-| login.php | Comprobar correo y contraseña. |
-| cambioPass.php | Verificar pregunta/respuesta y guardar contraseña nueva. |
-| sesiones.php | Consultar usuario público, cerrar sesión y cambiar avatar. |
-| correo.php | Validar identidad y mensaje y llamar a mail(). |
+| usuarios.php | GET: usuario público y CSRF. POST: accion=registro, login, password, avatar o salir. |
+| funciones.php | Sesión, JSON privado, validación, hashes y funciones de cuenta, separadas por comentarios. |
+| correo.php | Validar identidad y mensaje; llamar a mail(). |
 | config-correo.php | Destinatario fijo y remitente SMTP opcional; sin contraseñas. |
-| juego.php | Guardar, cargar y reiniciar estado completo. |
+| juego.php | Guardar, cargar y reiniciar la partida en sesión. |
 
-registro.php, cambiar-password.php y enviar-contacto.php conservan compatibilidad con nombres anteriores. config.php carga VarGlobales.php. Las operaciones de cuenta/contacto usan POST y token CSRF; el guardado del juego conserva su endpoint independiente de la versión base.
+Las rutas antiguas de cuentas se eliminan y los formularios apuntan a usuarios.php. contacto.php se conserva como redirección a contacto.html para enlaces existentes.
 
-## Sesión
-mimatriz contiene Usuario, Contraseña (hash), Email, Perfil=user, Pregunta, Respuesta (hash), UsuarioActual, Avatar y CreadoEn. La respuesta pública excluye hashes y respuesta secreta. currentUser regenera identificador y token; cerrar sesión desmarca usuario sin borrar las cuentas de esa sesión ni casa_velasco.
+## Persistencia
+usuarios.json contiene una lista con Id, Usuario, Email, Contraseña (hash), Perfil, Pregunta, Respuesta (hash), Avatar, CreadoEn y Version. No contiene UsuarioActual: esa información debe ser individual por navegador. PHP no devuelve los hashes en su API.
 
-casa_velasco guarda lugar, inventario, encontrados, vidas, pasoAsesino, escondido, linternaEncendida, cuadroReparado y final. El navegador conserva su estado activo hasta que lo guarda; recargar sin cargar no restaura automáticamente la partida.
+El archivo se crea fuera de DocumentRoot. Una variable de entorno MUSEUM_DATOS_DIR permite elegir una carpeta explícita. El programa rechaza carpetas dentro de la raíz pública. No añadir alias de Apache que expongan esa carpeta.
 
-## Límites
-La matriz es por sesión/navegador. Los límites de intentos son también por sesión, no un sistema global contra abuso. No hay base de datos de usuarios compartida ni recuperación por correo. mail() necesita transporte operativo y su aceptación no demuestra entrega. Antes de un servicio público permanente se requiere revisar persistencia, autenticación, límites globales y despliegue HTTPS.
+Cada operación usa usuarios.lock para mantener bloqueada toda la lectura, comprobación de duplicados y escritura. Se escribe un archivo temporal en la misma carpeta y se renombra al destino; un JSON corrupto se rechaza sin sobrescribirlo. No editar manualmente el JSON con el servidor en funcionamiento. No borrar el archivo de bloqueo durante el uso.
+
+La sesión guarda usuario_id y usuario_version. El cambio de contraseña incrementa Version y los accesos con la versión anterior dejan de estar autenticados. Cerrar sesión regenera su identificador y CSRF sin borrar casa_velasco ni las cuentas. Cada petición vuelve a leer el archivo para ver cambios de otros navegadores.
+
+## Límites de la demostración
+No se migran automáticamente cuentas de la matriz anterior. Los límites de intentos son por sesión, no un sistema global contra abuso. La recuperación por pregunta se conserva para la práctica; un servicio público necesita correo verificado y recuperación más robusta. JSON no sustituye todas las garantías y consultas de una base de datos. El juego sigue guardándose por sesión, no por cuenta. mail() necesita transporte y su aceptación no prueba entrega.

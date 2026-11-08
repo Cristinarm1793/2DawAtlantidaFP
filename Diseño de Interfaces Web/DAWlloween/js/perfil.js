@@ -1,3 +1,41 @@
+// ==================== AVATARES COMPARTIDOS ====================
+'use strict';
+const avataresMuseo = ['esqueleto-hombre','momia-hombre','zombi-hombre','vampiro-hombre','hombre-lobo','esqueleto-mujer','momia-mujer','zombi-mujer','vampiro-mujer','mujer-lobo'];
+function pintarAvatar(elemento, valor) {
+ let i = avataresMuseo.indexOf(valor); if (i < 0) i = 1;
+ elemento.classList.add('avatar-halloween');
+ elemento.style.backgroundPosition = `${(i % 5) * 25}% ${i < 5 ? 0 : 100}%`;
+ elemento.setAttribute('aria-hidden','true');
+}
+function opcionesAvatar(contenedor, elegido) {
+ contenedor.replaceChildren();
+ avataresMuseo.forEach((valor) => {
+  const label = document.createElement('label');
+  const radio = document.createElement('input');
+  radio.type = 'radio'; radio.name = 'avatar'; radio.value = valor; radio.required = true; radio.checked = valor === elegido;
+  const foto = document.createElement('span'); pintarAvatar(foto,valor);
+  const texto = document.createElement('span'); texto.textContent = valor.replaceAll('-',' ');
+  label.append(radio,foto,texto); contenedor.append(label);
+ });
+}
+
+// ==================== VISITANTE EN EL MUSEO ====================
+'use strict';
+(() => {
+ document.querySelectorAll('a[href="contacto.php"]').forEach(a=>a.setAttribute('href','contacto.html'));
+ const boton=document.getElementById('btn-perfil'); if(!boton) return;
+ if(boton.tagName==='A') boton.href='perfil.html';
+ else boton.addEventListener('click',()=>{location.href='perfil.html';});
+ consultarSesion().then(usuario=>{
+  const datos = {usuario};
+  if(!datos.usuario)return;
+  const avatar=document.createElement('span'); pintarAvatar(avatar,datos.usuario.avatar);
+  const nombre=document.createElement('span');nombre.className='nombre-visitante';nombre.textContent=datos.usuario.nombre;
+  boton.replaceChildren(avatar,nombre);boton.title=`Perfil de ${datos.usuario.nombre}`;boton.setAttribute('aria-label',boton.title);
+ }).catch(()=>{ /* El enlace al perfil sigue disponible si PHP no está activo. */ });
+})();
+
+// ==================== FORMULARIOS DEL PERFIL ====================
 "use strict";
 (() => {
     const $ = id => document.getElementById(id);
@@ -5,6 +43,7 @@
     let navegacionUsada = false;
     const vistas = { menu: "menu-perfil", login: "form-login", registro: "form-registro", recuperar: "form-password", usuario: "panel-usuario" };
     const menu = $(vistas.menu);
+    if (!menu) return; // En index.html solo se actualiza el botón del visitante.
     const botones = [...menu.querySelectorAll("button")];
     let seleccionado = botones[0];
 

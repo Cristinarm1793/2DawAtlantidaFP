@@ -16,5 +16,6 @@ Versión revisada: código base c246c8f de la rama arreglo-juego, más el parche
 | Objetos museo.md | Las seis piezas y sus interacciones; conserva la investigación original. |
 | Recetas.md | Catálogo documentado y mantenimiento de recetas.json. |
 | ideas.md | Propuestas futuras: no confundir con funcionalidades terminadas. |
+| [09-organizacion-json.md](09-organizacion-json.md) | Persistencia, archivos integrados, limpieza y límites de auditoría. |
 
 Para la entrega: leer 05-comprobacion.md, ejecutar las pruebas y añadir las evidencias reales. No se han inventado capturas, resultados de correo ni licencias de recursos.
