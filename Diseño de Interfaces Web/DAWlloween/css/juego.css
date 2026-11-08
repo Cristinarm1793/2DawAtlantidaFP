@@ -1,668 +1,351 @@
-/* ==========================================================
-   MUSEUM 404: NOT FOUND
-   NO DEBISTE ENTRAR - ESTILOS DEL JUEGO
-========================================================== */
-
-/* ==========================================================
-   1. COLORES
-========================================================== */
-
-:root {
-  --juego-negro: #080808;
-  --juego-fondo: #120909;
-  --juego-rojo: #a51d24;
-  --juego-rojo-oscuro: #520d12;
-  --juego-rojo-brillante: #e13a42;
-  --juego-blanco: #e0d9d0;
-  --juego-gris: #8c8181;
-  --juego-borde: #4b1a1d;
-}
-
-/* ==========================================================
-   2. PÁGINA
-========================================================== */
-
+html,
 body.pagina-juego {
-  min-height: 100dvh;
+  height: 100%;
+  min-height: 0;
   margin: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  background: radial-gradient(
-    ellipse at center,
-    #260d10 0%,
-    var(--juego-fondo) 50%,
-    var(--juego-negro) 100%
-  );
-
-  color: var(--juego-blanco);
+  overflow: hidden;
+}
+body.pagina-juego {
+  color: #f0dfc6;
+  background: #100707;
   font-family: "Courier New", monospace;
 }
-
-/* ==========================================================
-   3. CABECERA
-========================================================== */
-
-.cabecera-juego {
+.pagina-juego [hidden] {
+  display: none !important;
+}
+.sala-del-juego {
   position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 15px 65px;
-
-  border-bottom: 1px solid var(--juego-borde);
-  background: rgba(0, 0, 0, 0.65);
-}
-
-.cabecera-juego .volver-museo {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 40px;
-  height: 40px;
-
-  border: 1px solid var(--juego-rojo);
-  border-radius: 4px;
-
-  color: var(--juego-blanco);
-  background: var(--juego-negro);
-
-  font-size: 1.5rem;
-  text-decoration: none;
-
-  transition: 0.2s;
-}
-
-.cabecera-juego .volver-museo:hover {
-  color: white;
-  background: var(--juego-rojo-oscuro);
-  border-color: var(--juego-rojo-brillante);
-}
-
-.titulo-juego {
-  text-align: center;
-}
-
-.titulo-juego h1 {
-  margin: 0;
-
-  color: var(--juego-rojo-brillante);
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  letter-spacing: 4px;
-
-  text-shadow: 2px 2px 0 #000;
-}
-
-.titulo-juego p {
-  margin: 6px 0 0;
-
-  color: var(--juego-gris);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-/* ==========================================================
-   4. CONTENEDOR PRINCIPAL
-========================================================== */
-
-.contenedor-juego {
   width: 100%;
-  max-width: 1150px;
-
-  margin: 0 auto;
-  padding: 25px 20px;
-
-  flex: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ==========================================================
-   5. PANTALLA DEL JUEGO
-========================================================== */
-
-.pantalla-juego {
-  width: 100%;
-  max-width: 950px;
-
-  min-height: 550px;
-
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  background: #050505;
-
-  border: 3px solid var(--juego-rojo-oscuro);
-
-  box-shadow:
-    0 0 0 5px #000,
-    0 0 25px rgba(165, 29, 36, 0.25),
-    inset 0 0 35px rgba(0, 0, 0, 0.8);
-
-  position: relative;
-}
-
-/* ==========================================================
-   6. ESCENAS
-========================================================== */
-
-.escena-juego {
-  width: 100%;
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  gap: 18px;
-}
-
-.escena-juego[hidden] {
-  display: none;
-}
-
-/* ==========================================================
-   7. PANTALLA DE INICIO
-========================================================== */
-
-#pantalla-inicio {
-  text-align: center;
-  padding: 30px 25px;
-}
-
-#pantalla-inicio h2 {
-  margin: 0 0 20px;
-
-  color: var(--juego-rojo-brillante);
-
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  letter-spacing: 5px;
-
-  text-shadow:
-    3px 3px 0 #43080d,
-    0 0 20px rgba(165, 29, 36, 0.4);
-}
-
-#pantalla-inicio p {
-  max-width: 650px;
-  margin: 0;
-
-  color: var(--juego-blanco);
-
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-#iniciar-juego {
-  margin-top: 25px;
-  padding: 14px 35px;
-
-  background: var(--juego-rojo-oscuro);
-  border: 2px solid var(--juego-rojo);
-
-  color: white;
-
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-#iniciar-juego:hover {
-  background: var(--juego-rojo);
-  box-shadow: 0 0 15px rgba(225, 58, 66, 0.35);
-}
-
-/* ==========================================================
-   8. PANTALLA DE HISTORIA
-========================================================== */
-
-#pantalla-historia {
-  justify-content: flex-start;
-  gap: 15px;
-}
-
-/* Imagen de la escena */
-
-.imagen-escena {
-  width: 100%;
-  max-width: 760px;
-
-  aspect-ratio: 16 / 9;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #000;
-  border: 2px solid var(--juego-borde);
-
+  height: 100dvh;
   overflow: hidden;
+  container-type: size;
+}
+.sala-del-juego::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/img/juego/fondo-juego.png") center / cover
+    no-repeat;
+  pointer-events: none;
 }
 
-.imagen-escena img {
+.sala-del-juego {
+  --fondo-ancho: max(100cqw, 177.68cqh);
+  --fondo-alto: max(100cqh, 56.28cqw);
+}
+.contenedor-juego {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--fondo-alto) * 0.31);
+  transform: translateX(-50%);
+  width: calc(var(--fondo-ancho) * 0.4);
+  height: calc(var(--fondo-alto) * 0.42);
+  padding: 0;
+}
+.pantalla-juego {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-
-  display: block;
-  object-fit: contain;
-
-  image-rendering: pixelated;
+  min-height: 0;
+  padding: 6px;
+  gap: 4px;
+  background: #070505;
+  overflow: hidden;
+  container-type: size;
 }
-
-/* ==========================================================
-   9. TEXTO NARRATIVO
-========================================================== */
-
-.texto-historia {
-  width: 100%;
-  max-width: 760px;
-
-  min-height: 85px;
-  padding: 16px 20px;
-
-  background: #0d0808;
-  border: 1px solid var(--juego-borde);
-  border-left: 4px solid var(--juego-rojo);
-
-  display: flex;
-  align-items: center;
-}
-
-#texto-escena {
-  margin: 0;
-
-  color: var(--juego-blanco);
-
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-/* ==========================================================
-   10. OPCIONES Y DECISIONES
-========================================================== */
-
-.opciones-historia {
-  width: 100%;
-  max-width: 760px;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  gap: 12px;
-}
-
-.opciones-historia button {
-  padding: 12px 20px;
-
-  background: #1c0c0e;
-
-  border: 2px solid var(--juego-rojo-oscuro);
-
-  color: var(--juego-blanco);
-
-  font-family: inherit;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.opciones-historia button:hover {
-  background: var(--juego-rojo-oscuro);
-  border-color: var(--juego-rojo-brillante);
-  color: white;
-}
-
-.opciones-historia button:focus-visible,
-#iniciar-juego:focus-visible {
-  outline: 3px solid var(--juego-rojo-brillante);
-  outline-offset: 4px;
-}
-
-/* ==========================================================
-   11. INVENTARIO
-========================================================== */
-
-.inventario-juego {
-  width: 100%;
-
-  margin-top: auto;
-  padding: 12px 15px;
-
-  background: #100a0a;
-
-  border-top: 2px solid var(--juego-rojo-oscuro);
-}
-
-.inventario-juego h3 {
-  margin: 0 0 10px;
-
-  color: var(--juego-rojo-brillante);
-
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-}
-
-/* ==========================================================
-   12. PIE DE PÁGINA
-========================================================== */
-
-.pie-juego {
-  padding: 12px 20px;
-
-  background: rgba(0, 0, 0, 0.7);
-  border-top: 1px solid var(--juego-borde);
-
-  text-align: center;
-}
-
-.pie-juego p {
-  margin: 0;
-
-  color: var(--juego-gris);
-
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-}
-
-/* La habitación ocupa el fondo de la zona de juego. */
-#pantalla-historia {
+.escena-juego {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  box-sizing: border-box;
-
-  aspect-ratio: 3 / 2;
-  min-height: 340px;
-  padding: clamp(14px, 3vw, 30px);
-
-  justify-content: flex-end;
-  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  gap: 4px;
+  padding: 5px;
 }
-
-/* Este es el contenedor de la imagen que ya tienes en el HTML. */
-#pantalla-historia .imagen-escena {
+#pantalla-inicio {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(11px, 2.8cqh, 15px);
+}
+#pantalla-inicio h2 {
+  color: #e52732;
+  font-size: clamp(17px, 5cqh, 30px);
+}
+#pantalla-inicio p {
+  margin: 2px 0;
+}
+.imagen-escena {
   position: absolute;
   inset: 0;
   z-index: -1;
-
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  aspect-ratio: auto;
-  border: 0;
+  overflow: hidden;
 }
-
-#pantalla-historia #imagen-escena {
+#imagen-escena {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.45;
-  image-rendering: auto;
+  opacity: 0.4;
 }
-
-/* El texto permanece legible sobre cualquier escenario. */
-#pantalla-historia .texto-historia {
-  background-color: rgb(8 5 5 / 80%);
+.pantalla-final #imagen-escena {
+  object-fit: contain;
+  opacity: 1;
 }
-
-/* Capa temporal para atravesar una puerta. */
+.cartel-sala {
+  align-self: center;
+  flex: 0 0 auto;
+  padding: 3px 14px;
+  background: #1a1110;
+  border: 1px solid #886343;
+  color: #efdbb6;
+  font:
+    bold clamp(13px, 3.8cqh, 22px) Georgia,
+    serif;
+  text-align: center;
+}
+.texto-historia {
+  margin-top: auto;
+  padding: 5px 8px;
+  border-left: 3px solid #a51d24;
+  background: rgb(8 5 5 / 85%);
+  font-size: clamp(17px, 3cqh, 16px);
+  line-height: 1.25;
+}
+#texto-escena {
+  margin: 0;
+}
+.opciones-historia {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  flex: 0 0 auto;
+}
+.opciones-historia button,
+#navegacion-opciones button,
+#iniciar-juego {
+  padding: 4px 6px;
+  min-width: 0;
+  border: 1px solid #74302e;
+  background: #210d10;
+  color: #f0dfc6;
+  font: inherit;
+  font-size: clamp(15px, 5cqh, 13px);
+  line-height: 1.2;
+  cursor: pointer;
+}
+.opciones-historia button {
+  min-height: 28px;
+}
+#navegacion-opciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  flex: 0 0 auto;
+  font-size: 11px;
+}
+.inventario-juego {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border-top: 1px solid #78202b;
+  background: #100a0a;
+  font-size: clamp(10px, 2.4cqh, 12px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.inventario-juego h3 {
+  font-size: inherit;
+  color: #e63946;
+  letter-spacing: 1px;
+  margin: 2px 0;
+}
+#estado-vidas,
+#inventario {
+  margin: 0;
+}
+.controles-partida {
+  position: absolute;
+  top: calc(50% + var(--fondo-alto) * 0.2);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(8px, 2vw, 28px);
+  width: min(40%, 570px);
+}
+.controles-partida button {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.controles-partida img,
+.placa-volver img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 65px;
+  object-fit: contain;
+}
+.placa-volver {
+  position: absolute;
+  left: 5%;
+  top: 3%;
+  width: clamp(130px, 15vw, 210px);
+  z-index: 2;
+}
+button:hover {
+  filter: brightness(1.2);
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f5d497;
+  outline-offset: 2px;
+}
 .paso-puerta {
   position: absolute;
   inset: 0;
   z-index: 3;
-
   display: grid;
-  place-items: center;
-  background-color: #000;
-}
-
-.paso-puerta img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-@media (max-width: 640px) {
-  #pantalla-historia {
-    aspect-ratio: auto;
-    padding-top: 14px;
-  }
-}
-
-/* Cartel en la parte superior de cada escenario */
-#pantalla-historia .cartel-sala {
-  align-self: center;
-  flex-shrink: 0;
-  max-width: 100%;
-  margin: 0 0 auto;
-  padding: 6px 18px;
-
-  border: 1px solid #8c6550;
-  border-radius: 3px;
-  background: #1a1110;
-  color: #ead8b6;
-
-  font:
-    bold clamp(1rem, 2vw, 1.3rem) Georgia,
-    serif;
-  text-align: center;
-}
-
-
-/* Pantalla de objeto obtenido o captura */
-#aviso-juego {
-  box-sizing: border-box;
-  width: min(440px, 92vw);
-  max-height: 90dvh;
-  padding: 20px;
-  border: 1px solid #865749;
-  border-radius: 5px;
-  background: #100b0c;
-  color: #f3dfc7;
-  text-align: center;
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  height: fit-content;
-  overflow: auto;
-}
-
-#aviso-juego::backdrop {
-  background: rgb(0 0 0 / 76%);
-  backdrop-filter: blur(6px);
-}
-
-#titulo-aviso {
-  margin: 0 0 12px;
-  font-size: clamp(1.05rem, 3vw, 1.4rem);
-}
-
-#imagen-aviso {
-  display: block;
-  width: 100%;
-  height: min(35dvh, 260px);
-  margin: 0 auto 16px;
-  object-fit: contain;
-}
-
-#aviso-juego button {
-  min-height: 42px;
-  padding: 6px 22px;
-  border: 1px solid #865749;
-  background: #351619;
-  color: #f3dfc7;
-  cursor: pointer;
-}
-
-/* La puerta completa debe caber dentro del área negra */
-#pantalla-historia .paso-puerta {
-  box-sizing: border-box;
   grid-template: minmax(0, 1fr) / minmax(0, 1fr);
-  padding: clamp(6px, 2vw, 18px);
+  place-items: center;
+  padding: 6px;
+  background: black;
   overflow: hidden;
 }
-
-#pantalla-historia .paso-puerta img {
-  display: block;
+.paso-puerta img {
   width: 100%;
   height: 100%;
   min-width: 0;
   min-height: 0;
   object-fit: contain;
-  object-position: center;
+}
+/* En pantallas estrechas el cuadro utiliza el ancho disponible. */
+@media (max-aspect-ratio: 1/1) {
+  .contenedor-juego {
+    top: 15%;
+    width: 94%;
+    height: 65%;
+    border: 4px ridge #8b602f;
+  }
+  .controles-partida {
+    top: 84%;
+    width: 90%;
+    gap: 6px;
+  }
+  .placa-volver {
+    left: 4%;
+    top: 2%;
+    width: 155px;
+  }
+}
+@media (max-height: 500px) and (min-aspect-ratio: 1/1) {
+  .contenedor-juego {
+    top: 10%;
+    height: 72%;
+    width: 66%;
+    border: 3px ridge #8b602f;
+  }
+  .controles-partida {
+    top: 85%;
+    width: 45%;
+  }
+  .controles-partida img {
+    max-height: 40px;
+  }
+  .placa-volver {
+    left: 1%;
+    width: 14%;
+  }
 }
 
-
-
-
-
-.sala-del-juego {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1672 / 941;
-  flex: none;
-  background: #100707 url("../assets/img/juego/fondo-juego.png") center / 100%
-    100% no-repeat;
+#aviso-juego {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(440px, 92vw);
+  height: fit-content;
+  max-height: 94dvh;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #865749;
+  background: #100b0c;
+  color: #f3dfc7;
+  text-align: center;
 }
-
-.sala-del-juego .contenedor-juego {
-  position: absolute;
-  inset: 19% 30% 39% 30%;
+#aviso-juego::backdrop {
+  background: rgb(0 0 0 / 76%);
+  backdrop-filter: blur(6px);
+}
+#titulo-aviso {
+  margin: 0 0 10px;
+  font-size: clamp(16px, 3vw, 22px);
+}
+#imagen-aviso {
   display: block;
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  min-height: 0;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sala-del-juego .pantalla-juego {
-  box-sizing: border-box;
   width: 100%;
-  height: 100%;
-  min-height: 0;
-  max-width: none;
-  margin: 0;
-  padding: 6px;
-  gap: 6px;
-  overflow-y: auto;
-  border: 0;
-  background: #090607;
-}
-
-.sala-del-juego .controles-partida {
-  position: static;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
-}
-
-.sala-del-juego #pantalla-historia,
-.sala-del-juego #pantalla-inicio {
-  flex: 1 0 auto;
-  min-height: 0;
-  aspect-ratio: auto;
-  padding: 8px;
-  gap: 8px;
-}
-
-.sala-del-juego .inventario-juego {
-  margin-top: 0;
-  padding: 6px 10px;
-}
-
-/* En móvil ampliamos el encuadre central para poder leer y pulsar. */
-@media (max-width: 760px) {
-  .sala-del-juego {
-    aspect-ratio: auto;
-    padding: 18px 5%;
-    background-size: cover;
-  }
-
-  .sala-del-juego .contenedor-juego {
-    position: relative;
-    inset: auto;
-  }
-
-  .sala-del-juego .pantalla-juego {
-    height: auto;
-    min-height: min(72dvh, 580px);
-  }
-}
-#pantalla-historia.pantalla-final #imagen-escena {
-  opacity: 1;
+  height: min(35dvh, 260px);
   object-fit: contain;
+  margin: 0 auto 10px;
 }
-
-.sala-del-juego #pantalla-historia.pantalla-final {
-  min-height: 220px;
+#aviso-juego button {
+  padding: 8px 15px;
+  border: 1px solid #865749;
+  background: #351619;
+  color: #f3dfc7;
 }
-
-
-
-
 #aviso-juego.modo-documento {
   width: min(540px, 92vw);
   background: #080808;
 }
-
 .modo-documento .lectura-aviso {
   display: grid;
   place-items: center;
   isolation: isolate;
-  min-height: min(280px, 40dvh);
   background: #050505;
 }
-
 .modo-documento #imagen-aviso,
 .modo-documento #fragmento-aviso {
-  grid-area: 1 / 1;
+  grid-area: 1/1;
 }
-
 .modo-documento #imagen-aviso {
-  width: 100%;
-  height: min(280px, 40dvh);
-  object-fit: contain;
   opacity: 0.28;
   filter: grayscale(1);
 }
-
 .modo-documento #fragmento-aviso {
   z-index: 1;
-  margin: 0;
-  padding: 20px;
+  padding: 16px;
   color: #f0ece4;
   font:
-    1rem/1.65 "Courier New",
+    14px/1.5 "Courier New",
     monospace;
   text-align: left;
   white-space: pre-line;
-  text-shadow: 0 1px 4px black;
+}
+
+.pagina-juego .controles-partida {
+  align-items: center;
+}
+
+.pagina-juego .controles-partida button {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 3.2 / 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.pagina-juego .controles-partida button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: fill;
 }

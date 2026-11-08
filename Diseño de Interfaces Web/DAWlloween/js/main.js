@@ -79,17 +79,13 @@ const mensajeDeathstar = document.getElementById("mensaje-deathstar");
 
 let deathstarDesaparecido = false;
 
-const intervaloDeathstar = setInterval(() => {
+document.getElementById("btn-deathstar").addEventListener("click", () => {
   deathstarDesaparecido = !deathstarDesaparecido;
-
   objetoDeathstar.classList.toggle("desaparecido", deathstarDesaparecido);
-
-  if (deathstarDesaparecido) {
-    mensajeDeathstar.textContent = "ERROR: Dispositivo no encontrado.";
-  } else {
-    mensajeDeathstar.textContent = "Dispositivo detectado... por ahora.";
-  }
-}, 3000);
+  mensajeDeathstar.textContent = deathstarDesaparecido
+    ? "ERROR: Dispositivo no encontrado."
+    : "Dispositivo detectado... por ahora.";
+});
 
 /* =====================================================
    4. THERAC-25
@@ -107,7 +103,7 @@ btnTherac.addEventListener("click", () => {
 
   btnTherac.disabled = true;
 
-  btnTherac.textContent = "Sistema bloqueado";
+  btnTherac.setAttribute("aria-label", "Sistema bloqueado; restablece las anomalías");
 });
 
 /* =====================================================
@@ -171,7 +167,7 @@ const mensajeBug = document.getElementById("mensaje-bug");
 
 let bugVolando = false;
 
-objetoBug.addEventListener("mouseenter", () => {
+function volarPolilla() {
   if (bugVolando) {
     return;
   }
@@ -181,7 +177,12 @@ objetoBug.addEventListener("mouseenter", () => {
   mensajeBug.textContent = "BUG DETECTED";
 
   objetoBug.classList.add("volando");
-});
+}
+
+objetoBug.addEventListener("mouseenter", volarPolilla);
+setInterval(() => {
+  if (!document.hidden && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) volarPolilla();
+}, 8000);
 
 objetoBug.addEventListener("animationend", () => {
   objetoBug.classList.remove("volando");
@@ -236,7 +237,7 @@ btnRestaurar.addEventListener("click", () => {
 
   btnTherac.disabled = false;
 
-  btnTherac.textContent = "Encender sistema";
+  btnTherac.setAttribute("aria-label", "Encender el sistema Therac-25");
 
   mensajeTherac.textContent = "";
 
@@ -266,5 +267,24 @@ btnRestaurar.addEventListener("click", () => {
 
   /* ---------- CONFIRMACIÓN ---------- */
 
-  alert("Museo restaurado. Todas las anomalías han sido reiniciadas.");
+  document.getElementById("estado-museo").textContent = "Museo restaurado. Anomalías reiniciadas.";
 });
+
+/* Las fichas se leen fuera de las vitrinas para no desplazar los objetos. */
+const dialogoFicha = document.getElementById("ficha-museo");
+let origenFicha = null;
+for (const ficha of document.querySelectorAll(".ficha-objeto")) {
+  const resumen = ficha.querySelector("summary");
+  resumen.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    origenFicha = resumen;
+    document.getElementById("titulo-ficha").textContent = resumen.textContent;
+    const contenido = document.getElementById("contenido-ficha");
+    contenido.replaceChildren();
+    for (const hijo of ficha.children) {
+      if (hijo !== resumen) contenido.append(hijo.cloneNode(true));
+    }
+    dialogoFicha.showModal();
+  });
+}
+dialogoFicha.addEventListener("close", () => origenFicha?.focus());

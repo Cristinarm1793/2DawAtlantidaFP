@@ -1,0 +1,48 @@
+/* Archivo confidencial: la carpeta y sus controles son elementos independientes. */
+.archivo-dialogo { position:fixed; inset:0; margin:auto; width:min(1100px,94vw); max-width:none; max-height:94dvh; overflow:auto; padding:32px 10px 10px; border:0; background:transparent; color:#30251a; font-family:'Courier New',monospace; }
+.archivo-dialogo::backdrop,.hoja-dialogo::backdrop { background:#080403a8; backdrop-filter:blur(8px); }
+.carpeta-expediente { position:relative; isolation:isolate; min-height:560px; padding:70px 4% 100px; display:grid; grid-template-columns:1.35fr 1fr; gap:4%; align-items:start; border:1px solid #936d38; border-radius:12px 18px 5px 5px; background:radial-gradient(ellipse at 30% 20%,#f2d49d80,transparent 60%),repeating-linear-gradient(13deg,#a17c3820 0 1px,transparent 1px 4px),#cba76c; box-shadow:inset 0 0 30px #8c602a55,0 12px 30px #0009; }
+.pestana-expediente { position:absolute; right:3%; top:-26px; width:47%; min-height:40px; padding:8px 24px; display:flex; justify-content:space-between; gap:10px; border:1px solid #a27940; border-radius:18px 18px 0 0; background:#d4b17a; font-size:12px; z-index:-1; }
+.cerrar-archivo { position:absolute; top:9px; right:12px; width:34px; height:34px; border:1px solid #806039; border-radius:50%; background:#f1d6a6; color:#4b2815; font-size:25px; z-index:5; }
+.fotos-expediente { display:flex; align-items:flex-start; padding-top:8px; }
+.polaroid { position:relative; flex:0 0 56%; width:56%; min-width:0; margin:0; padding:14px 14px 22px; border:0; background:linear-gradient(120deg,#fffdf0,#e9e0ca); box-shadow:2px 6px 8px #35241066; text-align:center; font:13px/1.3 'Courier New',monospace; color:#342a21; }
+.polaroid.autora { transform:rotate(-5deg); }
+.polaroid.autora::before { content:''; position:absolute; top:-18px; left:50%; width:16px; height:65px; border:3px solid #aaa; border-radius:13px; box-shadow:1px 1px 2px #222; z-index:2; }
+.polaroid.foto-ente { margin:60px 0 0 -12%; transform:rotate(7deg); cursor:pointer; }
+.polaroid.foto-ente::before { content:''; position:absolute; top:-12px; left:25%; width:55%; height:28px; background:#e2ca92ad; transform:rotate(-5deg); }
+.foto-autora,.polaroid>img { width:100%; aspect-ratio:3/4; display:grid; place-items:center; background:radial-gradient(#3d3830,#1b1916); color:#a49a87; object-fit:cover; }
+.foto-autora img { width:100%; height:100%; object-fit:cover; }
+.polaroid figcaption,.polaroid>span { display:block; padding-top:14px; }
+.menu-expediente { position:relative; padding:36px 18px 32px; transform:rotate(.8deg); background:repeating-linear-gradient(transparent 0 29px,#9372472b 29px 30px),radial-gradient(ellipse,#f8e9c5,#d9bc8e); box-shadow:3px 7px 8px #49301766; border:1px solid #b49667; border-radius:3px 7px 24px 4px; }
+.menu-expediente::before { content:''; position:absolute; width:38px; height:30px; top:-14px; left:53%; border:2px solid #756c5e; border-radius:4px; background:linear-gradient(#59534b,#151310); box-shadow:1px 4px 3px #0006; }
+.menu-expediente h3 { display:flex; align-items:center; justify-content:space-between; gap:6px; padding-bottom:14px; border-bottom:1px solid #906b45; font-size:clamp(16px,2vw,27px); }
+.menu-expediente h3 span { transform:rotate(-8deg); border:2px solid #92251f; padding:3px; font-size:.65em; color:#92251f; white-space:nowrap; }
+.menu-expediente button { display:flex; align-items:center; gap:12px; width:100%; padding:22px 4px; border:0; border-bottom:1px solid #9a784b; background:transparent; color:#30251a; text-align:left; font:bold clamp(15px,1.8vw,23px) 'Courier New',monospace; }
+.menu-expediente button span { flex:1; }
+.menu-expediente button:hover { background:#9d6f2422; }
+.sello-expediente { position:absolute; bottom:30px; left:7%; max-width:80%; transform:rotate(-9deg); padding:4px 12px; border:6px double #951b17; color:#951b17; opacity:.9; font:900 clamp(25px,4.5vw,55px)/1.1 'Courier New',monospace; letter-spacing:.03em; pointer-events:none; }
+.hoja-dialogo { position:fixed; inset:0; margin:auto; width:min(680px,92vw); max-height:88dvh; padding:0; border:1px solid #a3875c; background:#e7d0a5; color:#392b1d; box-shadow:0 10px 45px #000a; }
+.folio-expediente { padding:35px clamp(20px,5vw,55px); background:repeating-linear-gradient(transparent 0 29px,#a17f4920 29px 30px),radial-gradient(ellipse,#f7e9cb,#d7b984); font:16px/1.8 'Courier New',monospace; }
+.numero-folio { display:block; font-size:11px; color:#755c41; margin-bottom:24px; border-bottom:1px solid #ad8d61; }
+.folio-expediente h2 { margin-bottom:20px; font-size:27px; }
+.folio-expediente p { margin-bottom:18px; }
+.volver-expediente { margin-top:20px; padding:10px 16px; border:1px solid #80603e; background:#d3b27b; color:#342313; font-weight:bold; }
+#susto-ente { position:fixed; inset:0; width:100vw; max-width:none; height:100dvh; max-height:none; margin:0; border:0; padding:0; background:#050000; overflow:hidden; }
+#susto-ente::backdrop { background:black; }
+#susto-ente img { width:100%; height:100%; object-fit:contain; }
+#susto-ente button { position:absolute; right:20px; top:20px; padding:10px 16px; background:#221010; color:#fff; border:1px solid #af5555; }
+.archivo-dialogo button:focus-visible,.hoja-dialogo button:focus-visible { outline:3px solid #76201c; outline-offset:3px; }
+@media(max-width:650px) {
+ .carpeta-expediente { display:flex; flex-direction:column; gap:35px; padding:60px 22px 85px; }
+ .fotos-expediente { width:100%; padding:0 10px; }
+ .polaroid { padding:9px 9px 15px; font-size:11px; }
+ .polaroid.foto-ente { margin-top:25px; }
+ .menu-expediente { width:100%; }
+ .menu-expediente button { padding:17px 4px; font-size:18px; }
+ .pestana-expediente { width:75%; font-size:10px; }
+ .sello-expediente { bottom:20px; }
+}
+@media (prefers-reduced-motion:no-preference) {
+ #susto-ente[open] img { animation:aparicion-ente .15s ease-out; }
+ @keyframes aparicion-ente { from { transform:scale(.85); } to { transform:scale(1); } }
+}

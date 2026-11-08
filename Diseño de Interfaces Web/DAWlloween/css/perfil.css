@@ -1,0 +1,222 @@
+/* Fondo y contenido comparten escala: el formulario permanece dentro del marco. */
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+:root {
+  color-scheme: dark;
+}
+body.pagina-perfil {
+  margin: 0;
+  min-height: 100dvh;
+  background: #130605;
+  color: #f4dfb6;
+  font-family: Georgia, serif;
+}
+.contenedor-perfil {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  background: url("../assets/img/otros/fondo-perfil.png") center top / cover
+    no-repeat;
+  display: grid;
+  place-items: center;
+  padding: 110px 20px 35px;
+}
+.expediente-perfil {
+  position: relative;
+  width: min(510px, 80%);
+  margin-right: 7%;
+  padding: 22px;
+  background: #290a0be8;
+  border: 1px solid #976527;
+  box-shadow: 0 12px 45px #0008;
+  border-radius: 6px;
+}
+h1 {
+  margin: 0 0 28px;
+  text-align: center;
+  color: #efca79;
+  font-size: clamp(24px, 3vw, 44px);
+  letter-spacing: 0.07em;
+}
+h2 {
+  font-size: 1.2rem;
+}
+h3 {
+  font-size: 1.1rem;
+  text-align: center;
+}
+button,
+input,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+.boton-perfil,
+.volver-museo {
+  font: inherit;
+  color: #281104;
+  border: 1px solid #edc883;
+  background: linear-gradient(135deg, #9e681f, #ebc274 45%, #ad782b);
+  padding: 12px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 0 3px #58300955,
+    0 3px 8px #0009;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+:focus-visible {
+  outline: 3px solid #fff1bb;
+  outline-offset: 4px;
+}
+.volver-museo {
+  position: absolute;
+  z-index: 5;
+  top: 18px;
+  left: 18px;
+  text-decoration: none;
+}
+.menu-visitante {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  padding: 15px 0;
+}
+.menu-visitante button {
+  min-height: 62px;
+  font-size: clamp(20px, 2.5vw, 30px);
+}
+.menu-visitante button:hover,
+.menu-visitante button:focus-visible {
+  filter: brightness(1.18);
+}
+#mano-menu {
+  position: absolute;
+  width: 155px;
+  left: -150px;
+  top: 46px;
+  transform: translateY(-30%);
+  pointer-events: none;
+  z-index: 2;
+  transition: top 0.28s ease;
+  filter: drop-shadow(0 8px 5px #0009);
+}
+.formulario-perfil {
+  display: grid;
+  gap: 10px;
+}
+.formulario-perfil input {
+  min-width: 0;
+  width: 100%;
+  font:
+    16px Arial,
+    sans-serif;
+  padding: 11px;
+  border: 1px solid #c59b55;
+  border-radius: 3px;
+  color: #fff5df;
+  background: #150807e8;
+}
+.enlace-texto {
+  padding: 8px;
+  background: transparent;
+  border: 0;
+  color: #f1d7a6;
+  text-decoration: underline;
+  box-shadow: none;
+}
+.mensaje-exito,
+.mensaje-error {
+  padding: 10px;
+  line-height: 1.45;
+  border: 1px solid #c49b58;
+  margin-bottom: 15px;
+}
+.mensaje-error {
+  color: #ffe0d6;
+  background: #460d12;
+}
+.mensaje-exito {
+  background: #27331e;
+}
+#aviso-perfil:empty {
+  display: none;
+}
+.datos-visitante {
+  overflow-wrap: anywhere;
+}
+.avatar-visitante {
+  display: none;
+}
+.seccion-perfil {
+  margin-top: 20px;
+}
+.acciones-perfil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.boton-perfil {
+  display: inline-block;
+  text-decoration: none;
+}
+dialog {
+  max-width: min(440px, 90vw);
+  border: 2px solid #b98a3c;
+  border-radius: 8px;
+  padding: 26px;
+  background: #27110d;
+  color: #f4dfb6;
+  line-height: 1.6;
+}
+dialog::backdrop {
+  background: #000a;
+  backdrop-filter: blur(7px);
+}
+@media (min-width: 1000px) and (min-aspect-ratio: 4/3) {
+  .contenedor-perfil {
+    background-size: 100% auto;
+    min-height: max(100dvh, 56.3vw);
+    padding-top: 12vw;
+    align-items: start;
+  }
+  .expediente-perfil {
+    width: 38%;
+    margin-right: 5%;
+  }
+}
+@media (max-width: 650px) {
+  .contenedor-perfil {
+    padding: 210px 20px 35px;
+    background-position: 72% top;
+    background-size: auto 680px;
+    align-items: start;
+  }
+  .expediente-perfil {
+    width: 100%;
+    margin: 0;
+    padding: 22px 18px 22px 54px;
+  }
+  #mano-menu {
+    width: 86px;
+    left: -86px;
+  }
+  .menu-visitante button {
+    font-size: 21px;
+  }
+  .volver-museo {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #mano-menu {
+    transition: none;
+  }
+}

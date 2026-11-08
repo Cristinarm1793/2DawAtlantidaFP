@@ -17,21 +17,15 @@
          CABECERA
     =========================================== -->
 
-    <header class="cabecera-juego">
-      <a href="index.html" class="volver-museo" aria-label="Volver al museo">
-        &#8592;
-      </a>
 
-      <div class="titulo-juego">
-        <h1>NO DEBISTE ENTRAR</h1>
-        <p>Hay lugares que deberían permanecer cerrados...</p>
-      </div>
-    </header>
 
     <!-- ==========================================
          CONTENIDO PRINCIPAL
     =========================================== -->
     <div class="sala-del-juego">
+      <a href="index.html" class="placa-volver" aria-label="Volver al museo">
+        <img src="assets/img/otros/placa-izq-museo.png" alt="Volver al museo">
+      </a>
       <main class="contenedor-juego">
         <!-- PANTALLA DEL JUEGO -->
         <section class="pantalla-juego" aria-label="Juego de terror">
@@ -67,6 +61,11 @@
 
             <!-- DECISIONES -->
             <div class="opciones-historia" id="opciones-escena"></div>
+            <nav id="navegacion-opciones" aria-label="Más acciones" hidden>
+              <button id="opciones-anteriores" type="button">← Anteriores</button>
+              <span id="numero-opciones" aria-live="polite"></span>
+              <button id="opciones-siguientes" type="button">Más opciones →</button>
+            </nav>
           </div>
 
           <!-- INVENTARIO -->
@@ -80,9 +79,9 @@
       </main>
 
       <div class="controles-partida">
-        <button id="btn-guardar" type="button">Guardar</button>
-        <button id="btn-cargar" type="button">Cargar</button>
-        <button id="btn-reiniciar" type="button">Nueva partida</button>
+        <button id="btn-guardar" type="button" aria-label="Guardar"><img src="assets/img/otros/placa-guardar.png" alt="Guardar"></button>
+        <button id="btn-cargar" type="button" aria-label="Cargar"><img src="assets/img/otros/placa-cargar.png" alt="Cargar"></button>
+        <button id="btn-reiniciar" type="button" aria-label="Nueva partida"><img src="assets/img/otros/placa-nueva-partida.png" alt="Nueva partida"></button>
       </div>
     </div>
 
@@ -107,8 +106,6 @@
          PIE DE PÁGINA
     =========================================== -->
 
-    <footer class="pie-juego">
-      <p>Museum 404: Not Found — No debiste entrar.</p>
-    </footer>
+
   </body>
 </html>

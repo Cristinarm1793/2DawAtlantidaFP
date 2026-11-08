@@ -1107,3 +1107,19 @@ body.pagina-recetario {
     grid-row: 2;
   }
 }
+
+/* Cabecera sin título visible; placa nueva alineada a la derecha. */
+.pagina-recetario .cabecera-recetario {
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 8px 3%; min-height: 0; gap: 0;
+}
+.pagina-recetario .cabecera-recetario .volver-museo {
+  position: static; transform: none; width: min(200px, 42vw);
+  height: auto; margin: 0; padding: 0; border: 0; background: transparent;
+}
+.pagina-recetario .cabecera-recetario .volver-museo img {
+  display: block; width: 100%; height: auto; max-height: 62px; object-fit: contain;
+}
+.titulo-recetario-accesible {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+}

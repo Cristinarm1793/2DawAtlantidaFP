@@ -14,6 +14,7 @@ const imagenesObjetos = {
   Pilas: "Pilas.png",
   "Llave pequeña": "Llave pequeña.png",
   "Llave del sótano": "Llave sotano.png",
+  "Llave robusta": "Llave robusta.png",
   Palanca: "Palanca puertas.png",
   Ganzúa: "Ganzua.png",
   Botiquín: "botiquin.png",
@@ -111,6 +112,9 @@ const mapa = {
     imagen: carpetaEscenarios + "dormitorio-infantil.png",
     texto: "La colcha llega casi hasta el suelo. Hay sitio debajo de la cama.",
     salidas: ["pasillo"],
+    objetos: [
+      { accion: "Registrar el cajón del armario", nombre: "Llave robusta" },
+    ],
     escondite: "el hueco bajo la cama",
   },
 
@@ -146,12 +150,11 @@ const mapa = {
   electrica: {
     nombre: "Sala eléctrica",
     imagen: carpetaEscenarios + "sotano.png",
-    texto: "En el cuadro eléctrico hay una ranura vacía. Debajo pone «VERJA».",
+    texto:
+      "El cuadro controla la electrificación de la verja. Falta el fusible del circuito de desconexión.",
     salidas: ["almacen"],
     objetos: [{ accion: "Buscar en la caja de repuestos", nombre: "Fusible" }],
   },
-
-
 };
 
 /* El asesino recorre habitaciones contiguas.
@@ -277,10 +280,7 @@ function pasarTurno(mensaje, origenJugador = partida.lugar) {
         mensaje = avisoCaptura + " Consigues refugiarte en el recibidor.";
       }
 
-      mostrarAviso(
-        avisoCaptura,
-        carpetaJuego + "Asesino encapuchado con cuchilla ensangrentada.png",
-      );
+      mostrarAviso(avisoCaptura, carpetaJuego + "asesino.png");
     }
   }
 
@@ -490,7 +490,6 @@ elemento("stop-casete").onclick = () => {
   audio.currentTime = 0;
 };
 
-
 elemento("aviso-juego").addEventListener("close", () => {
   const audio = elemento("audio-casete");
   audio.pause();
@@ -522,6 +521,21 @@ function terminarPartida(mensaje) {
    5. PANTALLA E INVENTARIO
 ========================================================== */
 
+let paginaOpciones = 0;
+
+function actualizarOpciones() {
+  const botones = [...elemento("opciones-escena").children];
+  const total = Math.max(1, Math.ceil(botones.length / 4));
+  paginaOpciones = Math.min(paginaOpciones, total - 1);
+  botones.forEach((boton, i) => {
+    boton.hidden = Math.floor(i / 4) !== paginaOpciones;
+  });
+  elemento("navegacion-opciones").hidden = total === 1;
+  elemento("opciones-anteriores").disabled = paginaOpciones === 0;
+  elemento("opciones-siguientes").disabled = paginaOpciones === total - 1;
+  elemento("numero-opciones").textContent = `${paginaOpciones + 1} / ${total}`;
+}
+
 function crearBoton(texto, accion) {
   const boton = document.createElement("button");
   boton.type = "button";
@@ -532,6 +546,7 @@ function crearBoton(texto, accion) {
   });
 
   elemento("opciones-escena").append(boton);
+  actualizarOpciones();
 }
 
 function mostrarInventario() {
@@ -602,6 +617,8 @@ function mostrarJuego(mensaje) {
 
   mostrarInventario();
   elemento("opciones-escena").replaceChildren();
+  paginaOpciones = 0;
+  actualizarOpciones();
 
   if (partida.final) return;
 
@@ -682,7 +699,7 @@ function mostrarAccionesEspeciales() {
   }
 
   if (partida.lugar === "electrica" && !partida.cuadroReparado) {
-    crearBoton("Reparar el cuadro eléctrico", () => {
+    crearBoton("Desactivar la electricidad de la verja", () => {
       if (!tieneObjeto("Fusible")) {
         mostrarJuego("La ranura está vacía. Necesitas un fusible.");
         return;
@@ -691,39 +708,45 @@ function mostrarAccionesEspeciales() {
       gastarObjeto("Fusible");
       partida.cuadroReparado = true;
       pasarTurno(
-        "El cuadro zumba. El motor de la verja vuelve a tener corriente.",
+        "Colocas el fusible y accionas el corte. La verja deja de estar electrificada.",
       );
     });
   }
 
   if (partida.lugar === "recibidor") {
     crearBoton("Forzar la puerta principal", () => {
-      if (tieneObjeto("Ganzúa")) {
+      if (tieneObjeto("Ganzúa") && tieneObjeto("Destornillador")) {
         terminarPartida("La cerradura cede. Escapas por la puerta principal.");
       } else {
-        mostrarJuego("El pestillo está bloqueado. Necesitas una ganzúa.");
+        mostrarJuego(
+          "Necesitas la ganzúa y el destornillador para liberar la cerradura.",
+        );
       }
     });
   }
 
   if (partida.lugar === "patio") {
     crearBoton("Accionar la verja", () => {
-      if (partida.cuadroReparado) {
+      if (partida.cuadroReparado && tieneObjeto("Llave robusta")) {
         terminarPartida("La verja se abre. Escapas por el patio.");
       } else {
-        mostrarJuego("Pulsas el interruptor. El motor sigue sin corriente.");
+        mostrarJuego(
+          "Necesitas desactivar la electricidad desde el sótano y abrir la cerradura con la llave robusta.",
+        );
       }
     });
   }
 
   if (partida.lugar === "almacen") {
-    crearBoton("Quitar los tablones", () => {
-      if (tieneObjeto("Palanca")) {
+    crearBoton("Abrir la ventana y retirar los tablones", () => {
+      if (tieneObjeto("Palanca") && tieneObjeto("Llave pequeña")) {
         terminarPartida(
           "Los tablones ceden. Escapas por la ventana del sótano.",
         );
       } else {
-        mostrarJuego("Los tablones están clavados. Necesitas una palanca.");
+        mostrarJuego(
+          "Necesitas la palanca para los tablones y la llave pequeña para la cerradura de la ventana.",
+        );
       }
     });
   }
@@ -736,7 +759,12 @@ function mostrarAccionesEspeciales() {
 async function controlarPartida(accion) {
   if (ocupado) return;
 
-  if (accion === "reiniciar" && !confirm("¿Quieres comenzar una nueva partida? Se borrará el guardado de esta sesión.")) {
+  if (
+    accion === "reiniciar" &&
+    !confirm(
+      "¿Quieres comenzar una nueva partida? Se borrará el guardado de esta sesión.",
+    )
+  ) {
     return;
   }
 
@@ -768,9 +796,12 @@ async function controlarPartida(accion) {
         !mapa[guardada.lugar] ||
         !Array.isArray(guardada.inventario) ||
         !Array.isArray(guardada.encontrados) ||
-        !Number.isInteger(guardada.vidas) || guardada.vidas < 0 || guardada.vidas > 2 ||
+        !Number.isInteger(guardada.vidas) ||
+        guardada.vidas < 0 ||
+        guardada.vidas > 2 ||
         !Number.isInteger(guardada.pasoAsesino) ||
-        guardada.pasoAsesino < -1 || guardada.pasoAsesino >= patrulla.length
+        guardada.pasoAsesino < -1 ||
+        guardada.pasoAsesino >= patrulla.length
       ) {
         alert("Todavía no hay una partida guardada de esta versión.");
         return;
@@ -801,3 +832,13 @@ for (const accion of ["guardar", "cargar", "reiniciar"]) {
     controlarPartida(accion);
   });
 }
+
+// Navegar por las opciones no mueve al asesino.
+elemento("opciones-anteriores").onclick = () => {
+  paginaOpciones--;
+  actualizarOpciones();
+};
+elemento("opciones-siguientes").onclick = () => {
+  paginaOpciones++;
+  actualizarOpciones();
+};

@@ -4,6 +4,57 @@
     const panelAcceso = document.getElementById('panel-acceso');
     const panelUsuario = document.getElementById('panel-usuario');
 
+    const menu = document.querySelector('.menu-visitante');
+    const mano = document.getElementById('mano-menu');
+    const opciones = [...menu.querySelectorAll('button')];
+    const login = document.getElementById('form-login');
+    const registro = document.getElementById('form-registro');
+    let seleccion = opciones[0];
+
+    function apuntar(boton) {
+        seleccion = boton;
+        mano.style.top = `${boton.offsetTop + boton.offsetHeight / 2}px`;
+    }
+
+    function volverAlMenu() {
+        login.hidden = true;
+        registro.hidden = true;
+        menu.hidden = false;
+        opciones.forEach(boton => boton.setAttribute('aria-expanded', 'false'));
+        apuntar(seleccion);
+    }
+
+    opciones.forEach((boton, posicion) => {
+        boton.addEventListener('pointerenter', () => apuntar(boton));
+        boton.addEventListener('focus', () => apuntar(boton));
+        boton.addEventListener('click', () => {
+            const formulario = posicion === 0 ? login : registro;
+            login.hidden = formulario !== login;
+            registro.hidden = formulario !== registro;
+            boton.setAttribute('aria-expanded', 'true');
+            menu.hidden = true;
+            formulario.querySelector('input').focus();
+        });
+        boton.addEventListener('keydown', evento => {
+            if (!['ArrowUp', 'ArrowDown'].includes(evento.key)) return;
+            evento.preventDefault();
+            opciones[1 - posicion].focus();
+        });
+    });
+    document.querySelectorAll('.volver-menu').forEach(boton => {
+        boton.addEventListener('click', () => {
+            volverAlMenu();
+            seleccion.focus();
+        });
+    });
+    const recuperacion = document.getElementById('dialogo-recuperacion');
+    document.getElementById('abrir-recuperacion').addEventListener('click', () => {
+        recuperacion.showModal();
+    });
+    new ResizeObserver(() => {
+        if (!menu.hidden) apuntar(seleccion);
+    }).observe(menu);
+
     async function actualizar() {
         const usuario = await consultarSesion();
 
@@ -21,7 +72,7 @@
         await actualizar();
     } catch (error) {
         mostrarAviso('aviso-perfil', error.message, false);
-        return;
+        panelAcceso.hidden = false;
     }
 
     for (const [id, url] of [
@@ -38,6 +89,7 @@
             boton.disabled = true;
 
             try {
+                if (!csrf) await consultarSesion();
                 const resultado = await enviarFormulario(formulario, url);
 
                 formulario.reset();
@@ -74,6 +126,7 @@
             }
 
             mostrarAviso('aviso-perfil', resultado.mensaje, true);
+            volverAlMenu();
             await actualizar();
 
         } catch (error) {
