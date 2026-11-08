@@ -1,3 +1,18 @@
+# Piezas e interacciones actuales
+
+| Pieza | Interacción en main.js |
+|---|---|
+| Morris | Duplica el disquete al activar la anomalía. |
+| Windows | Activa el efecto de pantallazo azul. |
+| IBM Deathstar | Activa el fallo visual del disco. |
+| Therac-25 | Bloquea el sistema y desactiva el botón hasta restablecer. |
+| Patriot | Ejecuta la simulación temporal y muestra desfase. |
+| Polilla | Movimiento automático y reacción al puntero. |
+
+Restablecer cancela o reinicia las anomalías implementadas. Las fichas informativas se abren desde las placas. Probar cada interacción y su restauración según 05-comprobacion.md.
+
+## Investigación original conservada
+
 # Objetos + Lore
 
 nombre, fecha, definicion, interacion

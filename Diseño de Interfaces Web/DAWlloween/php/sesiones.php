@@ -1,39 +1,20 @@
 <?php
-require_once __DIR__ . '/config.php';
-
-if (empty($_SESSION['csrf'])) {
-    $_SESSION['csrf'] = bin2hex(random_bytes(32));
-}
-
+require_once __DIR__ . '/VarGlobales.php';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-    $usuario = empty($_SESSION['usuario_id'])
-        ? null
-        : usuarioActual(baseDatos());
-
-    responder(200, [
-        'ok' => true,
-        'csrf' => $_SESSION['csrf'],
-        'usuario' => $usuario
-    ]);
+    responder(200, ['ok' => true, 'csrf' => $_SESSION['csrf'], 'usuario' => usuarioPublico()]);
 }
-
 exigirPost();
-
-if (campo('accion') !== 'salir') {
-    responder(422, [
-        'ok' => false,
-        'error' => 'Acción desconocida.'
-    ]);
+if (campo('accion') === 'salir') {
+    // No borrar mimatriz ni casa_velasco: permite volver a entrar y conservar la partida.
+    currentUser(null);
+    responder(200, ['ok' => true, 'mensaje' => 'Sesión cerrada.', 'csrf' => $_SESSION['csrf']]);
 }
-
-$_SESSION = [];
-
-session_regenerate_id(true);
-
-$_SESSION['csrf'] = bin2hex(random_bytes(32));
-
-responder(200, [
-    'ok' => true,
-    'mensaje' => 'Sesión cerrada.'
-]);
+if (campo('accion') === 'avatar') {
+    $indice = indiceActual();
+    if ($indice === null) responder(401, ['ok' => false, 'error' => 'Inicia sesión para cambiar el avatar.']);
+    $avatar = campo('avatar');
+    if (!in_array($avatar, avatares(), true)) responder(422, ['ok' => false, 'error' => 'Avatar no válido.']);
+    $_SESSION['mimatriz'][$indice]['Avatar'] = $avatar;
+    responder(200, ['ok' => true, 'mensaje' => 'Avatar actualizado.']);
+}
+responder(422, ['ok' => false, 'error' => 'Acción desconocida.']);

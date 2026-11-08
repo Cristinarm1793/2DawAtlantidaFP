@@ -1,106 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Contáctanos | Museum 404</title>
-
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/contactanos.css">
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacta con Jack Skellington | Museum 404</title>
+    <link rel="stylesheet" href="css/contactanos.css" />
     <script src="js/comunicacion.js" defer></script>
     <script src="js/contacto.js" defer></script>
-</head>
-
-<body class="pagina-contacto">
-
-    <!-- CABECERA -->
-    <header class="cabecera-contacto">
-
-        <a href="index.html" class="volver-museo" aria-label="Volver al museo">
-            &#8592;
-        </a>
-
-        <div class="titulo-contacto">
-            <h1>CONTÁCTANOS</h1>
-            <p>DEPARTAMENTO DE COMUNICACIONES — MUSEUM 404</p>
-        </div>
-
-    </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="contenedor-contacto">
-
-        <section class="expediente-contacto">
-
-            <div class="encabezado-contacto">
-
-                <span class="sello-contacto">
-                    FORMULARIO 404-C
-                </span>
-
-                <h2>ENVIAR COMUNICACIÓN</h2>
-
-                <p>
-                    ¿Has encontrado una anomalía en el museo?
-                    ¿Quieres comunicarte con nuestro equipo?
-                    Completa el siguiente formulario.
-                </p>
-
+  </head>
+  <body class="pagina-contacto">
+    <main class="escenario-contacto">
+      <section class="carta-jack" aria-labelledby="titulo-jack">
+        <div class="contenido-carta">
+          <h1 id="titulo-jack">Contacta con<br />Jack Skellington</h1>
+          <p>
+            Jack es nuestro gerente del museo. Atiende tus consultas,
+            sugerencias y avisos sobre anomalías. Déjale tu mensaje.
+          </p>
+          <div id="respuesta-contacto" aria-live="polite" tabindex="-1"></div>
+          <p id="acceso-contacto">
+            Para escribir a Jack,
+            <a href="perfil.html#login">inicia sesión</a> o
+            <a href="perfil.html#registro">crea tu cuenta</a>.
+          </p>
+          <p id="remitente-contacto" hidden></p>
+          <form
+            id="formulario-contacto"
+            action="php/correo.php"
+            method="post"
+            hidden
+          >
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona un asunto</option>
+              <option value="consulta">Consulta general</option>
+              <option value="anomalia">Informar de una anomalía</option>
+              <option value="sugerencia">Sugerencia para el museo</option>
+              <option value="otro">Otro asunto</option>
+            </select>
+            <label for="mensaje">Tu mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="5"
+              maxlength="3000"
+              required
+              placeholder="Querido Jack…"
+            ></textarea>
+            <div class="acciones-carta">
+              <button type="reset">Borrar</button
+              ><button type="submit">Enviar a Jack</button>
             </div>
-
-            <div id="respuesta-contacto" aria-live="polite"></div>
-
-            <!-- FORMULARIO -->
-            <form id="formulario-contacto" class="formulario-contacto" action="php/enviar-contacto.php" method="POST">
-
-                <div class="campo-formulario">
-                    <label for="nombre">NOMBRE DEL REMITENTE</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre" maxlength="100" required>
-                </div>
-
-                <div class="campo-formulario">
-                    <label for="email">CORREO ELECTRÓNICO</label>
-                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" maxlength="254" required>
-                </div>
-
-                <div class="campo-formulario">
-                    <label for="asunto">ASUNTO DE LA COMUNICACIÓN</label>
-
-                    <select id="asunto" name="asunto" required>
-                        <option value="">Selecciona un asunto</option>
-                        <option value="consulta">Consulta general</option>
-                        <option value="anomalia">Informar de una anomalía</option>
-                        <option value="sugerencia">Sugerencia para el museo</option>
-                        <option value="otro">Otro asunto</option>
-                    </select>
-                </div>
-
-                <div class="campo-formulario">
-                    <label for="mensaje">MENSAJE</label>
-                    <textarea id="mensaje" name="mensaje" rows="7" maxlength="3000" placeholder="Escribe aquí tu mensaje..." required></textarea>
-                </div>
-
-                <div class="botones-contacto">
-                    <button type="reset" class="boton-limpiar"> BORRAR MENSAJE </button>
-                    <button type="submit" class="boton-enviar"> ENVIAR COMUNICACIÓN </button>
-                </div>
-
-            </form>
-
-        </section>
-
+          </form>
+          <noscript>Activa JavaScript para escribir a Jack.</noscript>
+        </div>
+        <a class="regreso-carta" href="index.html"
+          ><svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10" />
+          </svg>
+          Volver al museo</a
+        >
+      </section>
     </main>
-
-    <footer class="pie-contacto">
-        <p>
-            © 2026 Museum 404: Not Found
-            — Departamento de comunicaciones
-        </p>
-    </footer>
-
-</body>
-
+  </body>
 </html>

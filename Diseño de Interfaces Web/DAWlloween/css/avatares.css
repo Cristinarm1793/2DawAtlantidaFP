@@ -1,0 +1,8 @@
+.avatar-halloween { display:inline-block; flex-shrink:0; width:54px; height:54px; border-radius:50%; background-image:url('../assets/img/perfil/avatares-halloween.png'); background-size:500% 200%; border:1px solid #d1ab66; }
+.selector-avatares { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+.selector-avatares label { display:grid; justify-items:center; align-content:start; gap:4px; cursor:pointer; font-size:11px; text-align:center; text-transform:capitalize; }
+.selector-avatares input { width:auto; }
+.selector-avatares label:has(input:checked) .avatar-halloween { outline:3px solid #f9d778; outline-offset:2px; }
+#btn-perfil .avatar-halloween { width:36px; height:36px; }
+#btn-perfil .nombre-visitante { display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; font-size:12px; white-space:nowrap; }
+@media(max-width:420px) { .selector-avatares { grid-template-columns:repeat(3,minmax(0,1fr)); } }

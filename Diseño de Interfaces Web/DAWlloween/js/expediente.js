@@ -52,16 +52,26 @@ const susto = document.getElementById("susto-ente");
 const contenidos = {
   autora: {
     titulo: "Sobre mí",
-    parrafos: ["Soy Cristina, estudiante de segundo curso de Desarrollo de Aplicaciones Web y creadora de Museum 404: Not Found.", "En este proyecto combino programación, diseño de interfaces y una ambientación inspirada en los videojuegos de terror."]
+    parrafos: [
+      "Soy Cristina, estudiante de segundo curso de Desarrollo de Aplicaciones Web y creadora de Museum 404: Not Found.",
+      "En este proyecto combino programación, diseño de interfaces y una ambientación inspirada en los videojuegos de terror.",
+    ],
   },
   proyecto: {
     titulo: "El proyecto",
-    parrafos: ["Museum 404 es un proyecto de Halloween de segundo de DAW. Reúne un museo de errores informáticos, un recetario interactivo y una aventura de terror.", "Las vitrinas permiten experimentar con anomalías inspiradas en fallos históricos. El recetario funciona como un libro y el juego propone explorar una casa para encontrar una salida.", "La web utiliza HTML, CSS y JavaScript. PHP gestiona el guardado de las partidas mediante sesiones."]
+    parrafos: [
+      "Museum 404 es un proyecto de Halloween de segundo de DAW que consiste en implemenar las asignaturas de prgramacion y diseño web. Reúne un museo de errores informáticos, un recetario interactivo y una aventura de terror.",
+      "Las vitrinas permiten experimentar con anomalías inspiradas en fallos históricos. El recetario funciona como un libro y el juego propone explorar una casa para encontrar una salida.",
+      "La web utiliza HTML, CSS y JavaScript. PHP gestiona las cuentas de visitantes y el guardado de las partidas mediante sesiones, además del formulario de contacto.",
+    ],
   },
   bibliografia: {
     titulo: "Bibliografía",
-    parrafos: ["Este apartado está preparado para añadir las fuentes consultadas, los créditos de imágenes y las licencias de audio.", "Pendiente de completar con las referencias definitivas del proyecto."]
-  }
+    parrafos: [
+      "Este apartado está preparado para añadir las fuentes consultadas, los créditos de imágenes y las licencias de audio.",
+      "Pendiente de completar con las referencias definitivas del proyecto.",
+    ],
+  },
 };
 
 let origenCarpeta;
@@ -83,7 +93,7 @@ for (const boton of carpeta.querySelectorAll("[data-hoja]")) {
     document.getElementById("hoja-titulo").textContent = contenido.titulo;
     const cuerpo = document.getElementById("hoja-contenido");
     cuerpo.replaceChildren();
-    contenido.parrafos.forEach(texto => {
+    contenido.parrafos.forEach((texto) => {
       const p = document.createElement("p");
       p.textContent = texto;
       cuerpo.append(p);
@@ -98,7 +108,8 @@ if (FOTO_AUTORA) {
   const foto = new Image();
   foto.src = FOTO_AUTORA;
   foto.alt = "Cristina, creadora del museo";
-  foto.onload = () => carpeta.querySelector(".foto-autora").replaceChildren(foto);
+  foto.onload = () =>
+    carpeta.querySelector(".foto-autora").replaceChildren(foto);
 }
 
 let temporizadorSusto;
@@ -106,8 +117,14 @@ let contextoAudio;
 let audioPropio;
 function detenerSusto() {
   clearTimeout(temporizadorSusto);
-  if (audioPropio) { audioPropio.pause(); audioPropio.currentTime = 0; }
-  if (contextoAudio) { contextoAudio.close().catch(() => {}); contextoAudio = null; }
+  if (audioPropio) {
+    audioPropio.pause();
+    audioPropio.currentTime = 0;
+  }
+  if (contextoAudio) {
+    contextoAudio.close().catch(() => {});
+    contextoAudio = null;
+  }
 }
 carpeta.querySelector(".foto-ente").onclick = () => {
   if (susto.open) return;
@@ -115,7 +132,7 @@ carpeta.querySelector(".foto-ente").onclick = () => {
   // El sonido solo se inicia como consecuencia del clic del visitante.
   if (AUDIO_SUSTO) {
     audioPropio = new Audio(AUDIO_SUSTO);
-    audioPropio.volume = .45;
+    audioPropio.volume = 0.45;
     audioPropio.play().catch(() => {});
   } else {
     const AudioAPI = window.AudioContext || window.webkitAudioContext;
@@ -125,17 +142,28 @@ carpeta.querySelector(".foto-ente").onclick = () => {
       const volumen = contextoAudio.createGain();
       oscilador.type = "sawtooth";
       oscilador.frequency.setValueAtTime(180, contextoAudio.currentTime);
-      oscilador.frequency.exponentialRampToValueAtTime(45, contextoAudio.currentTime + .65);
-      volumen.gain.setValueAtTime(.0001, contextoAudio.currentTime);
-      volumen.gain.exponentialRampToValueAtTime(.12, contextoAudio.currentTime + .025);
-      volumen.gain.exponentialRampToValueAtTime(.0001, contextoAudio.currentTime + .7);
+      oscilador.frequency.exponentialRampToValueAtTime(
+        45,
+        contextoAudio.currentTime + 0.65,
+      );
+      volumen.gain.setValueAtTime(0.0001, contextoAudio.currentTime);
+      volumen.gain.exponentialRampToValueAtTime(
+        0.12,
+        contextoAudio.currentTime + 0.025,
+      );
+      volumen.gain.exponentialRampToValueAtTime(
+        0.0001,
+        contextoAudio.currentTime + 0.7,
+      );
       oscilador.connect(volumen).connect(contextoAudio.destination);
       contextoAudio.resume().catch(() => {});
       oscilador.start();
-      oscilador.stop(contextoAudio.currentTime + .75);
+      oscilador.stop(contextoAudio.currentTime + 0.75);
     }
   }
-  temporizadorSusto = setTimeout(() => { if (susto.open) susto.close(); }, 1300);
+  temporizadorSusto = setTimeout(() => {
+    if (susto.open) susto.close();
+  }, 1300);
 };
 susto.addEventListener("close", () => {
   detenerSusto();

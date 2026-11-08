@@ -1,3 +1,16 @@
+# Ideas y alcance futuro
+
+Este archivo conserva propuestas de diseño. No acredita funciones implementadas.
+
+## Pendientes opcionales
+- Registro permanente en base de datos para una versión pública (fuera del modelo de sesión académico).
+- Subida de fotografía propia como avatar.
+- Selector de campañas y guardados separados.
+- Ranking persistente.
+- Ampliar relato y créditos definitivos.
+
+## Notas originales
+
 # Decisiones del proyecto
 
 ## Nombre e identidad

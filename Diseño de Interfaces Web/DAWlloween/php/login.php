@@ -1,40 +1,15 @@
 <?php
-require_once __DIR__ . '/config.php';
-
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    header('Location: ../perfil.html#login'); exit;
+}
+require_once __DIR__ . '/VarGlobales.php';
 exigirPost();
-
-$email = strtolower(campo('email'));
-$password = campo('password');
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '') {
-    responder(422, [
-        'ok' => false,
-        'error' => 'Introduce correo y contraseña válidos.'
-    ]);
+limitarIntentos('login');
+$indice = buscarEmail(campo('email'));
+$clave = secreto('password');
+if ($indice === null || strlen($clave) > 72 || !password_verify($clave, $_SESSION['mimatriz'][$indice]['Contraseña'])) {
+    responder(401, ['ok' => false, 'error' => 'Correo o contraseña incorrectos.']);
 }
-
-$db = baseDatos();
-
-$consulta = $db->prepare(
-    'SELECT id, password_hash FROM usuarios WHERE email = ?'
-);
-
-$consulta->execute([$email]);
-
-$usuario = $consulta->fetch(PDO::FETCH_ASSOC);
-
-if (!$usuario || !password_verify($password, $usuario['password_hash'])) {
-    responder(401, [
-        'ok' => false,
-        'error' => 'Correo o contraseña incorrectos.'
-    ]);
-}
-
-session_regenerate_id(true);
-
-$_SESSION['usuario_id'] = (int)$usuario['id'];
-
-responder(200, [
-    'ok' => true,
-    'mensaje' => 'Sesión iniciada.'
-]);
+unset($_SESSION['intentos']['login']);
+currentUser($indice);
+responder(200, ['ok' => true, 'mensaje' => 'Sesión iniciada.', 'csrf' => $_SESSION['csrf']]);

@@ -9,7 +9,7 @@ La web combina elementos de terror, misterio y humor con diferentes funcionalida
 | Sección                   | Descripción                                                                           |
 | ------------------------- | ------------------------------------------------------------------------------------- |
 | 🏛️ **Museo del horror**   | Página principal con una exposición de objetos malditos y anomalías interactivas.     |
-| 📖 **Rescetario**         | Libro de recetas de Halloween con ingredientes e instrucciones.                       |
+| 📖 **Recetario**         | Libro de recetas de Halloween con ingredientes e instrucciones.                       |
 | 👻 **No entres**          | Minijuego de aventura de texto inspirado en los videojuegos clásicos como Zork.       |
 | 🕯️ **Sobre nosotros**     | Información sobre el proyecto, sus inspiraciones y sus creadores.                     |
 | ✉️ **Contacto**           | Formulario para enviar un mensaje a Jack Skellington.                                 |
@@ -39,7 +39,7 @@ La documentación del proyecto se encuentra en la carpeta `docs`.
 | [Guía de usuario](docs/03-guia-usuario.md) | Instrucciones de uso de la aplicación.                        |
 | [Despliegue](docs/04-despliegue.md)        | Configuración del servidor Apache y puesta en funcionamiento. |
 
-> La guía de usuario y la documentación de despliegue se completarán conforme avance el desarrollo.
+Consulta [el índice completo de documentación](docs/00-indice-documentacion.md), [las pruebas pendientes](docs/05-comprobacion.md) y [cómo ampliar la historia](docs/06-mantenimiento.md).
 
 ## 🎮 Inspiración
 
