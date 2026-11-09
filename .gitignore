@@ -64,5 +64,11 @@ target/
 *.tmp
 *.temp
 *.log
+
+# =========================
+# MUSEO 404
+# =========================
 # Datos privados del museo (fuera de DocumentRoot).
 **/museum404-datos/
+# Configuración privada de Museum 404
+**/DAWlloween/php/config-correo.local.php

@@ -12,7 +12,7 @@ El museo carga main.js (anomalías), expediente.js (Sobre nosotros), comunicacio
 | config-correo.php | Destinatario fijo y remitente SMTP opcional; sin contraseñas. |
 | juego.php | Guardar, cargar y reiniciar la partida en sesión. |
 
-Las rutas antiguas de cuentas se eliminan y los formularios apuntan a usuarios.php. contacto.php se conserva como redirección a contacto.html para enlaces existentes.
+Las rutas antiguas de cuentas se eliminan y los formularios apuntan a usuarios.php. El acceso de contacto es contacto.html; se retira la redirección antigua contacto.php.
 
 ## Persistencia
 usuarios.json contiene una lista con Id, Usuario, Email, Contraseña (hash), Perfil, Pregunta, Respuesta (hash), Avatar, CreadoEn y Version. No contiene UsuarioActual: esa información debe ser individual por navegador. PHP no devuelve los hashes en su API.

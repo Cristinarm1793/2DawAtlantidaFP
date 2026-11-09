@@ -1110,16 +1110,130 @@ body.pagina-recetario {
 
 /* Cabecera sin título visible; placa nueva alineada a la derecha. */
 .pagina-recetario .cabecera-recetario {
-  display: flex; justify-content: flex-end; align-items: center;
-  padding: 8px 3%; min-height: 0; gap: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 3%;
+  min-height: 0;
+  gap: 0;
 }
 .pagina-recetario .cabecera-recetario .volver-museo {
-  position: static; transform: none; width: min(200px, 42vw);
-  height: auto; margin: 0; padding: 0; border: 0; background: transparent;
+  position: static;
+  transform: none;
+  width: min(200px, 42vw);
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 .pagina-recetario .cabecera-recetario .volver-museo img {
-  display: block; width: 100%; height: auto; max-height: 62px; object-fit: contain;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 62px;
+  object-fit: contain;
 }
 .titulo-recetario-accesible {
-  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+/* ==========================================================
+   ÍNDICE ADAPTABLE AL TAMAÑO REAL DEL LIBRO
+========================================================== */
+
+/* Medimos el espacio disponible dentro del libro. */
+.libro:has(#indice:not([hidden])) {
+  container-type: size;
+}
+
+/* El contenido y el pergamino mantienen la misma proporción. */
+#indice:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  width: min(100cqw, 66.667cqh);
+  height: min(100cqh, 150cqw);
+  box-sizing: border-box;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 8% minmax(0, 1fr) 8%;
+  grid-template-rows: 29% minmax(0, 1fr) auto 12%;
+  gap: 0;
+
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+/* Flechas y ficha comparten el espacio disponible. */
+#indice .selector-recetas {
+  grid-column: 2;
+  grid-row: 2;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: 16% minmax(0, 1fr) 16%;
+  gap: 3%;
+  align-items: center;
+}
+
+#indice .lista-recetas {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Todas las fichas tienen el mismo tamaño. */
+#indice .tarjeta-receta {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: auto;
+
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 5px;
+  padding: 6px;
+
+  overflow: hidden;
+}
+
+#indice .tarjeta-receta span {
+  font-size: clamp(0.7rem, 3.3cqw, 1rem);
+  line-height: 1.15;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Las flechas también se adaptan al ancho del pergamino. */
+#indice .flecha-indice {
+  width: 100%;
+  max-width: 44px;
+  height: auto;
+  aspect-ratio: 1;
+  justify-self: center;
+}
+
+/* La placa tiene su propia fila debajo de la ficha. */
+#indice #abrir-indice-completo {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: center;
+
+  width: min(210px, 90%);
+  min-height: 36px;
+  margin: 8px 0 0;
+  padding: 6px 12px;
+
+  font-size: clamp(0.75rem, 3.5cqw, 1rem);
 }

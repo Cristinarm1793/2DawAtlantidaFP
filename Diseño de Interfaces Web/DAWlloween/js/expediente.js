@@ -60,9 +60,9 @@ const contenidos = {
   proyecto: {
     titulo: "El proyecto",
     parrafos: [
-      "Museum 404 es un proyecto de Halloween de segundo de DAW que consiste en implemenar las asignaturas de prgramacion y diseño web. Reúne un museo de errores informáticos, un recetario interactivo y una aventura de terror.",
+      "Museum 404 es un proyecto de Halloween de segundo de DAW que consiste en aplicar lo aprendido en las asignaturas de programación y diseño web. Reúne un museo de errores informáticos, un recetario interactivo y una aventura de terror.",
       "Las vitrinas permiten experimentar con anomalías inspiradas en fallos históricos. El recetario funciona como un libro y el juego propone explorar una casa para encontrar una salida.",
-      "La web utiliza HTML, CSS y JavaScript. PHP gestiona las cuentas de visitantes y el guardado de las partidas mediante sesiones, además del formulario de contacto.",
+      "La web utiliza HTML, CSS y JavaScript. PHP guarda las cuentas de visitantes en un archivo JSON privado y las partidas en la sesión del navegador, además de gestionar el formulario de contacto.",
     ],
   },
   bibliografia: {

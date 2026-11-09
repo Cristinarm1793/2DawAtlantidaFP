@@ -24,3 +24,10 @@ Los fondos y recortes generados durante el trabajo, incluidos la momia, su mano 
 | Recursos generados | Herramienta y uso en el proyecto; identificar modificaciones relevantes. |
 
 La bibliografía visible del expediente se edita en contenidos.bibliografia de js/expediente.js. Tras completar esta relación, trasladar allí una versión breve. Revisar las condiciones del enunciado sobre ayuda externa y autoría antes de entregar.
+
+## Reconocimientos declarados en la web
+- ChatGPT (OpenAI): asistencia en código, resolución de dudas, documentación y creación de recursos visuales.
+- ElevenLabs y Descript: preparación de recursos de voz y audio, según lo declarado por la autora.
+- Zork: inspiración de exploración, inventario y narración; la interacción aquí se realiza mediante botones.
+
+El expediente ya incluye estos reconocimientos. Las atribuciones por recurso siguen pendientes de completar donde no se haya indicado autor/origen. La fotografía de la autora está configurada como assets/img/otros/cristina.png; AUDIO_SUSTO está vacío y el susto utiliza el sonido sintético de respaldo, no un archivo de audio propio.

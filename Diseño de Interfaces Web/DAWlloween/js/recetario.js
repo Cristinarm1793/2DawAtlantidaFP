@@ -59,17 +59,14 @@ let paginaActual = 0;
 ========================================================== */
 
 function mostrarPagina(numero) {
-  portada.hidden = true;
-  indice.hidden = true;
-  paginaReceta.hidden = true;
-  indiceCompleto.hidden = true;
   if (numero < 0 || numero > recetas.length + 1) {
     return;
   }
 
   paginaActual = numero;
 
-  // Ocultamos todas las páginas.
+  // Ocultamos todas las páginas después de validar el destino.
+  indiceCompleto.hidden = true;
   portada.hidden = true;
   indice.hidden = true;
   paginaReceta.hidden = true;
@@ -319,16 +316,7 @@ volverATarjetas.addEventListener("click", function () {
   mostrarPagina(1);
   abrirIndiceCompleto.focus();
 });
-abrirIndiceCompleto.addEventListener("click", function () {
-  indice.hidden = true;
-  indiceCompleto.hidden = false;
-  listaIndiceCompleto.querySelector("button")?.focus();
-});
 
-volverATarjetas.addEventListener("click", function () {
-  mostrarPagina(1);
-  abrirIndiceCompleto.focus();
-});
 
 /* ==========================================================
    8. PASAR PÁGINAS MANUALMENTE

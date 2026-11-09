@@ -6,7 +6,7 @@ La portada index.html representa el museo. Recetario abre recetario.html; No ent
 
 ![Mapa de navegación original](img/sitemap.png)
 
-El archivo DAWlloween_sitemap.drawio conserva el esquema editable original. La tabla anterior describe la navegación actual; los bocetos siguientes son referencias de diseño y pueden diferir de la implementación final.
+El archivo DAWlloween_sitemap.drawio conserva el esquema editable original. La descripción anterior indica la navegación actual; los bocetos siguientes son referencias de diseño y pueden diferir de la implementación final.
 
 ## Wireframes originales
 
@@ -16,7 +16,7 @@ El archivo DAWlloween_sitemap.drawio conserva el esquema editable original. La t
 | Libro          | [Portada](img/wireframe-recetario.png)    |
 | Juego          | [Juego](img/wireframe-juego.png)          |
 | Sobre nosotros | [Expediente](img/wireframe-conocenos.png) |
-| Contacto       | [Carta](img/wireframe-contactanos.png)    |
+| Contacto       | No hay boceto de contacto en la versión actual; comprobar contacto.html. |
 | Perfil         | [Inicio](img/wireframe-perfil.png)        |
 
 El juego actual utiliza botones; el campo de comandos y el ranking del boceto no están implementados. El perfil utiliza una momia con mano indicadora y formularios. El destinatario de contacto está fijado en PHP, sin selector editable.
@@ -31,7 +31,7 @@ El juego actual utiliza botones; el campo de comandos y el ranking del boceto no
 | #e8e6df / #b7afa9           | Texto hueso y secundario general.          |
 | #6c242b                     | Borde general.                             |
 | #f4dfb6 / #efca79 / #976527 | Texto, títulos y borde dorado del perfil.  |
-| #170907 / #f4e2bc / #bc914c | Fondo, texto y borde de contacto.          |
+| #33160f / #3d2415 / #79512e | Fondo, tinta y borde de contacto. |
 
 Los colores adicionales del recetario, juego y expediente se definen en sus CSS. Las imágenes aportan matices rojizos, pergamino y metal envejecido que no equivalen a colores planos.
 

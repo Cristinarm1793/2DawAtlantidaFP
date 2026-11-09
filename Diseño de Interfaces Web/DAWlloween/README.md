@@ -2,6 +2,8 @@
 
 Proyecto de 2.º DAW: museo interactivo de errores informáticos, recetario y aventura de terror con opciones de texto.
 
+Versión de trabajo: rama `main`, base `a5d54d1`, con la limpieza de archivos y la corrección de configuración de correo de esta revisión.
+
 ## Funciones implementadas
 - Museo con seis objetos y anomalías, expediente «Sobre nosotros» y bibliografía.
 - Recetario generado desde `recetas.json`.
@@ -53,3 +55,8 @@ El destinatario es `g78409890@gmail.com`. Configurar PHP/sendmail o el transport
 [Índice](docs/00-indice-documentacion.md) · [Guía de usuario](docs/03-guia-usuario.md) · [Despliegue](docs/04-despliegue.md) · [Pruebas](docs/05-comprobacion.md) · [Ampliar historia](docs/06-mantenimiento.md) · [Arquitectura](docs/07-arquitectura.md) · [Limpieza](docs/09-organizacion-json.md).
 
 Esta versión se orienta a una demostración de clase. JSON permite persistencia sencilla; para un servicio público permanente conviene una base de datos, recuperación por correo verificado y controles de abuso globales. Quedan por verificar la recepción real de correo, recursos personales y el ajuste visual en los dispositivos de presentación.
+
+## Presentación
+Seguir [la guía de cierre y demostración](docs/05-comprobacion.md). Si se comparte mediante Cloudflare, usar el servidor Apache ya operativo y añadir al dominio temporal la misma ruta /DAWlloween/index.html que funciona en localhost. No confundir una URL temporal con alojamiento permanente.
+
+La limpieza retira nueve PHP de cuentas antiguos, dos JS integrados en perfil.js y la redirección contacto.php. No se borran otros ejercicios del repositorio ni recursos de juego por falta de una referencia literal. Los documentos sin número ya fueron retirados; el sitemap editable y sus imágenes se conservan.
