@@ -39,8 +39,12 @@ function carpetaUsuarios(): string
     $real = realpath($carpeta);
     if (!$real) throw new RuntimeException('Carpeta privada no disponible.');
     $normalizar = fn($v) => rtrim(str_replace('\\', '/', $v), '/') . '/';
-    $raiz = $normalizar($publica); $destino = $normalizar($real);
-    if (PHP_OS_FAMILY === 'Windows') { $raiz = strtolower($raiz); $destino = strtolower($destino); }
+    $raiz = $normalizar($publica);
+    $destino = $normalizar($real);
+    if (PHP_OS_FAMILY === 'Windows') {
+        $raiz = strtolower($raiz);
+        $destino = strtolower($destino);
+    }
     if (strpos($destino, $raiz) === 0) throw new RuntimeException('El JSON debe estar fuera de la carpeta pública.');
     return $real;
 }
@@ -66,17 +70,23 @@ function abrirUsuarios(): void
         if (!is_array($usuarios) || ($usuarios !== [] && array_keys($usuarios) !== range(0, count($usuarios) - 1))) {
             throw new RuntimeException('Formato de usuarios incorrecto.');
         }
-        $ids = []; $correos = []; $nombres = [];
+        $ids = [];
+        $correos = [];
+        $nombres = [];
         foreach ($usuarios as $u) {
-            foreach (['Id','Usuario','Contraseña','Email','Perfil','Pregunta','Respuesta','Avatar','CreadoEn'] as $clave) {
+            foreach (['Id', 'Usuario', 'Contraseña', 'Email', 'Perfil', 'Pregunta', 'Respuesta', 'Avatar', 'CreadoEn'] as $clave) {
                 if (!isset($u[$clave]) || !is_string($u[$clave])) throw new RuntimeException('Cuenta incompleta.');
             }
-            if (!isset($u['Version']) || !is_int($u['Version']) || $u['Version'] < 1 ||
+            if (
+                !isset($u['Version']) || !is_int($u['Version']) || $u['Version'] < 1 ||
                 !filter_var($u['Email'], FILTER_VALIDATE_EMAIL) || !in_array($u['Avatar'], avatares(), true) ||
-                isset($ids[$u['Id']]) || isset($correos[strtolower($u['Email'])]) || isset($nombres[strtolower($u['Usuario'])])) {
+                isset($ids[$u['Id']]) || isset($correos[strtolower($u['Email'])]) || isset($nombres[strtolower($u['Usuario'])])
+            ) {
                 throw new RuntimeException('Cuenta inválida o duplicada.');
             }
-            $ids[$u['Id']] = true; $correos[strtolower($u['Email'])] = true; $nombres[strtolower($u['Usuario'])] = true;
+            $ids[$u['Id']] = true;
+            $correos[strtolower($u['Email'])] = true;
+            $nombres[strtolower($u['Usuario'])] = true;
         }
     } catch (Throwable $e) {
         error_log('Museum usuarios: ' . $e->getMessage());
@@ -92,8 +102,10 @@ function guardarUsuarios(): void
         $carpeta = carpetaUsuarios();
         $texto = json_encode($usuarios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
         $temporal = @tempnam($carpeta, '.usuarios-');
-        if (!$temporal || @file_put_contents($temporal, $texto . "\n") !== strlen($texto) + 1 ||
-            !@rename($temporal, $carpeta . '/usuarios.json')) {
+        if (
+            !$temporal || @file_put_contents($temporal, $texto . "\n") !== strlen($texto) + 1 ||
+            !@rename($temporal, $carpeta . '/usuarios.json')
+        ) {
             throw new RuntimeException('No se pudo guardar el JSON.');
         }
     } catch (Throwable $e) {
@@ -155,14 +167,26 @@ function buscarEmail(string $email): ?int
 }
 function preguntas(): array
 {
-    return ['personaje' => '¿Cuál es tu personaje de ficción favorito?',
-            'palabra' => '¿Qué palabra secreta elegiste para el museo?',
-            'lugar' => '¿Qué lugar imaginario te gustaría visitar?'];
+    return [
+        'personaje' => '¿Cuál es tu personaje de ficción favorito?',
+        'palabra' => '¿Qué palabra secreta elegiste para el museo?',
+        'lugar' => '¿Qué lugar imaginario te gustaría visitar?'
+    ];
 }
 function avatares(): array
 {
-    return ['esqueleto-hombre', 'momia-hombre', 'zombi-hombre', 'vampiro-hombre', 'hombre-lobo',
-            'esqueleto-mujer', 'momia-mujer', 'zombi-mujer', 'vampiro-mujer', 'mujer-lobo'];
+    return [
+        'esqueleto-hombre',
+        'momia-hombre',
+        'zombi-hombre',
+        'vampiro-hombre',
+        'hombre-lobo',
+        'esqueleto-mujer',
+        'momia-mujer',
+        'zombi-mujer',
+        'vampiro-mujer',
+        'mujer-lobo'
+    ];
 }
 function validarClave(string $clave): void
 {
@@ -189,8 +213,10 @@ function indiceActual(): ?int
     global $usuarios;
     abrirUsuarios();
     foreach ($usuarios as $i => $u) {
-        if ($u['Id'] === ($_SESSION['usuario_id'] ?? null) &&
-            $u['Version'] === ($_SESSION['usuario_version'] ?? null)) return $i;
+        if (
+            $u['Id'] === ($_SESSION['usuario_id'] ?? null) &&
+            $u['Version'] === ($_SESSION['usuario_version'] ?? null)
+        ) return $i;
     }
     return null;
 }
@@ -201,8 +227,13 @@ function usuarioPublico(): ?array
     $u = $i === null ? null : $usuarios[$i];
     cerrarUsuarios();
     // Nunca se devuelven hashes ni respuestas de seguridad al navegador.
-    return $u === null ? null : ['nombre' => $u['Usuario'], 'email' => $u['Email'],
-        'perfil' => $u['Perfil'], 'avatar' => $u['Avatar'], 'creado_en' => $u['CreadoEn']];
+    return $u === null ? null : [
+        'nombre' => $u['Usuario'],
+        'email' => $u['Email'],
+        'perfil' => $u['Perfil'],
+        'avatar' => $u['Avatar'],
+        'creado_en' => $u['CreadoEn']
+    ];
 }
 function limitarIntentos(string $tipo, int $maximo = 8): void
 {
@@ -220,9 +251,12 @@ function AltaUsuario(): void
 {
     global $usuarios;
     abrirUsuarios();
-    $nombre = campo('usuario'); $email = strtolower(campo('email'));
-    $clave = secreto('password'); $respuesta = campo('respuesta');
-    $pregunta = campo('pregunta'); $avatar = campo('avatar');
+    $nombre = campo('usuario');
+    $email = strtolower(campo('email'));
+    $clave = secreto('password');
+    $respuesta = campo('respuesta');
+    $pregunta = campo('pregunta');
+    $avatar = campo('avatar');
     if (!preg_match('/^[\p{L}\p{N}_ .-]{3,40}$/u', $nombre)) {
         responder(422, ['ok' => false, 'error' => 'Usuario: entre 3 y 40 letras, números, espacios, puntos, guiones o guiones bajos.']);
     }
@@ -241,11 +275,16 @@ function AltaUsuario(): void
         }
     }
     $usuarios[] = [
-        'Usuario' => $nombre, 'Contraseña' => password_hash($clave, PASSWORD_DEFAULT),
-        'Email' => $email, 'Perfil' => 'user', 'Pregunta' => $pregunta,
+        'Usuario' => $nombre,
+        'Contraseña' => password_hash($clave, PASSWORD_DEFAULT),
+        'Email' => $email,
+        'Perfil' => 'user',
+        'Pregunta' => $pregunta,
         'Respuesta' => password_hash($respuesta, PASSWORD_DEFAULT),
-        'Id' => bin2hex(random_bytes(16)), 'Version' => 1,
-        'Avatar' => $avatar, 'CreadoEn' => date('Y-m-d H:i:s')
+        'Id' => bin2hex(random_bytes(16)),
+        'Version' => 1,
+        'Avatar' => $avatar,
+        'CreadoEn' => date('Y-m-d H:i:s')
     ];
     guardarUsuarios();
     currentUser(count($usuarios) - 1);
@@ -257,12 +296,15 @@ function CambioContraseña(): void
     abrirUsuarios();
     limitarIntentos('recuperacion');
     $indice = buscarUsuario(campo('usuario'));
-    $clave = secreto('nueva'); validarClave($clave);
+    $clave = secreto('nueva');
+    validarClave($clave);
     if ($clave !== secreto('confirmar')) responder(422, ['ok' => false, 'error' => 'Las contraseñas nuevas no coinciden.']);
     $respuesta = campo('respuesta');
-    if ($indice === null || strlen($respuesta) > 72 ||
+    if (
+        $indice === null || strlen($respuesta) > 72 ||
         $usuarios[$indice]['Pregunta'] !== campo('pregunta') ||
-        !password_verify($respuesta, $usuarios[$indice]['Respuesta'])) {
+        !password_verify($respuesta, $usuarios[$indice]['Respuesta'])
+    ) {
         responder(401, ['ok' => false, 'error' => 'Usuario, pregunta o respuesta incorrectos.']);
     }
     $usuarios[$indice]['Contraseña'] = password_hash($clave, PASSWORD_DEFAULT);
