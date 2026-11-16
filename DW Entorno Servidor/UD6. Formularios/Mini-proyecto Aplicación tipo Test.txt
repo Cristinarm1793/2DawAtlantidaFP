@@ -1,0 +1,9 @@
+Sobre el ejercicio 4 de los ejercicios de la unidad realizar las siguientes ampliaciones/requisitos:
+
+Elegir una temática original para el tipo test.
+Crear al menos 10 preguntas tipo test con al menos 4 posibles respuestas.
+Tanto la generación de las preguntas tipo test como la corrección de las mismas debe hacerse programáticamente, eso quiere decir que la aplicación web debe ser independiente del número de preguntas que tenga el test y de la cantidad de respuestas que tenga.
+Usar arrays posicionales/asociativos donde convenga.
+Usar funciones para no repetir el código HTML/PHP.
+La presentación y diseño de la web se valorará hasta 1,5 puntos.
+Solo podéis usar sintaxis y estructuras de programación vistas en clase o que tengan un impacto mínimo en el código.
