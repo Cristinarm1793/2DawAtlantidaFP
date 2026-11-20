@@ -14,13 +14,13 @@ $sql = "SELECT a.nombre AS alumno,
         WHERE m.nota >= ?
         ORDER BY m.nota DESC";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("d", $notaMinima);
+$consulta->bind_param("d", $notaMinima);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 while ($fila = $resultado->fetch_assoc()) {
     echo htmlspecialchars($fila["alumno"]) . " - ";
@@ -30,5 +30,5 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();

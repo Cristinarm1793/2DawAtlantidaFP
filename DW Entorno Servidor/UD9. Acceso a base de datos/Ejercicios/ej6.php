@@ -10,13 +10,13 @@ $sql = "SELECT nombre
         FROM alumnos
         WHERE nombre LIKE ?";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("s", $patron);
+$consulta->bind_param("s", $patron);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 if ($resultado->num_rows === 0) {
     echo "No hay coincidencias";
@@ -27,5 +27,5 @@ if ($resultado->num_rows === 0) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();

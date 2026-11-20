@@ -9,13 +9,13 @@ $sql = "SELECT nombre, edad
         WHERE edad < ?
         ORDER BY edad, nombre";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("i", $limite);
+$consulta->bind_param("i", $limite);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 while ($fila = $resultado->fetch_assoc()) {
 
@@ -24,5 +24,5 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();

@@ -9,13 +9,13 @@ $edad = 20;
 $sql = "INSERT INTO alumnos (dni, nombre, edad)
         VALUES (?, ?, ?)";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("ssi", $dni, $nombre, $edad);
+$consulta->bind_param("ssi", $dni, $nombre, $edad);
 
-$stmt->execute();
+$consulta->execute();
 
-echo "Filas insertadas: " . $stmt->affected_rows;
+echo "Filas insertadas: " . $consulta->affected_rows;
 
-$stmt->close();
+$consulta->close();
 $db->close();

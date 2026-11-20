@@ -11,17 +11,17 @@ $sql = "DELETE FROM matriculas
           AND codigo = ?
           AND anio = ?";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("sii", $dni, $codigo, $anio);
+$consulta->bind_param("sii", $dni, $codigo, $anio);
 
-$stmt->execute();
+$consulta->execute();
 
-if ($stmt->affected_rows === 1) {
+if ($consulta->affected_rows === 1) {
     echo "Matrícula eliminada";
 } else {
     echo "No encontrada";
 }
 
-$stmt->close();
+$consulta->close();
 $db->close();

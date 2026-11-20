@@ -9,13 +9,13 @@ $sql = "SELECT nombre, edad
         FROM alumnos
         WHERE edad = ? OR edad = ?";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("ii", $edad1, $edad2);
+$consulta->bind_param("ii", $edad1, $edad2);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 while ($fila = $resultado->fetch_assoc()) {
     echo htmlspecialchars($fila["nombre"]);
@@ -23,5 +23,5 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();

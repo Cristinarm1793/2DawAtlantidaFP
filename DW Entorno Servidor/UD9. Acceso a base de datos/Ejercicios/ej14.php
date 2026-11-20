@@ -14,13 +14,13 @@ $sql = "SELECT a.nombre AS alumno,
         WHERE a.dni = ?
         ORDER BY m.anio DESC, asi.nombre";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("s", $dni);
+$consulta->bind_param("s", $dni);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 if ($resultado->num_rows === 0) {
     echo "Alumno no encontrado";
@@ -41,5 +41,5 @@ if ($resultado->num_rows === 0) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();

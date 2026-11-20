@@ -13,13 +13,13 @@ $sql = "UPDATE matriculas
           AND codigo = ?
           AND anio = ?";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("dsii", $nuevaNota, $dni, $codigo, $anio);
+$consulta->bind_param("dsii", $nuevaNota, $dni, $codigo, $anio);
 
-$stmt->execute();
+$consulta->execute();
 
-echo "Filas modificadas: " . $stmt->affected_rows;
+echo "Filas modificadas: " . $consulta->affected_rows;
 
-$stmt->close();
+$consulta->close();
 $db->close();

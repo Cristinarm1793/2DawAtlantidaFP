@@ -10,13 +10,13 @@ $nota = 7.5;
 $sql = "INSERT INTO matriculas (dni, codigo, anio, nota)
         VALUES (?, ?, ?, ?)";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("siid", $dni, $codigo, $anio, $nota);
+$consulta->bind_param("siid", $dni, $codigo, $anio, $nota);
 
-$stmt->execute();
+$consulta->execute();
 
-echo "Filas insertadas: " . $stmt->affected_rows;
+echo "Filas insertadas: " . $consulta->affected_rows;
 
-$stmt->close();
+$consulta->close();
 $db->close();

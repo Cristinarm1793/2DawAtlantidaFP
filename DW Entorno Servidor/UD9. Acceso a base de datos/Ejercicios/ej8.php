@@ -12,13 +12,13 @@ $sql = "SELECT a.nombre AS alumno,
         INNER JOIN asignaturas asi ON m.codigo = asi.codigo
         WHERE m.anio = ?";
 
-$stmt = $db->prepare($sql);
+$consulta = $db->prepare($sql);
 
-$stmt->bind_param("i", $anio);
+$consulta->bind_param("i", $anio);
 
-$stmt->execute();
+$consulta->execute();
 
-$resultado = $stmt->get_result();
+$resultado = $consulta->get_result();
 
 while ($fila = $resultado->fetch_assoc()) {
     echo htmlspecialchars($fila["alumno"]) . " - ";
@@ -34,5 +34,5 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 $resultado->free();
-$stmt->close();
+$consulta->close();
 $db->close();
