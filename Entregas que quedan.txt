@@ -1,0 +1,77 @@
+[Desarrollo web en entorno cliente]
+
+	UD 5. Gestión de formularios 
+		- Mini practica
+		  Apertura: martes, 3 de noviembre de 2026, 00:00
+		  Cierre: miércoles, 25 de noviembre de 2026, 00:00
+
+	UD 6. Aplicaciones Web lado del cliente 
+		- Carrito de Compra y LocalStorage
+        	  Apertura: jueves, 14 de enero de 2027, 00:00
+		  Cierre: sábado, 13 de febrero de 2027, 00:00
+
+	UD 7. Mecanismo de comunicación asíncrona
+		- Entrega consumir APIs
+		  Apertura: sábado, 9 de enero de 2027, 00:00
+		  Cierre: sábado, 27 de febrero de 2027, 23:59
+
+		- Integrar API Externa en club deportivo
+		  Apertura: viernes, 15 de enero de 2027, 00:00
+		  Cierre: martes, 11 de mayo de 2027, 23:59
+
+[Desarrollo Web en Entorno Servidor]
+
+	UD 6. Aplicaciones Web lado del cliente
+		- Ejercicios unidad 6
+
+	UD 9. Acceso a base de datos
+		- Proyecto 1º trimestre Aplicación Club Deportivo
+	  	Apertura: lunes, 26 de octubre de 2026, 00:00
+	  	Cierre: jueves, 10 de diciembre de 2026, 23:59
+
+
+
+	UD 10. Manejo de sesiones
+		- Gestión de usuarios
+	 	 Apertura: miércoles, 9 de diciembre de 2026, 00:00
+	 	 Cierre: jueves, 14 de enero de 2027, 12:30
+
+		- Manejo de sesiones, autenticación, autorización y despliegue club deportivo
+		  Apertura: lunes, 18 de enero de 2027, 00:00
+	 	 Cierre: viernes, 26 de febrero de 2027, 23:59
+
+	UD 11. Servicios Web
+		- Api Rest para gestión de pedidos
+	 	 Apertura: martes, 26 de enero de 2027, 00:00
+	  	 Cierre: viernes, 5 de febrero de 2027, 00:00
+
+	UD 12. Integración de aplicaciones con API REST
+		- Administración de API REST
+	 	 Apertura: martes, 2 de febrero de 2027, 00:00
+	  	 Cierre: martes, 9 de febrero de 2027, 00:00
+
+	UD 13. Framework para el entorno servidor
+		- Actividad evaluable frameworks PHP
+	  	Apertura: martes, 9 de febrero de 2027, 00:00
+	  	Cierre: martes, 11 de mayo de 2027, 23:59
+
+[Diseño de interfaces WEB]
+	Tema 1 y 2
+		- Entrega Trimestre 1
+		  Apertura: viernes, 30 de octubre de 2026, 00:00
+		  Cierre: domingo, 6 de diciembre de 2026, 23:59
+
+[Proyecto de Desarrollo de Aplicaciones Web 26-27]
+	- Entregas
+	  Apertura: viernes, 30 de octubre de 2026, 00:00
+	  Cierre: domingo, 6 de diciembre de 2026, 23:59
+
+[Profundización en digitalización (DAW)]
+	Tema 2. Aplicaciones y desafíos de la IA
+		- Práctica 2: La IA en los sectores productivos
+		  Apertura: viernes, 30 de octubre de 2026, 00:00
+		  Cierre: viernes, 27 de noviembre de 2026, 16:00
+	
+		- Kahoot tema 2
+		  
+	  
