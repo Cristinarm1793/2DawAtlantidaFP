@@ -1,0 +1,284 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.5;
+}
+
+header {
+    background-color: #203b63;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #d5d5d5;
+}
+
+section h2 {
+    color: #203b63;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+form > label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #4276b5;
+    outline-offset: 1px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+fieldset label {
+    margin-right: 20px;
+}
+
+form > div:has(input[type="checkbox"]) {
+    margin-top: 20px;
+}
+
+.error {
+    display: block;
+    color: #b00020;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.error:empty {
+    display: none;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border: 2px solid #b00020;
+    background-color: #fff5f5;
+}
+
+#contadorTestimonio {
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+    margin-top: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #2764a5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #174a80;
+}
+
+button:focus-visible {
+    outline: 3px solid #f0a500;
+    outline-offset: 3px;
+}
+
+.resultado {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #176b38;
+}
+
+.resultado:empty {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #203b63;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    main {
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    fieldset label {
+        margin-right: 10px;
+    }
+}
+
+#menuPrincipal {
+    text-align: center;
+    padding: 20px;
+}
+
+#menuPrincipal h2 {
+    color: #203b63;
+    margin-bottom: 10px;
+}
+
+#menuPrincipal p {
+    margin-bottom: 25px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.menu button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background-color: white;
+    color: #203b63;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px #d5d5d5;
+
+    height: 180px;
+    padding: 15px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu button i {
+    font-size: 35px;
+    color: #2764a5;
+}
+
+.menu button strong {
+    font-size: 20px;
+}
+
+.menu button span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+}
+
+.menu button:hover {
+    background-color: #203b63;
+    color: white;
+}
+
+.menu button:hover i,
+.menu button:hover span {
+    color: white;
+}
+
+
+#volverMenu {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .menu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+}
+
+#extraerNumeros {
+    background-color: #526b85;
+}
+
+#extraerNumeros:hover {
+    background-color: #203b63;
+}
+
+#resultadoNumeros {
+    margin-top: 10px;
+    color: #203b63;
+    font-weight: bold;
+}
+
+#formPattern p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}

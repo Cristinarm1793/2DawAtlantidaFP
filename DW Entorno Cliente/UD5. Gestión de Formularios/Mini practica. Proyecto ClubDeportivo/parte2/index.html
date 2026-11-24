@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Deportivo</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="validaciones.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="pruebas.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Club Deportivo</h1>
+    </header>
+
+    <main>
+        <div id="menuPrincipal">
+
+            <h2>Panel de gestión</h2>
+            <p>Selecciona el apartado que deseas gestionar.</p>
+
+            <div class="menu">
+
+                <button type="button" data-seccion="socios">
+                    <i class="fa-solid fa-users" aria-hidden="true"></i>
+                    <strong>Socios</strong>
+                    <span>Registro de nuevos socios</span>
+                </button>
+
+                <button type="button" data-seccion="servicios">
+                    <i class="fa-solid fa-dumbbell" aria-hidden="true"></i>
+                    <strong>Servicios</strong>
+                    <span>Gestión de actividades deportivas</span>
+                </button>
+
+                <button type="button" data-seccion="testimonios">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                    <strong>Testimonios</strong>
+                    <span>Opiniones de nuestros socios</span>
+                </button>
+
+                <button type="button" data-seccion="noticias">
+                    <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                    <strong>Noticias</strong>
+                    <span>Publicación de novedades</span>
+                </button>
+
+                <button type="button" data-seccion="citas">
+                    <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                    <strong>Citas</strong>
+                    <span>Reserva de actividades</span>
+                </button>
+
+                <button type="button" data-seccion="demostracion">
+                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                    <strong>Validación HTML</strong>
+                    <span>Demostración con pattern</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <button type="button" id="volverMenu" hidden>
+            Volver al menú
+        </button>
+
+        <section id="socios" hidden>
+            <h2>Registro de socios</h2>
+
+            <form id="formSocios" novalidate>
+
+                <label for="nombreSocio">Nombre completo:</label>
+                <input type="text" id="nombreSocio" name="nombreSocio" required minlength="4" maxlength="50"
+                    aria-describedby="errorNombreSocio">
+                <span id="errorNombreSocio" class="error"></span>
+
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" required minlength="5" maxlength="20"
+                    aria-describedby="errorUsuario">
+                <span id="errorUsuario" class="error"></span>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required aria-describedby="errorCorreo">
+                <span id="errorCorreo" class="error"></span>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" required min="18" max="100" step="1"
+                    aria-describedby="errorEdad">
+                <span id="errorEdad" class="error"></span>
+
+                <fieldset>
+                    <legend>Modalidad:</legend>
+
+                    <input type="radio" id="mensual" name="modalidad" value="mensual" required aria-describedby="errorModalidad">
+                    <label for="mensual">Mensual</label>
+
+                    <input type="radio" id="anual" name="modalidad" value="anual" aria-describedby="errorModalidad">
+                    <label for="anual">Anual</label>
+
+                    <span id="errorModalidad" class="error"></span>
+                </fieldset>
+
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required minlength="8" maxlength="16"
+                    aria-describedby="errorContrasena">
+                <span id="errorContrasena" class="error"></span>
+
+                <label for="confirmarContrasena">Confirmar contraseña:</label>
+                <input type="password" id="confirmarContrasena" name="confirmarContrasena" required
+                    aria-describedby="errorConfirmarContrasena">
+                <span id="errorConfirmarContrasena" class="error"></span>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+34 612 345 678" required
+                    aria-describedby="errorTelefono">
+                <span id="errorTelefono" class="error"></span>
+
+                <label for="fotoSocio">Foto de perfil (JPEG):</label>
+                <input type="file" id="fotoSocio" name="fotoSocio" accept="image/jpeg" required
+                    aria-describedby="errorFotoSocio">
+                <span id="errorFotoSocio" class="error"></span>
+
+                <div>
+                    <input type="checkbox" id="condiciones" name="condiciones" required
+                        aria-describedby="errorCondiciones">
+                    <label for="condiciones">Acepto las condiciones</label>
+                    <span id="errorCondiciones" class="error"></span>
+                </div>
+
+                <button type="submit">Registrar socio</button>
+                <div id="resultadoSocios" class="resultado" role="status"></div>
+
+            </form>
+        </section>
+
+        <section id="servicios" hidden>
+            <h2>Servicios deportivos</h2>
+
+            <form id="formServicios" novalidate>
+
+                <label for="nombreServicio">Nombre del servicio:</label>
+                <input type="text" id="nombreServicio" name="nombreServicio" required minlength="3" maxlength="50"
+                    aria-describedby="errorNombreServicio">
+                <span id="errorNombreServicio" class="error"></span>
+
+                <label for="codigoServicio">Código del servicio:</label>
+                <input type="text" id="codigoServicio" name="codigoServicio" placeholder="DEP-007" required
+                    aria-describedby="errorCodigoServicio">
+                <span id="errorCodigoServicio" class="error"></span>
+
+                <label for="duracion">Duración (minutos):</label>
+                <input type="number" id="duracion" name="duracion" required min="15" step="15"
+                    aria-describedby="errorDuracion">
+                <span id="errorDuracion" class="error"></span>
+
+                <label for="precio">Precio (€):</label>
+                <input type="number" id="precio" name="precio" required min="0" max="9999.99" step="0.01"
+                    aria-describedby="errorPrecio">
+                <span id="errorPrecio" class="error"></span>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required aria-describedby="errorCategoria">
+                    <option value="">Seleccionar categoría</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="natacion">Natación</option>
+                    <option value="artesMarciales">Artes marciales</option>
+                </select>
+                <span id="errorCategoria" class="error"></span>
+
+                <button type="submit">Añadir servicio</button>
+                <div id="resultadoServicios" class="resultado" role="status"></div>
+
+            </form>
+        </section>
+
+        <section id="testimonios" hidden>
+            <h2>Testimonios</h2>
+
+            <form id="formTestimonios" novalidate>
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" required minlength="2" maxlength="50"
+                    aria-describedby="errorAutor">
+                <span id="errorAutor" class="error"></span>
+
+                <label for="testimonio">Testimonio:</label>
+                <textarea id="testimonio" name="testimonio" required minlength="10" maxlength="500"
+                    aria-describedby="contadorTestimonio errorTestimonio"></textarea>
+                <p id="contadorTestimonio">0 / 500 caracteres</p>
+                <span id="errorTestimonio" class="error"></span>
+
+                <button type="button" id="extraerNumeros">Extraer números del testimonio</button>
+                <p id="resultadoNumeros" role="status"></p>
+
+                <div>
+                    <input type="checkbox" id="publicar" name="publicar">
+                    <label for="publicar">Autorizo su publicación</label>
+                </div>
+
+                <button type="submit">Enviar testimonio</button>
+                <div id="resultadoTestimonios" class="resultado" role="status"></div>
+
+            </form>
+        </section>
+
+        <section id="noticias" hidden>
+            <h2>Noticias</h2>
+
+            <form id="formNoticias" novalidate>
+
+                <label for="tituloNoticia">Título:</label>
+                <input type="text" id="tituloNoticia" name="tituloNoticia" required minlength="3" maxlength="100"
+                    aria-describedby="errorTituloNoticia">
+                <span id="errorTituloNoticia" class="error"></span>
+
+                <label for="etiquetas">Etiquetas (opcional):</label>
+                <input type="text" id="etiquetas" name="etiquetas" placeholder="club, salud, verano">
+
+                <label for="contenidoNoticia">Contenido:</label>
+                <textarea id="contenidoNoticia" name="contenidoNoticia" required minlength="20" maxlength="2000"
+                    aria-describedby="errorContenidoNoticia"></textarea>
+                <span id="errorContenidoNoticia" class="error"></span>
+
+                <label for="fechaNoticia">Fecha de publicación:</label>
+                <input type="date" id="fechaNoticia" name="fechaNoticia" required aria-describedby="errorFechaNoticia">
+                <span id="errorFechaNoticia" class="error"></span>
+
+                <label for="imagenNoticia">Imagen (JPEG):</label>
+                <input type="file" id="imagenNoticia" name="imagenNoticia" accept="image/jpeg" required
+                    aria-describedby="errorImagenNoticia">
+                <span id="errorImagenNoticia" class="error"></span>
+
+                <button type="submit">Publicar noticia</button>
+                <div id="resultadoNoticias" class="resultado" role="status"></div>
+
+
+            </form>
+        </section>
+
+        <section id="citas" hidden>
+            <h2>Reserva de citas</h2>
+
+            <form id="formCitas" novalidate>
+
+                <label for="socioCita">Socio:</label>
+                <select id="socioCita" name="socioCita" required aria-describedby="errorSocioCita">
+                    <option value="">Seleccionar socio</option>
+                    <option value="1">Ana López</option>
+                    <option value="2">Carlos Ruiz</option>
+                    <option value="3">Lucía García</option>
+                </select>
+                <span id="errorSocioCita" class="error"></span>
+
+                <label for="servicioCita">Servicio:</label>
+                <select id="servicioCita" name="servicioCita" required aria-describedby="errorServicioCita">
+                    <option value="">Seleccionar servicio</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="natacion">Natación</option>
+                    <option value="artesMarciales">Artes marciales</option>
+                </select>
+                <span id="errorServicioCita" class="error"></span>
+
+                <label for="fechaCita">Fecha y hora:</label>
+                <input type="datetime-local" id="fechaCita" name="fechaCita" required aria-describedby="errorFechaCita">
+                <span id="errorFechaCita" class="error"></span>
+
+                <label for="referenciaCita">Referencia de cita:</label>
+
+                <input type="text" id="referenciaCita" name="referenciaCita" placeholder="CITA-0001 o RES-0001" required
+                    aria-describedby="errorReferenciaCita">
+                <span id="errorReferenciaCita" class="error"></span>
+
+                <div>
+                    <input type="checkbox" id="confirmarCita" name="confirmarCita" required
+                        aria-describedby="errorConfirmarCita">
+                    <label for="confirmarCita">He revisado los datos de la cita</label>
+                    <span id="errorConfirmarCita" class="error"></span>
+                </div>
+
+                <button type="submit">Reservar cita</button>
+                <div id="resultadoCitas" class="resultado" role="status"></div>
+
+            </form>
+        </section>
+
+        <section id="demostracion" hidden>
+            <h2>Validación HTML con pattern</h2>
+
+            <form id="formPattern">
+
+                <label for="codigoPattern">Código del servicio:</label>
+                <input type="text" id="codigoPattern" name="codigoPattern" required pattern="DEP-[0-9]{3}"
+                    placeholder="DEP-007">
+                <p>Introduce DEP- seguido de tres números.</p>
+                <button type="submit">Comprobar código</button>
+
+                <div id="resultadoPattern" class="resultado" role="status"></div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Club Deportivo - Práctica DWEC Tema 5</p>
+    </footer>
+
+</body>
+</html>
