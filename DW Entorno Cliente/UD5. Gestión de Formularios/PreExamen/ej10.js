@@ -10,3 +10,25 @@ valor limpio al campo. Si es «admin», ignorando mayúsculas,
 establece un error personalizado. Usa checkValidity(): si falla, muestra
 validationMessage y enfoca el campo; si cumple, muestra «Alias
 válido». Debe permitir corregir un error y volver a validar. */
+
+const formularioAlta = document.querySelector("#alta");
+const campoAlias = document.querySelector("#alias");
+const resultadoAlta = document.querySelector("#resultado");
+
+formularioAlta.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  campoAlias.setCustomValidity("");
+  campoAlias.value = campoAlias.value.trim();
+
+  if (campoAlias.value.toLowerCase() === "admin") {
+    campoAlias.setCustomValidity("El alias admin está reservado.");
+  }
+
+  if (campoAlias.checkValidity()) {
+    resultadoAlta.textContent = "Alias válido";
+  } else {
+    resultadoAlta.textContent = campoAlias.validationMessage;
+    campoAlias.focus();
+  }
+});

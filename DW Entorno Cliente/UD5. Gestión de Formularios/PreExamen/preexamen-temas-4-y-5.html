@@ -1,166 +1,86 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Preexamen de DWEC · Temas 4 y 5</title>
-    <style>
-        body {
-            font-family: system-ui, sans-serif;
-            line-height: 1.5;
-            max-width: 48rem;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            color: #172033;
-            background: #f5f7fb;
-        }
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="ej1.js" defer></script>
+    <script src="ej2.js" defer></script>
+    <script src="ej3.js" defer></script>
+    <script src="ej4.js" defer></script>
+    <script src="ej5.js" defer></script>
+    <script src="ej6.js" defer></script>
+    <script src="ej7.js" defer></script>
+    <script src="ej8.js" defer></script>
+    <script src="ej9.js" defer></script>
+    <script src="ej10.js" defer></script>
+  </head>
+  <body>
+    <h2>1. Stock</h2>
+    <p class="stock">Jazz</p>
+    <p class="stock">Rock</p>
+    <p class="stock">Pop</p>
 
-        section {
-            background: white;
-            border: 1px solid #ccd5e4;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
+    <h2>2. Contador</h2>
+    <button id="menos">-</button>
+    <span id="total">0</span>
+    <button id="mas">+</button>
 
-        h2 { margin-top: 0; font-size: 1.15rem; }
-        input, button, select { font: inherit; }
-        input { max-width: 100%; box-sizing: border-box; }
-        output, pre { overflow-wrap: anywhere; }
-    </style>
-</head>
-<body>
-    <h1>Preexamen de DWEC · Temas 4 y 5</h1>
-    <p>Escribe tus soluciones dentro del bloque <code>&lt;script&gt;</code> al final del archivo. Guarda y recarga la página para probarlas.</p>
-    <p>Los ejercicios 5 y 8 tienen IDs distintos a los del PDF para que puedan convivir con los ejercicios 2, 3 y 7.</p>
+    <h2>3. Buscador</h2>
+    <input id="busqueda" type="text" />
+    <ul id="lista">
+      <li>Jazz</li>
+      <li>Rock</li>
+      <li>Jazz latino</li>
+    </ul>
 
-    <section id="ejercicio-1">
-        <h2>01 · Actualizar varios elementos</h2>
-        <p class="stock">Jazz</p>
-        <p class="stock">Rock</p>
-        <p class="stock">Pop</p>
-    </section>
+    <h2>4. Discos</h2>
+    <ul id="discos"></ul>
 
-    <section id="ejercicio-2">
-        <h2>02 · Contador con límite</h2>
-        <button id="menos" type="button" aria-label="Restar">-</button>
-        <span id="total">0</span>
-        <button id="mas" type="button" aria-label="Sumar">+</button>
-    </section>
+    <h2>5. Borrar elementos</h2>
+    <ul id="lista5">
+      <li>
+        Jazz <button class="borrar"><span>×</span></button>
+      </li>
+      <li>
+        Rock <button class="borrar"><span>×</span></button>
+      </li>
+    </ul>
+    <p id="total5"></p>
 
-    <section id="ejercicio-3">
-        <h2>03 · Filtrar con un evento input</h2>
-        <label for="busqueda">Buscar género</label>
-        <input id="busqueda" type="text">
-        <ul id="lista">
-            <li>Jazz</li>
-            <li>Rock</li>
-            <li>Jazz latino</li>
-        </ul>
-    </section>
+    <h2>6. Reserva</h2>
+    <form id="reserva" novalidate>
+      <label>Nombre <input id="nombre" /></label>
+      <span id="errNombre"></span>
+      <label>Ciudad <input id="ciudad" /></label>
+      <span id="errCiudad"></span>
+      <button type="submit">Reservar</button>
+    </form>
+    <p id="aviso"></p>
 
-    <section id="ejercicio-4">
-        <h2>04 · Crear un listado filtrado</h2>
-        <ul id="discos"></ul>
-    </section>
+    <h2>7. Cantidad</h2>
+    <input id="cantidad" type="number" />
+    <label><input id="socio" type="checkbox" /> Soy socio</label>
+    <button id="comprobar">Comprobar</button>
+    <p id="error"></p>
 
-    <section id="ejercicio-5">
-        <h2>05 · Delegación con contenido anidado</h2>
-        <!-- En el PDF: #lista y #total. Aquí: #lista5 y #total5. -->
-        <ul id="lista5">
-            <li>Jazz <button class="borrar" type="button" aria-label="Borrar Jazz"><span>×</span></button></li>
-            <li>Rock <button class="borrar" type="button" aria-label="Borrar Rock"><span>×</span></button></li>
-        </ul>
-        <p id="total5"></p>
-    </section>
+    <h2>8. Envío</h2>
+    <select id="envio">
+      <option value="recogida">Recogida</option>
+      <option value="domicilio">Domicilio</option>
+    </select>
+    <label><input id="socio8" type="checkbox" /> Soy socio</label>
+    <p id="precio"></p>
 
-    <section id="ejercicio-6">
-        <h2>06 · Validar dos campos sin omitir errores</h2>
-        <form id="reserva" novalidate>
-            <p>
-                <label for="nombre">Nombre</label>
-                <input id="nombre" aria-describedby="errNombre">
-                <span id="errNombre"></span>
-            </p>
-            <p>
-                <label for="ciudad">Ciudad</label>
-                <input id="ciudad" aria-describedby="errCiudad">
-                <span id="errCiudad"></span>
-            </p>
-            <button type="submit">Reservar</button>
-        </form>
-        <p id="aviso"></p>
-    </section>
+    <h2>9. Código (F12 → Consola)</h2>
 
-    <section id="ejercicio-7">
-        <h2>07 · Número y condición adicional</h2>
-        <p>
-            <label for="cantidad">Cantidad</label>
-            <input id="cantidad" type="number">
-        </p>
-        <label><input id="socio" type="checkbox"> Soy socio</label>
-        <button id="comprobar" type="button">Comprobar</button>
-        <p id="error"></p>
-    </section>
-
-    <section id="ejercicio-8">
-        <h2>08 · Calcular según dos controles</h2>
-        <label for="envio">Entrega</label>
-        <select id="envio">
-            <option value="recogida">Recogida</option>
-            <option value="domicilio">Domicilio</option>
-        </select>
-        <!-- En el PDF: #socio. Aquí: #socio8. -->
-        <label><input id="socio8" type="checkbox"> Soy socio</label>
-        <p id="precio"></p>
-    </section>
-
-    <section id="ejercicio-9">
-        <h2>09 · Código con alternativas</h2>
-        <p>Escribe tus cuatro pruebas con <code>console.log()</code> debajo de <code>codigoValido</code>. Abre la consola con F12 para ver los resultados.</p>
-    </section>
-
-    <section id="ejercicio-10">
-        <h2>10 · Validación personalizada con la API del navegador</h2>
-        <form id="alta" novalidate>
-            <label for="alias">Alias</label>
-            <input id="alias" required pattern="[A-Za-z][A-Za-z0-9_]{3,11}">
-            <button type="submit">Crear cuenta</button>
-        </form>
-        <p id="resultado"></p>
-    </section>
-
-    <!-- El script va al final para que el navegador ya haya leído todo el HTML. -->
-    <script>
-        // 01 · Actualizar varios elementos
-
-        // 02 · Contador con límite
-
-        // 03 · Filtrar con un evento input
-
-        // 04 · Crear un listado filtrado
-        const discos = [
-            { titulo: "Blue Train", precio: 18 },
-            { titulo: "Kind of Blue", precio: 24 },
-            { titulo: "Abbey Road", precio: 20 }
-        ];
-
-        // 05 · Delegación con contenido anidado (usa #lista5 y #total5)
-
-        // 06 · Validar dos campos sin omitir errores
-
-        // 07 · Número y condición adicional
-
-        // 08 · Calcular según dos controles (usa #socio8)
-
-        // 09 · Código con alternativas
-        function codigoValido(texto) {
-            // Escribe aquí la validación.
-        }
-
-        // Escribe aquí tus cuatro pruebas.
-
-        // 10 · Validación personalizada con la API del navegador
-    </script>
-</body>
+    <h2>10. Alias</h2>
+    <form id="alta" novalidate>
+      <label
+        >Alias <input id="alias" required pattern="[A-Za-z][A-Za-z0-9_]{3,11}"
+      /></label>
+      <button type="submit">Crear cuenta</button>
+    </form>
+    <p id="resultado"></p>
+  </body>
 </html>
